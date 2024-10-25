@@ -135,19 +135,18 @@ small {
           font-family: initial;
         }
       }
-
-      .company,
+      .role,
+      .major,
       .project-name,
-      .institution,
       .certificate-name,
       .publication-title,
       .award-name,
       .reference-name {
         font-weight: $base-font-weight * 1.50;
       }
-
-      .role,
-      .major,
+      
+      .institution,
+      .company,
       .issuer,
       .authors,
       .awarder,
