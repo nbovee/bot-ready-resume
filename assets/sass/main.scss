@@ -20,6 +20,7 @@ $content-width:    1000px !default;
 // Default color settings
 
 $theme-color:       {{ $.Site.Params.themeColor | default "#1DA1F2" }};
+$theme-second-color:       {{ $.Site.Params.themeColor | default "#1DA1F2" }};
 $text-color:        #333333;
 $text-second-color: darken($theme-color, 20%);
 $text-third-color:  lighten($theme-color, 10%);
