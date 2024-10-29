@@ -46,6 +46,7 @@ ol, ul {
 
 b, strong {
   font-weight: $base-font-weight * 1.50;
+  color: $theme-color;
 }
 
 small {
@@ -183,6 +184,7 @@ small {
         font-size: $huge-font-size;
         margin-top: 0;
         margin-bottom: $spacing-unit / 4;
+        font-weight: $base-font-weight * 1.50;
       }
 
       .title {
