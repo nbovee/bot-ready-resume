@@ -33,12 +33,12 @@
             {{- if $item.link }}
             <a href="{{ $item.link }}" target="_blank">{{ $item.company | safeHTML }}</a>
             {{- else }}
-            <span>{{ $item.company | safeHTML }}</span>
+            <span> {{ $item.company | safeHTML }}</span>
             {{- end }}
           </div>
           {{- if $item.location }}
           <div class="location">
-            <i class="fa-solid fa-location-dot"></i>
+            {{/*  <i class="fa-solid fa-location-dot"></i>  */}}
             <span>{{ $item.location }}</span>
           </div>
           {{- end }}
