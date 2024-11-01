@@ -1,7 +1,9 @@
+{{- $close := .data.close }}
 <div class="close">
   {{- if .data.close }}
-  <div class="description">
-    {{ .data.close | markdownify | safeHTML }}
+  <img class="construction" src="{{ $close.image.path }}" alt="geocities construction gif">
+  <div class="description strong">
+    {{ $close.description | markdownify | safeHTML }}
   </div>
   {{- end }}
 </div>

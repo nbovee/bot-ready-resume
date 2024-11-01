@@ -13,6 +13,9 @@
     {{- end }}
     {{- end }}
     {{- partial "contact.html" . }}
+    {{- if $basic.description }}
+    <h3 class="description">{{ $basic.description }}</h3>
+    {{- end }}
   </div>
 </section>
 {{- end }}

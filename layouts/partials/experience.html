@@ -1,5 +1,5 @@
-{{- $experience := .data.experience }}
-{{- if $experience | and $experience.show }}
+{{- $experience := .data.experience }} {{- if $experience | and $experience.show
+}}
 <section class="experience" style="order: {{ $experience.order | default 1 }}">
   <div class="section-title">
     <i class="section-icon fa-solid fa-briefcase"></i>
@@ -11,21 +11,14 @@
     <div class="description markdown">
       {{ $experience.description | markdownify | safeHTML }}
     </div>
-    {{- end }}
-
-    {{- if $experience.items }}
+    {{- end }} {{- if $experience.items }}
     <div class="items">
       {{- range $item := $experience.items }}
       <div class="item">
-
         {{- if $item.company }}
         <div class="row">
-          <div class="company">
-            {{- if $item.link }}
-            <a href="{{ $item.link }}" target="_blank">{{ $item.company | safeHTML }}</a>
-            {{- else }}
-            <span>{{ $item.company | safeHTML }}</span>
-            {{- end }}
+          <div class="role">
+            <span>{{ $item.role }}</span>
             {{- if $item.tags }}
             <small>[{{ $item.tags }}]</small>
             {{- end }}
@@ -36,12 +29,16 @@
         </div>
 
         <div class="row">
-          <div class="role">
-            <span>{{ $item.role }}</span>
+          <div class="company">
+            {{- if $item.link }}
+            <a href="{{ $item.link }}" target="_blank">{{ $item.company | safeHTML }}</a>
+            {{- else }}
+            <span> {{ $item.company | safeHTML }}</span>
+            {{- end }}
           </div>
           {{- if $item.location }}
           <div class="location">
-            <i class="fa-solid fa-location-dot"></i>
+            {{/*  <i class="fa-solid fa-location-dot"></i>  */}}
             <span>{{ $item.location }}</span>
           </div>
           {{- end }}
@@ -51,9 +48,7 @@
         <div class="description markdown">
           {{ $item.description | markdownify | safeHTML }}
         </div>
-        {{- end }}
-        {{- end }}
-
+        {{- end }} {{- end }}
       </div>
       {{- end }}
     </div>
