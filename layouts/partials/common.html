@@ -18,12 +18,12 @@
         {{- partial "patent.html" . }}
         {{- partial "organization.html" . }}
         {{- partial "language.html" . }}
-        {{- partial "interest.html" . }}
         {{- partial "evaluation.html" . }}
         {{- partial "reference.html" . }}
-        {{/*  {{- partial "footer.html" . }}  */}}
+        {{- partial "interest.html" . }}
+        {{- partial "footer.html" . }}
       </div>
-      {{- if .Site.Params.siteFooter }}
+      {{- if .Site.Params.siteCredit }}
       {{- partial "credit.html" . }}
     {{- end }}
     {{- else }}

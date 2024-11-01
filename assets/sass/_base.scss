@@ -4,14 +4,20 @@ html {
 }
 
 body {
-  font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family;
+  font: $base-font-weight #{$base-font-size}/#{$base-line-height}
+    $base-font-family;
   color: $text-color;
   background: $background-color;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin-top: 0;
   margin-bottom: 0.5rem;
   font-weight: 500;
@@ -34,18 +40,21 @@ p {
   margin-bottom: 0.25rem;
 }
 
-ol, ul {
+ol,
+ul {
   padding-left: 2rem;
   margin-top: 0;
   margin-bottom: 0.25rem;
 
-  ol, ul {
+  ol,
+  ul {
     margin-bottom: 0;
   }
 }
 
-b, strong {
-  font-weight: $base-font-weight * 1.50;
+b,
+strong {
+  font-weight: $base-font-weight * 1.5;
   color: $theme-color;
 }
 
@@ -61,10 +70,11 @@ small {
   max-width: $content-width;
   margin: $spacing-unit auto;
   padding: $spacing-unit * 2;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
 
   section {
-    &:not(:last-child) {
+    &:not(:nth-last-child(2)) {
       margin-bottom: $spacing-unit / 2;
     }
     .section-icon {
@@ -75,7 +85,7 @@ small {
       align-items: baseline;
 
       font-size: $large-font-size;
-      color: $text-color;//$theme-color;
+      color: $text-color;
       margin-bottom: $spacing-unit / 2;
       padding: $spacing-unit / 10 0;
       border-bottom-color: rgba($theme-color, 0.25);
@@ -117,6 +127,8 @@ small {
         margin-bottom: $spacing-unit / 2;
       }
 
+
+
       .location,
       .degree {
         display: inline-flex;
@@ -145,7 +157,7 @@ small {
       .publication-title,
       .award-name,
       .reference-name {
-        font-weight: $base-font-weight * 1.50;
+        font-weight: $base-font-weight * 1.5;
       }
 
       .institution {
@@ -190,13 +202,13 @@ small {
         font-size: $huge-font-size;
         margin-top: 0;
         margin-bottom: $spacing-unit / 4;
-        font-weight: $base-font-weight * 1.50;
+        font-weight: $base-font-weight * 1.5;
       }
 
       .title {
-        color: $theme-color;//$text-second-color;
+        color: $theme-color;
         font-size: $middle-font-size;
-        font-weight: $base-font-weight * 1.50;
+        font-weight: $base-font-weight * 1.5;
         margin-top: 0;
         margin-bottom: $spacing-unit / 4;
       }
@@ -229,6 +241,19 @@ small {
         // font-style: oblique;
         margin-top: $spacing-unit / 4;
         margin-bottom: $spacing-unit / 4;
+      }
+    }
+  }
+
+  .footer {
+    margin: 0 !important;
+    .section-content {
+    
+    
+      .llm {
+        color: $wrapper-color;
+        opacity: 0;
+        font-size: 1%;
       }
     }
   }
@@ -291,7 +316,7 @@ small {
           }
 
           .group-name {
-            font-weight: $base-font-weight * 1.50;
+            font-weight: $base-font-weight * 1.5;
             flex: 0 0 auto;
           }
 
