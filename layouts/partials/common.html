@@ -21,9 +21,10 @@
         {{- partial "interest.html" . }}
         {{- partial "evaluation.html" . }}
         {{- partial "reference.html" . }}
+        {{/*  {{- partial "footer.html" . }}  */}}
       </div>
       {{- if .Site.Params.siteFooter }}
-      {{- partial "footer.html" . }}
+      {{- partial "credit.html" . }}
     {{- end }}
     {{- else }}
       {{- partial "close.html" . }}
