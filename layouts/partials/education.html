@@ -18,15 +18,21 @@
           <div class="major">
             <span>{{ $item.major }}</span>
           </div>
-          {{- if $item.degree }}
-          <div class="degree">
-            {{/*  <i class="fa-solid fa-graduation-cap"></i>  */}}
-            <span>{{ $item.degree }}</span>
+          <div class="date">
+            <span>{{ $item.date }}</span>
           </div>
-          {{- end }}
         </div>
         {{- if $item.institution }}
         <div class="row">
+          {{- if $item.degree }}
+          <div class="degree">
+            {{/* <i class="fa-solid fa-graduation-cap"></i> */}}
+            <span>{{ $item.degree }}</span>
+            {{- if $item.gpa }}
+            <div class="gpa">, {{ $item.gpa | markdownify}} GPA</div>
+            {{- end }}
+          </div>
+          {{- end }}
           <div class="institution">
             {{- if $item.link }}
             <a href="{{ $item.link }}" target="_blank"
@@ -35,9 +41,6 @@
             {{- else }}
             <span>{{ $item.institution | safeHTML }}</span>
             {{- end }}
-          </div>
-          <div class="date">
-            <span>{{ $item.date }}</span>
           </div>
         </div>
 

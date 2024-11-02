@@ -160,11 +160,11 @@ small {
         font-weight: $base-font-weight * 1.5;
       }
 
-      .institution {
+      .degree {
         margin-left: 0.8rem;
       }
 
-      .institution,
+      .degree,
       .company,
       .issuer,
       .authors,
@@ -175,7 +175,7 @@ small {
 
       .date,
       .location,
-      .degree {
+      .institution {
         color: $text-third-color;
       }
     }
