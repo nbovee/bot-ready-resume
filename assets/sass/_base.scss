@@ -54,7 +54,7 @@ ul {
 
 b,
 strong {
-  font-weight: $base-font-weight * 1.35;
+  font-weight: $base-font-weight * 1.25;
   color: $theme-color;
 }
 
@@ -75,7 +75,7 @@ small {
 
   section {
     &:not(:nth-last-child(2)) {
-      margin-bottom: $spacing-unit / 2;
+      margin-bottom: $spacing-unit / 4;
     }
     .section-icon {
       color: $theme-color;
@@ -109,7 +109,7 @@ small {
 
       .items {
         .item {
-          margin-bottom: $spacing-unit / 2;
+          margin-bottom: $spacing-unit / 4;
 
           .row {
             display: flex;
@@ -157,7 +157,7 @@ small {
       .publication-title,
       .award-name,
       .reference-name {
-        font-weight: $base-font-weight * 1.5;
+        font-weight: $base-font-weight * 1.25;
       }
 
       .degree {
@@ -202,15 +202,15 @@ small {
         font-size: $huge-font-size;
         margin-top: 0;
         margin-bottom: $spacing-unit / 4;
-        font-weight: $base-font-weight * 1.5;
+        font-weight: $base-font-weight * 1.25;
       }
 
       .title {
         color: $theme-color;
         font-size: $middle-font-size;
-        font-weight: $base-font-weight * 1.5;
+        font-weight: $base-font-weight * 1.25;
         margin-top: 0;
-        margin-bottom: $spacing-unit / 4;
+        margin-bottom: $spacing-unit / 6;
       }
 
       .contact {
@@ -237,10 +237,10 @@ small {
       .description {
         color: $text-third-color;
         font-size: $middle-font-size;
-        font-weight: $base-font-weight * 1.5;
+        font-weight: $base-font-weight * 1.15;
         // font-style: oblique;
-        margin-top: $spacing-unit / 4;
-        margin-bottom: $spacing-unit / 4;
+        margin-top: $spacing-unit / 6;
+        margin-bottom: $spacing-unit / 6;
       }
     }
   }
@@ -316,7 +316,7 @@ small {
           }
 
           .group-name {
-            font-weight: $base-font-weight * 1.5;
+            font-weight: $base-font-weight * 1.25;
             flex: 0 0 auto;
           }
 
