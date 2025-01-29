@@ -37,14 +37,14 @@ a {
 p {
   line-height: $base-line-height;
   margin-top: 0;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.2rem;
 }
 
 ol,
 ul {
   padding-left: 1.5rem;
   margin-top: 0;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.2rem;
 
   ol,
   ul {
@@ -86,7 +86,7 @@ small {
 
       font-size: $large-font-size;
       color: $text-color;
-      margin-bottom: $spacing-unit / 2;
+      margin-bottom: $spacing-unit / 4;
       padding: $spacing-unit / 10 0;
       border-bottom-color: rgba($theme-color, 0.25);
       border-bottom-width: 1px;
@@ -104,7 +104,7 @@ small {
 
     .section-content {
       .description {
-        margin-bottom: $spacing-unit / 2;
+        margin-bottom: $spacing-unit / 4;
       }
 
       .items {
@@ -115,6 +115,14 @@ small {
             display: flex;
             flex-direction: row;
             justify-content: space-between;
+
+            .subrow {
+              &:not(:last-child)::after {
+                content: $contact-delimiter;
+                color: $text-third-color;
+                margin: 0 0.5em;
+              }
+            }
           }
 
           .description {
@@ -124,10 +132,8 @@ small {
       }
 
       .groups {
-        margin-bottom: $spacing-unit / 2;
+        margin-bottom: $spacing-unit / 4;
       }
-
-
 
       .location,
       .degree {
@@ -192,6 +198,18 @@ small {
       border: 0px solid $wrapper-color;
       // box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
     }
+    .title-desc-container {
+      display: flex;
+      flex-direction: row;
+
+      .item {
+        &:not(:last-child)::after {
+          content: $contact-delimiter;
+          color: $text-third-color;
+          margin: 0 0.5em;
+        }
+      }
+    }
 
     .header {
       display: flex;
@@ -237,9 +255,9 @@ small {
       .description {
         color: $text-third-color;
         font-size: $middle-font-size;
-        font-weight: $base-font-weight * 1.15;
+        font-weight: $base-font-weight * 1.25;
         // font-style: oblique;
-        margin-top: $spacing-unit / 6;
+        // margin-top: $spacing-unit / 6;
         margin-bottom: $spacing-unit / 6;
       }
     }
@@ -248,8 +266,6 @@ small {
   .footer {
     margin: 0 !important;
     .section-content {
-    
-    
       .llm {
         color: $wrapper-color;
         opacity: 0;
