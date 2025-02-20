@@ -17,7 +17,7 @@
     <div class="items">
       {{- range $item := $publication.items }}
       <div class="item">
-
+        <div class="row">
         {{- if $item.title }}
         <div class="publication-title">
           {{- if $item.link }}
@@ -25,22 +25,19 @@
           {{- else }}
           <span>{{ $item.title | markdownify | safeHTML }}</span>
           {{- end }}
-        </div>
-
-        {{- if $item.authors }}
-        <div class="authors">
-          <span>{{ $item.authors | markdownify | safeHTML }}</span>
-        </div>
-        {{- end }}
-
+        </div>        
         {{- if $item.conference }}
         <div class="conference">
           <span>{{ $item.conference }}</span>
         </div>
         {{- end }}
-        {{- end }}
-
+        </div>
+      {{- if $item.authors }}
+      <div class="authors">
+        <span>{{ $item.authors | markdownify | safeHTML }}</span>
       </div>
+      {{- end }}
+      {{- end }}
       {{- end }}
     </div>
     {{- end }}

@@ -8,14 +8,17 @@
   <div class="header" {{ if ne $basic.avatar.show true }}style="align-items: center;"{{ end }}>
     {{- if $basic.name }}
     <h1 class="name">{{ $basic.name }}</h1>
+    <div class="title-desc-container">
     {{- if $basic.title }}
-    <h3 class="title">{{ $basic.title }}</h3>
+    <h3 class="title item">{{ $basic.title }}</h3>
     {{- end }}
+    {{- if $basic.description }}
+    <h3 class="description item">{{ $basic.description }}</h3>
+    {{- end }}
+    </div>
     {{- end }}
     {{- partial "contact.html" . }}
-    {{- if $basic.description }}
-    <h3 class="description">{{ $basic.description }}</h3>
-    {{- end }}
+
   </div>
 </section>
 {{- end }}

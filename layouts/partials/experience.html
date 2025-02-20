@@ -17,32 +17,32 @@
       <div class="item">
         {{- if $item.company }}
         <div class="row">
-          <div class="role">
+          <div class="row">
+          <div class="role subrow">
             <span>{{ $item.role }}</span>
             {{- if $item.tags }}
             <small>[{{ $item.tags }}]</small>
             {{- end }}
-          </div>
-          <div class="date">
-            <span>{{ $item.date }}</span>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="company">
+          </div><div class="company">
             {{- if $item.link }}
             <a href="{{ $item.link }}" target="_blank">{{ $item.company | safeHTML }}</a>
             {{- else }}
             <span> {{ $item.company | safeHTML }}</span>
             {{- end }}
-          </div>
+          </div></div>          
           {{- if $item.location }}
-          <div class="location">
+          <div class="row">
+          <div class="location subrow">
             {{/*  <i class="fa-solid fa-location-dot"></i>  */}}
             <span>{{ $item.location }}</span>
           </div>
           {{- end }}
-        </div>
+          <div class="date">
+            <span>{{ $item.date }}</span>
+          </div>
+        </div></div>
+
+
 
         {{- if $item.description }}
         <div class="description markdown">
