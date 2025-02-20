@@ -221,10 +221,11 @@ small {
         margin-top: 0;
         margin-bottom: $spacing-unit / 4;
         font-weight: $base-font-weight * 1.25;
+        border-bottom: 4px solid $theme-color;
       }
 
       .title {
-        color: $theme-color;
+        // color: $theme-color;
         font-size: $middle-font-size;
         font-weight: $base-font-weight * 1.25;
         margin-top: 0;
