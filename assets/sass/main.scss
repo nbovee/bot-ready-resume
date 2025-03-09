@@ -10,27 +10,27 @@ $middle-font-size: $base-font-size * 1 !default;
 $large-font-size:  $base-font-size * 1.2  !default;
 $huge-font-size:   $base-font-size * 2.25  !default;
 
-$base-line-height: 1.3 !default;
+$base-line-height: 1.35 !default;
 
-$spacing-unit:     14px !default;
+$spacing-unit:     16px !default;
 
 // Width of the content area
 $content-width:    1000px !default;
 
 // Default color settings
 
-$theme-color:       {{ $.Site.Params.themeColor | default "#1DA1F2" }};
+$theme-color:              {{ $.Site.Params.themeColor | default "#1DA1F2" }};
 $theme-second-color:       {{ $.Site.Params.themeColor | default "#1DA1F2" }};
-$text-color:        #333333;
-$text-second-color: darken($theme-color, 20%);
-$text-third-color:  #4f4f4f; //lighten($theme-color, 10%);
-$background-color:  #f5f5f5;
-$wrapper-color:     #ffffff;
-$heart-color:       #fb866a;
+$text-color:                #333333;
+$separator-color:           #4f4f4f;
+$background-color:          #e6e6e6;
+$section-background-color:  #f5f5f5;
+$wrapper-color:             #ffffff;
+$heart-color:               #fb866a;
 
 // Default delimiter
 $contact-delimiter: "{{ $.Site.Params.contactDelimiter | default "·" }}";
-
+$body-delimiter: "{{ $.Site.Params.bodyDelimiter | default "·" }}";
 @import
   "sanitize",
   "base",
@@ -46,7 +46,7 @@ section {
     border-bottom-style: {{ $.Site.Params.sectionLine | default "dashed" }};
 
     {{ if $.Site.Params.sectionBackground }}
-    background-color: rgba($background-color, 1);
+    background-color: rgba($section-background-color, 1);
     {{ end }}
 
     {{ if ne $.Site.Params.sectionIcon true }}
@@ -63,7 +63,7 @@ section {
         -webkit-font-smoothing: antialiased;
         font: var(--fa-font-solid);
         content: "\f08e";
-        color: $text-third-color;
+        color: $theme-color;
         font-size: 0.625em;
         margin: 0 0.375em;
         text-decoration: none;

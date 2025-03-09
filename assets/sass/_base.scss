@@ -54,7 +54,7 @@ ul {
 
 b,
 strong {
-  font-weight: $base-font-weight * 1.25;
+  font-weight: $base-font-weight * 1.15;
   color: $theme-color;
 }
 
@@ -74,7 +74,7 @@ small {
     rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
 
   section {
-    &:not(:nth-last-child(2)) {
+    &:not(:nth-last-child(1)) {
       margin-bottom: $spacing-unit / 4;
     }
     .section-icon {
@@ -110,7 +110,7 @@ small {
       .items {
         .item {
           margin-bottom: $spacing-unit / 4;
-
+          
           .row {
             display: flex;
             flex-direction: row;
@@ -118,8 +118,8 @@ small {
 
             .subrow {
               &:not(:last-child)::after {
-                content: $contact-delimiter;
-                color: $text-third-color;
+                content: $body-delimiter;
+                color: $separator-color;
                 margin: 0 0.5em;
               }
             }
@@ -128,7 +128,13 @@ small {
           .description {
             margin-bottom: 0;
           }
+
+          &:not(:nth-last-child(1)) {
+            border-bottom: 1px dashed rgba($theme-color, 0.25);
+          }
         }
+
+
       }
 
       .groups {
@@ -165,10 +171,10 @@ small {
         font-weight: $base-font-weight * 1.25;
       }
 
-      // .company,
-      // .degree {
-      //   margin-left: 0.8rem;
-      // }
+      .company,
+      .degree {
+        font-weight: $base-font-weight * 1.1;
+      }
 
       .degree,
       .company,
@@ -182,7 +188,7 @@ small {
       .date,
       .location,
       .institution {
-        color: $text-third-color;
+        color: $text-color;
       }
     }
   }
@@ -204,8 +210,8 @@ small {
 
       .item {
         &:not(:last-child)::after {
-          content: $contact-delimiter;
-          color: $text-third-color;
+          content: $body-delimiter;
+          color: $separator-color;
           margin: 0 0.5em;
         }
       }
@@ -242,7 +248,7 @@ small {
 
           &:not(:last-child)::after {
             content: $contact-delimiter;
-            color: $text-third-color;
+            color: $separator-color;
             margin: 0 0.5em;
           }
 
@@ -254,11 +260,8 @@ small {
       }
 
       .description {
-        color: $text-third-color;
         font-size: $middle-font-size;
         font-weight: $base-font-weight * 1.25;
-        // font-style: oblique;
-        // margin-top: $spacing-unit / 6;
         margin-bottom: $spacing-unit / 6;
       }
     }
@@ -310,7 +313,7 @@ small {
 
           .skill-level {
             display: inline-flex;
-            color: $text-third-color;
+            color: $theme-color;
 
             i:not(:last-child)::after {
               content: "\00a0";
@@ -329,7 +332,7 @@ small {
           justify-content: space-between;
 
           &:not(:last-child) {
-            border-bottom: 1px dashed rgba($text-third-color, 0.25);
+            border-bottom: 1px dashed rgba($separator-color, 0.25);
           }
 
           .group-name {
@@ -344,8 +347,8 @@ small {
             flex: 1;
 
             span:not(:last-child)::after {
-              content: "/";
-              color: $text-third-color;
+              content: $body-delimiter;
+              color: $separator-color;
               margin: 0 0.5em;
             }
           }
@@ -364,13 +367,14 @@ small {
         .item {
           display: flex;
           align-items: baseline;
+          border-bottom: none !important;
 
           &:not(:last-child)::after {
-            content: "/";
-            color: $text-third-color;
+            content: $body-delimiter;
+            color: $separator-color;
             margin: 0 0.5em;
           }
-
+        
           small::before {
             content: "\00a0";
             font-family: initial;
@@ -383,7 +387,7 @@ small {
 
 .credit {
   margin-bottom: $spacing-unit;
-  color: $text-second-color;
+  color: $theme-color;
   width: 100%;
   display: inline-flex;
   align-items: baseline;

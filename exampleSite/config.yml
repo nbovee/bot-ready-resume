@@ -23,7 +23,7 @@ params:
   sectionTitle: uppercase   # section title style, 'uppercase', 'lowercase', 'capitalize' or 'none'
   sectionAlign: start       # section title align, 'start', 'end' or 'center'
   sectionLine: dashed       # section title line, 'solid', 'dashed' or 'none'
-  sectionBackground: false  # section title backound, 'true' or 'false'
+  sectionBackground: true  # section title backound, 'true' or 'false'
   skillLevelIcon: lightbulb # skill rate icon, 'heart', 'star', 'circle' or 'lightbulb'
   linkIcon: true            # show link icon, 'true' or 'false'
   siteFooter: true          # show site footer, 'true' or 'false'

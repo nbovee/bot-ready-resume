@@ -27,15 +27,16 @@
           {{- end }}
         </div>        
         {{- if $item.conference }}
-        <div class="conference">
+        <div class="description conference">
           <span>{{ $item.conference }}</span>
         </div>
         {{- end }}
         </div>
+        
       {{- if $item.authors }}
       <div class="authors">
         <span>{{ $item.authors | markdownify | safeHTML }}</span>
-      </div>
+      </div></div>
       {{- end }}
       {{- end }}
       {{- end }}
