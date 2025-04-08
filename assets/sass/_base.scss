@@ -343,7 +343,7 @@ small {
           .group-item {
             display: flex;
             flex-wrap: wrap;
-            justify-content: end;
+            justify-content: center;
             flex: 1;
 
             span:not(:last-child)::after {
@@ -363,7 +363,7 @@ small {
       .items {
         display: flex;
         flex-wrap: wrap;
-
+        justify-content: center;
         .item {
           display: flex;
           align-items: baseline;
