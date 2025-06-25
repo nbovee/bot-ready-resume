@@ -1,9 +1,12 @@
 @charset "utf-8";
 
 // Define defaults for each variable.
-$base-font-family: -apple-system, BlinkMacSystemFont, "Noto Sans", "Montserrat", "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
-$base-font-size:   16px !default;
-$base-font-weight: 500 !default;
+// $base-font-family: -apple-system, BlinkMacSystemFont, "Noto Sans", "Montserrat", "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+// $base-font-size:   16px !default;
+
+$base-font-family: "Berkeley Mono Variable", "Berkeley Mono", "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, "Courier New", monospace !default;
+$base-font-size:   14px !default;
+$base-font-weight: 100 !default;
 
 $small-font-size:  $base-font-size * 0.875 !default;
 $middle-font-size: $base-font-size * 1 !default;
@@ -12,7 +15,7 @@ $huge-font-size:   $base-font-size * 2.25  !default;
 
 $base-line-height: 1.35 !default;
 
-$spacing-unit:     16px !default;
+$spacing-unit:     1rem !default;
 
 // Width of the content area
 $content-width:    1000px !default;
@@ -21,7 +24,7 @@ $content-width:    1000px !default;
 
 $theme-color:              {{ $.Site.Params.themeColor | default "#1DA1F2" }};
 $theme-second-color:       {{ $.Site.Params.themeColor | default "#1DA1F2" }};
-$text-color:                #333333;
+$text-color:                #0E0E0E;
 $separator-color:           #4f4f4f;
 $background-color:          #e6e6e6;
 $section-background-color:  #f5f5f5;
@@ -71,4 +74,9 @@ section {
     }
   }
   {{ end }}
+}
+
+// Extend Font Awesome fixed width class
+.fa-fw {
+  width: 1.5em !important;
 }

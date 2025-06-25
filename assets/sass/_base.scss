@@ -42,7 +42,8 @@ p {
 
 ol,
 ul {
-  padding-left: 1.5rem;
+  padding-left: 0rem;
+  list-style-type: none;
   margin-top: 0;
   margin-bottom: 0.2rem;
 
@@ -54,12 +55,12 @@ ul {
 
 b,
 strong {
-  font-weight: $base-font-weight * 1.15;
+  font-weight: $base-font-weight * 1;
   color: $theme-color;
 }
 
 small {
-  font-weight: $base-font-weight;
+  font-weight: $base-font-weight * 1;
 }
 
 .wrapper {
@@ -86,7 +87,8 @@ small {
 
       font-size: $large-font-size;
       color: $text-color;
-      margin-bottom: $spacing-unit / 4;
+      margin-top: $spacing-unit / 6;
+      margin-bottom: $spacing-unit / 6;
       padding: $spacing-unit / 10 0;
       border-bottom-color: rgba($theme-color, 0.25);
       border-bottom-width: 1px;
@@ -126,6 +128,7 @@ small {
           }
 
           .description {
+            padding-left: 1rem;
             margin-bottom: 0;
           }
 
@@ -138,6 +141,7 @@ small {
       }
 
       .groups {
+        padding-left: 1rem;
         margin-bottom: $spacing-unit / 4;
       }
 
@@ -168,21 +172,23 @@ small {
       .publication-title,
       .award-name,
       .reference-name {
-        font-weight: $base-font-weight * 1.25;
+        font-weight: $base-font-weight * 1.5;
       }
 
       .company,
       .degree {
-        font-weight: $base-font-weight * 1.1;
+        font-weight: $base-font-weight * 1.5;
       }
 
-      .degree,
-      .company,
+      .authors {
+        padding-left: 1rem;
+        font-style: italic;
+      }
       .issuer,
-      .authors,
       .awarder,
       .reference-title {
-        font-style: italic;
+        font-style: normal;
+        font-weight: $base-font-weight * 1.5;
       }
 
       .date,
@@ -226,14 +232,14 @@ small {
         font-size: $huge-font-size;
         margin-top: 0;
         margin-bottom: $spacing-unit / 4;
-        font-weight: $base-font-weight * 1.25;
+        font-weight: $base-font-weight * 1.5;
         border-bottom: 4px solid $theme-color;
       }
 
       .title {
         // color: $theme-color;
         font-size: $middle-font-size;
-        font-weight: $base-font-weight * 1.25;
+        font-weight: $base-font-weight * 1.5;
         margin-top: 0;
         margin-bottom: $spacing-unit / 6;
       }
@@ -261,7 +267,7 @@ small {
 
       .description {
         font-size: $middle-font-size;
-        font-weight: $base-font-weight * 1.25;
+        font-weight: $base-font-weight * 1.5;
         margin-bottom: $spacing-unit / 6;
       }
     }
@@ -336,14 +342,14 @@ small {
           }
 
           .group-name {
-            font-weight: $base-font-weight * 1.25;
+            font-weight: $base-font-weight * 1.5;
             flex: 0 0 auto;
           }
 
           .group-item {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
+            // justify-content: center;
             flex: 1;
 
             span:not(:last-child)::after {

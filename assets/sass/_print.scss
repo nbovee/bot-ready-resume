@@ -4,8 +4,8 @@
   }
 
   body {
-    font-size: 10.5pt !important;
-    background: $wrapper-color !important;
+    font-size: 11pt !important;
+    background: #ffffff !important;
   }
 
   a::after {
@@ -27,7 +27,7 @@
 
   .wrapper {
     max-width: 100% !important;
-    margin: 0 !important;
+    margin: 0.5rem  !important;
     padding: 0 !important;
     box-shadow: none !important;
   }
