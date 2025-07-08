@@ -42,7 +42,7 @@ p {
 
 ol,
 ul {
-  padding-left: 1.5rem;
+  padding-left: 0rem;
   margin-top: 0;
   margin-bottom: 0.2rem;
 
@@ -54,12 +54,133 @@ ul {
 
 b,
 strong {
-  font-weight: $base-font-weight * 1.15;
+  font-weight: $base-font-weight * 1.5;
   color: $theme-color;
 }
 
 small {
-  font-weight: $base-font-weight;
+  font-weight: $base-font-weight * 1;
+}
+
+// Consolidated emphasis elements
+.role,
+.major,
+.project-name,
+.certificate-name,
+.publication-title,
+.award-name,
+.reference-name,
+.company,
+.degree,
+.issuer,
+.awarder,
+.reference-title,
+.basic .header .name,
+.basic .header .title,
+.basic .header .description,
+.skill .section-content .groups .group-name {
+  font-weight: $base-font-weight * 1.5;
+}
+
+// Consolidated icon spacing
+.section-title i::after,
+.location i::after,
+.degree i::after,
+.project-name i::after,
+.contact-item i::after,
+.skill-level i:not(:last-child)::after,
+.skill-name::after,
+.language .item small::before {
+  content: "\00a0";
+  font-family: initial;
+}
+
+// Double spacing for skill names
+.skill-name::after {
+  content: "\00a0\00a0";
+}
+
+// Consolidated delimiter patterns
+.subrow:not(:last-child)::after,
+.title-desc-container .item:not(:last-child)::after,
+.contact-item:not(:last-child)::after,
+.group-item span:not(:last-child)::after,
+.language .item:not(:last-child)::after,
+.interest .item:not(:last-child)::after {
+  content: $body-delimiter;
+  color: $separator-color;
+  margin: 0 0.5em;
+}
+
+// Special delimiter for contact items
+.contact-item:not(:last-child)::after {
+  content: $contact-delimiter;
+}
+
+// Consolidated flex baseline elements
+.location,
+.contact-item,
+.credit {
+  display: inline-flex;
+  align-items: baseline;
+}
+
+// Consolidated flex wrap elements
+.contact,
+.certificate .section-content .items,
+.award .section-content .items,
+.reference .section-content .items,
+.skill .section-content .items,
+.language .section-content .items,
+.interest .section-content .items {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+// Consolidated spacing patterns
+.section-content .description,
+.section-content .items .item,
+.section-content .groups {
+  margin-bottom: $spacing-unit / 4;
+}
+
+// Consolidated padding patterns
+.section-content .items .item .description,
+.section-content .authors {
+  padding-left: 1rem;
+}
+
+// Consolidated color patterns
+.date,
+.location,
+.institution {
+  color: $text-color;
+}
+
+.skill-level {
+  color: $theme-color;
+}
+
+// Consolidated border patterns
+.item:not(:nth-last-child(1)),
+.group:not(:last-child) {
+  border-bottom: 1px dashed rgba($theme-color, 0.25);
+}
+
+// Special border for name
+.basic .header .name {
+  border-bottom: 4px solid $theme-color;
+}
+
+// Override for language/interest items
+.language .item,
+.interest .item {
+  border-bottom: none !important;
+}
+
+// Override for group borders
+.group:not(:last-child) {
+  border-bottom: 1px dashed rgba($separator-color, 0.25);
 }
 
 .wrapper {
@@ -86,15 +207,11 @@ small {
 
       font-size: $large-font-size;
       color: $text-color;
-      margin-bottom: $spacing-unit / 4;
+      margin-top: $spacing-unit / 6;
+      margin-bottom: $spacing-unit / 6;
       padding: $spacing-unit / 10 0;
       border-bottom-color: rgba($theme-color, 0.25);
       border-bottom-width: 1px;
-
-      i::after {
-        content: "\00a0";
-        font-family: initial;
-      }
 
       h2 {
         font-size: inherit;
@@ -103,92 +220,18 @@ small {
     }
 
     .section-content {
-      .description {
-        margin-bottom: $spacing-unit / 4;
-      }
-
       .items {
         .item {
-          margin-bottom: $spacing-unit / 4;
-          
           .row {
             display: flex;
             flex-direction: row;
             justify-content: space-between;
-
-            .subrow {
-              &:not(:last-child)::after {
-                content: $body-delimiter;
-                color: $separator-color;
-                margin: 0 0.5em;
-              }
-            }
-          }
-
-          .description {
-            margin-bottom: 0;
-          }
-
-          &:not(:nth-last-child(1)) {
-            border-bottom: 1px dashed rgba($theme-color, 0.25);
           }
         }
-
-
       }
 
-      .groups {
-        margin-bottom: $spacing-unit / 4;
-      }
-
-      .location,
-      .degree {
-        display: inline-flex;
-        align-items: baseline;
-
-        i::after {
-          content: "\00a0";
-          font-family: initial;
-        }
-      }
-
-      .project-name {
-        display: inline-flex;
-        align-items: baseline;
-        // margin-left: 0.8rem;
-        small::before {
-          content: "\00a0";
-          font-family: initial;
-        }
-      }
-      .role,
-      .major,
-      .project-name,
-      .certificate-name,
-      .publication-title,
-      .award-name,
-      .reference-name {
-        font-weight: $base-font-weight * 1.25;
-      }
-
-      .company,
-      .degree {
-        font-weight: $base-font-weight * 1.1;
-      }
-
-      .degree,
-      .company,
-      .issuer,
-      .authors,
-      .awarder,
-      .reference-title {
+      .authors {
         font-style: italic;
-      }
-
-      .date,
-      .location,
-      .institution {
-        color: $text-color;
       }
     }
   }
@@ -202,19 +245,11 @@ small {
     .avatar {
       max-height: 100px;
       border: 0px solid $wrapper-color;
-      // box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
     }
+
     .title-desc-container {
       display: flex;
       flex-direction: row;
-
-      .item {
-        &:not(:last-child)::after {
-          content: $body-delimiter;
-          color: $separator-color;
-          margin: 0 0.5em;
-        }
-      }
     }
 
     .header {
@@ -226,42 +261,16 @@ small {
         font-size: $huge-font-size;
         margin-top: 0;
         margin-bottom: $spacing-unit / 4;
-        font-weight: $base-font-weight * 1.25;
-        border-bottom: 4px solid $theme-color;
       }
 
       .title {
-        // color: $theme-color;
         font-size: $middle-font-size;
-        font-weight: $base-font-weight * 1.25;
         margin-top: 0;
         margin-bottom: $spacing-unit / 6;
       }
 
-      .contact {
-        display: flex;
-        flex-wrap: wrap;
-
-        .contact-item {
-          display: inline-flex;
-          align-items: baseline;
-
-          &:not(:last-child)::after {
-            content: $contact-delimiter;
-            color: $separator-color;
-            margin: 0 0.5em;
-          }
-
-          i::after {
-            content: "\00a0";
-            font-family: initial;
-          }
-        }
-      }
-
       .description {
         font-size: $middle-font-size;
-        font-weight: $base-font-weight * 1.25;
         margin-bottom: $spacing-unit / 6;
       }
     }
@@ -283,8 +292,6 @@ small {
   .reference {
     .section-content {
       .items {
-        display: flex;
-        flex-wrap: wrap;
         justify-content: space-between;
 
         .item {
@@ -297,60 +304,14 @@ small {
   .skill {
     .section-content {
       .items {
-        display: flex;
-        flex-wrap: wrap;
-
         .item {
           display: inline-flex;
           align-items: center;
           justify-content: end;
           flex-basis: 30%;
 
-          .skill-name::after {
-            content: "\00a0\00a0";
-            font-family: initial;
-          }
-
           .skill-level {
             display: inline-flex;
-            color: $theme-color;
-
-            i:not(:last-child)::after {
-              content: "\00a0";
-              font-family: initial;
-            }
-          }
-        }
-      }
-
-      .groups {
-        display: flex;
-        flex-direction: column;
-
-        .group {
-          display: flex;
-          justify-content: space-between;
-
-          &:not(:last-child) {
-            border-bottom: 1px dashed rgba($separator-color, 0.25);
-          }
-
-          .group-name {
-            font-weight: $base-font-weight * 1.25;
-            flex: 0 0 auto;
-          }
-
-          .group-item {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            flex: 1;
-
-            span:not(:last-child)::after {
-              content: $body-delimiter;
-              color: $separator-color;
-              margin: 0 0.5em;
-            }
           }
         }
       }
@@ -361,24 +322,11 @@ small {
   .interest {
     .section-content {
       .items {
-        display: flex;
-        flex-wrap: wrap;
         justify-content: center;
+
         .item {
           display: flex;
           align-items: baseline;
-          border-bottom: none !important;
-
-          &:not(:last-child)::after {
-            content: $body-delimiter;
-            color: $separator-color;
-            margin: 0 0.5em;
-          }
-        
-          small::before {
-            content: "\00a0";
-            font-family: initial;
-          }
         }
       }
     }
@@ -389,8 +337,6 @@ small {
   margin-bottom: $spacing-unit;
   color: $theme-color;
   width: 100%;
-  display: inline-flex;
-  align-items: baseline;
   justify-content: center;
   font-size: $small-font-size;
 

@@ -1,47 +1,49 @@
 {{- $publication := .data.publication }}
 {{- if $publication | and $publication.show }}
-<section class="publication" style="order: {{ $publication.order | default 1 }}">
-  <div class="section-title">
-    <i class="section-icon fa-solid fa-book-bookmark"></i>
-    <h2>{{ $publication.title }}</h2>
-  </div>
-
-  <div class="section-content">
-    {{- if $publication.description }}
-    <div class="description markdown">
-      {{ $publication.description | markdownify | safeHTML }}
+<section class="publication"
+         style="order: {{ $publication.order | default 1 }}">
+    <div class="section-title">
+        <i class="section-icon fa-solid fa-fw  fa-book-bookmark"></i>
+        <h2>{{ $publication.title }}</h2>
     </div>
-    {{- end }}
-
-    {{- if $publication.items }}
-    <div class="items">
-      {{- range $item := $publication.items }}
-      <div class="item">
-        <div class="row">
-        {{- if $item.title }}
-        <div class="publication-title">
-          {{- if $item.link }}
-          <a href="{{ $item.link }}" target="_blank">{{ $item.title | markdownify | safeHTML }}</a>
-          {{- else }}
-          <span>{{ $item.title | markdownify | safeHTML }}</span>
-          {{- end }}
-        </div>        
-        {{- if $item.conference }}
-        <div class="description conference">
-          <span>{{ $item.conference }}</span>
+    <div class="section-content">
+        {{- if $publication.description }}
+        <div class="description markdown">{{ $publication.description | markdownify | safeHTML }}</div>
+        {{- end }}
+        {{- if $publication.items }}
+        <div class="items">
+            {{- range $item := $publication.items }}
+            <div class="item">
+                <div class="row">
+                    <div class="row">
+                        {{- if $item.title -}}
+                        <div class="publication-title subrow">
+                            {{- if $item.link -}}
+                            <a href="{{ $item.link }}" target="_blank">{{ $item.title | markdownify | safeHTML }}</a>
+                            {{- else -}}
+                            <span>{{ $item.title | markdownify | safeHTML }}</span>
+                            {{- end -}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        {{- if $item.conference -}}
+                        <div class="conference subrow">{{- $item.conference -}}</div>
+                        {{- if $item.date -}}
+                        <div class="conference subrow">{{- $item.date -}}</div>
+                    </div>
+                    {{- end -}}
+                    {{- end -}}
+                </div>
+                {{- if $item.authors }}
+                <div class="authors">
+                    <span>{{ $item.authors | markdownify | safeHTML }}</span>
+                </div>
+            </div>
+            {{- end }}
+            {{- end }}
+            {{- end }}
         </div>
         {{- end }}
-        </div>
-        
-      {{- if $item.authors }}
-      <div class="authors">
-        <span>{{ $item.authors | markdownify | safeHTML }}</span>
-      </div></div>
-      {{- end }}
-      {{- end }}
-      {{- end }}
     </div>
-    {{- end }}
-  </div>
 </section>
 {{- end }}

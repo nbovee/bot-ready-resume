@@ -1,12 +1,10 @@
 {{- $footer := .data.footer }}
 {{- if $footer | and $footer.show }}
 <section class="footer" style="order: {{ $footer.order | default 1 }}">
-  <div class="section-content">
-    {{- if $footer.llm }}
-    <div class="llm">
-      {{ $footer.llm | markdownify | safeHTML }}
+    <div class="section-content">
+        {{- if $footer.llm }}
+        <div class="llm">{{ $footer.llm | markdownify | safeHTML }}</div>
+        {{- end }}
     </div>
-    {{- end }}
-  </div>
 </section>
 {{- end }}

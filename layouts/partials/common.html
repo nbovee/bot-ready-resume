@@ -1,11 +1,10 @@
-<html lang='{{ .data.meta.language | default "en" }}' dir='{{ .data.meta.direction | default "ltr" }}'>
-  <head>
-    {{- partial "head.html" . -}}
-  </head>
-  <body>
-    {{- if .Site.Params.open }}
-      {{/*  {{- partial "toggle.html" . }}  */}}
-      <div class="wrapper">
+<html lang='{{ .data.meta.language | default "en" }}'
+      dir='{{ .data.meta.direction | default "ltr" }}'>
+    <head>{{- partial "head.html" . -}}</head>
+    <body>
+        {{- if .Site.Params.open }}
+    {{/*  {{- partial "toggle.html" . }}  */}}
+    <div class="wrapper">
         {{- partial "basic.html" . }}
         {{- partial "profile.html" . }}
         {{- partial "experience.html" . }}
@@ -22,13 +21,13 @@
         {{- partial "reference.html" . }}
         {{- partial "interest.html" . }}
         {{- partial "footer.html" . }}
-      </div>
-      {{- if .Site.Params.siteCredit }}
-      {{- partial "credit.html" . }}
+    </div>
+    {{- if .Site.Params.siteCredit }}
+    {{- partial "credit.html" . }}
     {{- end }}
     {{- else }}
-      {{- partial "close.html" . }}
+    {{- partial "close.html" . }}
     {{- end }}
-    {{/*  {{- partial "scripts.html" .}}  */}}
-  </body>
+{{/*  {{- partial "scripts.html" .}}  */}}
+</body>
 </html>
