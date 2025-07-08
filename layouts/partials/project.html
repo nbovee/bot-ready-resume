@@ -17,7 +17,7 @@
                     <div class="row">
                         <div class="project-name subrow">
                             {{- if $item.link -}}
-                            <a href="{{ $item.link }}" target="_blank">{{ $item.name  | safeHTML }}</a>
+                            <a href="{{ $item.link }}" target="_blank">{{ $item.name | safeHTML }}</a>
                             {{- else -}}
                             {{ $item.name | safeHTML }}
                             {{ end }}
