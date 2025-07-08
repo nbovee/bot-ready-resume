@@ -15,17 +15,18 @@
                     <div class="row">
                         <div class="major subrow">
                             {{- if $item.major -}}
-                            <span>{{ $item.major }}</span>
+                            {{ $item.major }}
                             {{- end -}}
                         </div>
                         {{- if $item.degree -}}
-                        <div class="degree">
+                        <div class="degree subrow">
                             {{/* <i class="fa-solid fa-fw  fa-graduation-cap"></i> */}}
-                            <span>{{- $item.degree -}}</span>
+                            {{- $item.degree -}}
+                            </div>
                             {{- if $item.gpa -}}
-                            <div class="gpa">, {{ $item.gpa | markdownify }} GPA</div>
+                            <div class="gpa subrow">{{ $item.gpa | markdownify }} GPA</div>
                             {{- end -}}
-                        </div>
+                        
                         {{- end }}
                     </div>
                     <div class="row">

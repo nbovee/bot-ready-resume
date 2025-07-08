@@ -13,27 +13,31 @@
         <div class="items">
             {{- range $item := $project.items }}
             <div class="item">
-                {{- if $item.name }}
                 <div class="row">
-                    <div class="project-name">
-                        {{- if $item.link }}
-                        <a href="{{ $item.link }}" target="_blank">{{ $item.name }}</a>
-                        {{- else }}
-                        <span>{{ $item.name }}</span>
-                        {{- end }}
-                        {{- if $item.tags }}
-                        <small>[{{ $item.tags }}]</small>
+                    <div class="row">
+                        <div class="project-name subrow">
+                            {{- if $item.link -}}
+                            <a href="{{ $item.link }}" target="_blank">{{ $item.name  | safeHTML }}</a>
+                            {{- else -}}
+                            {{ $item.name | safeHTML }}
+                            {{ end }}
+                            {{ if $item.tags }}
+                            <small>[{{ $item.tags }}]</small>
+                            {{- end -}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="subrow">
+                            {{- if $item.date }}
+                            <div class="date">
+                                <span>{{ $item.date }}</span>
+                            </div>
+                        </div>
                         {{- end }}
                     </div>
-                    {{- if $item.date }}
-                    <div class="date">
-                        <span>{{ $item.date }}</span>
-                    </div>
-                    {{- end }}
                 </div>
                 {{- if $item.description }}
                 <div class="description markdown">{{ $item.description | markdownify | safeHTML }}</div>
-                {{- end }}
                 {{- end }}
             </div>
             {{- end }}

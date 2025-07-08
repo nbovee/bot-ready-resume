@@ -12,22 +12,26 @@
         <div class="items">
             {{- range $item := $experience.items }}
             <div class="item">
-                {{- if $item.company -}}
                 <div class="row">
                     <div class="row">
+                        {{- if $item.role -}}
                         <div class="role subrow">
-                            <span>{{ $item.role }}</span>
-                            {{- if $item.tags }}
-                            <small>[{{ $item.tags }}]</small>
-                            {{- end -}}
+                            {{- $item.role -}}
                         </div>
-                        <div class="company">
+                        {{- end -}}
+                        {{- if $item.company -}}
+                        <div class="company subrow">
                             {{- if $item.link -}}
-                            <a href="{{ $item.link }}" target="_blank">{{ $item.company | safeHTML }}</a>
-                            {{- else }}
-                            <span>{{ $item.company | safeHTML }}</span>
+                                <a href="{{ $item.link }}" target="_blank">{{ $item.company | safeHTML }}</a>
+                            {{- else -}}
+                                {{- $item.company | safeHTML -}}
+                            {{- end -}}
+                            {{- if $item.tags }}
+                                <small>[{{ $item.tags }}]</small>
                             {{- end -}}
                         </div>
+                        {{- end -}}
+                        
                     </div>
                     {{- if $item.location }}
                     <div class="row">
@@ -43,7 +47,7 @@
                 </div>
                 {{- if $item.description }}
                 <div class="description markdown">{{ $item.description | markdownify | safeHTML }}</div>
-                {{- end }} {{- end }}
+                {{- end }}
             </div>
             {{- end }}
         </div>

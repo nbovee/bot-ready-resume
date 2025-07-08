@@ -35,13 +35,11 @@
         <div class="groups">
             {{- range $group := $skill.groups }}
             <div class="group">
-                <div class="group-name">
-                    <span>{{ $group.name | safeHTML }}</span>
-                </div>
                 <div class="group-item">
-                    {{- range $item := $group.item }}
+                    <span class="group-name">{{- $group.name | safeHTML -}}</span>
+                    {{- range $item := $group.item -}}
                     <span>{{ $item | safeHTML }}</span>
-                    {{- end }}
+                    {{- end -}}
                 </div>
             </div>
             {{- end }}
