@@ -21,15 +21,55 @@ $spacing-unit:     1.2rem !default;
 $content-width:    62rem !default;
 
 // Default color settings
+// TODO: The light color scheme can effectively be thought of as a variety of offsets
+// from the pure white color. We should verify the dark colors use a matching offset
+// from the chosen dark color, and use calc functions to streamline the theming
 
-$theme-color:              {{ $.Site.Params.themeColor | default "#1DA1F2" }};
-$theme-second-color:       {{ $.Site.Params.themeColor | default "#1DA1F2" }};
-$text-color:                #0E0E0E;
-$separator-color:           #4f4f4f;
-$background-color:          #e6e6e6;
-$section-background-color:  #f5f5f5;
-$wrapper-color:             #ffffff;
-$heart-color:               #fb866a;
+$theme-color:              {{ $.Site.Params.themeColor | default "oklch(0.684 0.212 40.6)" }};
+$text-color:                oklch(0.164 0.000 0.0); // #0E0E0E;
+$separator-color:           oklch(0.428 0.000 0.0); // #4f4f4f;
+$background-color:          oklch(0.925 0.000 0.0); // #e6e6e6;
+$section-background-color:  oklch(0.970 0.000 0.0); // #f5f5f5;
+$wrapper-color:             oklch(1.000 0.000 0.0); // #ffffff;
+$heart-color:               oklch(0.744 0.149 34.5); // #fb866a;
+$dark-text-color:           oklch(0.984 0.003 247.9); // #f8fafc;
+$dark-separator-color:      oklch(0.554 0.041 257.4); // #64748b;
+$dark-background-color:     oklch(0.000 0.000 0.0); // #000000
+$dark-section-background-color: oklch(0.372 0.039 257.3); // #334155;
+$dark-wrapper-color:        oklch(0.150 0.000 0.0); // #0B0B0B;
+$dark-theme-color:          {{ $.Site.Params.themeColorDark | default "#C084FC" }};
+
+// Toggle-specific colors
+$toggle-moon-color:         oklch(0.687 0.146 252.9); // #60a5fa (blue)
+$toggle-sun-color:          oklch(0.747 0.194 88.8);  // #f59e0b (amber)
+$toggle-track-light:        oklch(0.906 0.015 248.8); // #e2e8f0 (slate-200)
+$toggle-track-dark:         oklch(0.415 0.048 256.8); // #475569 (slate-600)
+$toggle-thumb-light:        oklch(0.700 0.000 0.0);   // #ffffff (white)
+$toggle-thumb-dark:         oklch(0.30 0.013 247.8); // #f1f5f9 (slate-50)
+
+// Toggle wrapper and shadow colors
+$toggle-wrapper-light-bg:   oklch(0.984 0.003 247.9); // Light wrapper background
+$toggle-wrapper-dark-bg:    oklch(0.372 0.039 257.3); // Dark wrapper background
+$toggle-wrapper-border-light: oklch(1.000 0.000 0.0); // White border
+$toggle-wrapper-border-dark: oklch(1.000 0.000 0.0);  // White border (same)
+
+// Toggle dimensions and calculated values
+$toggle-track-width:        3.125rem; // 50px at 16px base
+$toggle-track-height:       1.5rem;   // 24px at 16px base
+$toggle-thumb-size:         1.375rem; // 22px at 16px base
+$toggle-thumb-offset:       0.0625rem; // 1px at 16px base
+$toggle-thumb-travel:       1.625rem; // Calculated: 3.125 - 1.375 - (2 * 0.0625) = 1.625rem (26px)
+$toggle-track-radius:       1.875rem; // 30px - slightly larger than height for pill shape
+
+// Shadow and transparency colors
+$shadow-black:              oklch(0 0 0);              // Pure black for shadows
+$theme-color-light:         oklch(0.750 0.203 317.8);  // Light variant of theme color
+$theme-border-alpha:        oklch(0.490 0.203 317.8);  // Theme color for borders
+$separator-border-alpha:    oklch(0.428 0.000 0.0);    // Separator color for borders
+$dark-separator-border-alpha: oklch(0.554 0.041 257.4); // Dark separator for borders
+
+// Transition time
+$transition-speed: 0.10s; // The time a component (our toggler) takes to complete its action. 
 
 // Default delimiter
 $contact-delimiter: "{{ $.Site.Params.contactDelimiter | default "·" }}";
@@ -37,6 +77,7 @@ $body-delimiter: "{{ $.Site.Params.bodyDelimiter | default "·" }}";
 @import
   "sanitize",
   "base",
+  "toggle",
   "responsive",
   "print",
   "fonts"
@@ -49,7 +90,7 @@ section {
     border-bottom-style: {{ $.Site.Params.sectionLine | default "dashed" }};
 
     {{ if $.Site.Params.sectionBackground }}
-    background-color: rgba($section-background-color, 1);
+    background-color: $section-background-color;
     {{ end }}
 
     {{ if ne $.Site.Params.sectionIcon true }}

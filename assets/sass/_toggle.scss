@@ -1,0 +1,179 @@
+.dark-mode-toggle-wrapper {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  background: oklch(from $toggle-wrapper-light-bg l c h / 0.95);
+  padding: 8px;
+  border-radius: 30px;
+  box-shadow: 0 4px 20px oklch(from $shadow-black l c h / 0.15);
+  backdrop-filter: blur(12px);
+  border: 1px solid oklch(from $toggle-wrapper-border-light l c h / 0.2);
+  transition: all $transition-speed cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark-mode .dark-mode-toggle-wrapper {
+  background: oklch(from $toggle-wrapper-dark-bg l c h / 0.95);
+  box-shadow: 0 4px 20px oklch(from $shadow-black l c h / 0.4);
+  border: 1px solid oklch(from $toggle-wrapper-border-dark l c h / 0.1);
+}
+
+.fa-moon {
+  color: $toggle-moon-color;
+}
+
+.fa-sun {
+  color: $toggle-sun-color;
+}
+
+.js-toggle-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.js-toggle {
+    touch-action: pan-x;
+    position: relative;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+    -webkit-touch-callout: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.js-toggle-screenreader-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.js-toggle-track {
+  width: $toggle-track-width;
+  height: $toggle-track-height;
+  padding: 0;
+  border-radius: $toggle-track-radius;
+  background-color: $toggle-track-light;
+  transition: all $transition-speed cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark-mode .js-toggle-track {
+  background-color: $toggle-track-dark;
+}
+
+.js-toggle-track-check {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+  line-height: 0;
+  opacity: 0;
+  transition: opacity $transition-speed ease;
+}
+
+.js-toggle--checked .js-toggle-track-check {
+  opacity: 1;
+}
+
+.js-toggle-track-x {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  right: 8px;
+  top: 0;
+  bottom: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+  line-height: 0;
+  opacity: 1;
+  transition: opacity $transition-speed ease;
+}
+
+.js-toggle--checked .js-toggle-track-x {
+  opacity: 0;
+}
+
+.js-toggle-thumb {
+  position: absolute;
+  top: $toggle-thumb-offset;
+  left: $toggle-thumb-offset;
+  width: $toggle-thumb-size;
+  height: $toggle-thumb-size;
+  border-radius: 50%;
+  background-color: $toggle-thumb-light;
+  box-sizing: border-box;
+  box-shadow: 0 2px 4px oklch(from $shadow-black l c h / 0.2);
+  transition: all $transition-speed cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(0);
+}
+
+.js-toggle--checked .js-toggle-thumb {
+  transform: translateX($toggle-thumb-travel);
+  background-color: $toggle-thumb-light;
+  box-shadow: 0 2px 8px oklch(from $shadow-black l c h / 0.3);
+}
+
+.dark-mode .js-toggle-thumb {
+  background-color: $toggle-thumb-dark;
+  box-shadow: 0 2px 4px oklch(from $shadow-black l c h / 0.4);
+}
+
+.dark-mode .js-toggle--checked .js-toggle-thumb {
+  background-color: $toggle-thumb-dark;
+  box-shadow: 0 2px 8px oklch(from $shadow-black l c h / 0.5);
+}
+
+.js-toggle--focus .js-toggle-thumb {
+  box-shadow: 0 0 0 3px oklch(from $theme-border-alpha l c h / 0.3);
+}
+
+.js-toggle:active .js-toggle-thumb {
+  box-shadow: 0 0 0 4px oklch(from $theme-border-alpha l c h / 0.4);
+}
+
+.dark-mode .js-toggle--focus .js-toggle-thumb {
+  box-shadow: 0 0 0 3px oklch(from $theme-color-light l c h / 0.4);
+}
+
+.dark-mode .js-toggle:active .js-toggle-thumb {
+  box-shadow: 0 0 0 4px oklch(from $theme-color-light l c h / 0.5);
+}
+
+/* Critical initial state styles to prevent FOUC */
+.dark-mode-init .dark-mode-toggle-wrapper {
+  background: oklch(from $toggle-wrapper-dark-bg l c h / 0.95) !important;
+  box-shadow: 0 4px 20px oklch(from $shadow-black l c h / 0.4) !important;
+  border: 1px solid oklch(from $toggle-wrapper-border-dark l c h / 0.1) !important;
+}
+
+.dark-mode-init .js-toggle-track {
+  background-color: $toggle-track-dark !important;
+}
+
+.dark-mode-init .js-toggle-thumb {
+  background-color: $toggle-thumb-dark !important;
+}
+
+.dark-mode-init #dark-mode-toggle .js-toggle-track-check {
+  opacity: 1 !important;
+}
+
+.dark-mode-init #dark-mode-toggle .js-toggle-track-x {
+  opacity: 0 !important;
+}
+
+.dark-mode-init #dark-mode-toggle .js-toggle-thumb {
+  transform: translateX($toggle-thumb-travel) !important;
+}

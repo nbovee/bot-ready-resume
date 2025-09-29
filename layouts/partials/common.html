@@ -1,9 +1,12 @@
 <html lang='{{ .data.meta.language | default "en" }}'
       dir='{{ .data.meta.direction | default "ltr" }}'>
-    <head>{{- partial "head.html" . -}}</head>
+    <head>
+        {{- partial "head.html" . -}}
+        {{- partial "scripts-head.html" . -}}
+    </head>
     <body>
         {{- if .Site.Params.open }}
-    {{/*  {{- partial "toggle.html" . }}  */}}
+    {{- partial "toggle.html" . }}
     <div class="wrapper">
         {{- partial "basic.html" . }}
         {{- partial "profile.html" . }}
@@ -28,6 +31,6 @@
     {{- else }}
     {{- partial "close.html" . }}
     {{- end }}
-{{/*  {{- partial "scripts.html" .}}  */}}
+{{- partial "scripts.html" .}}
 </body>
 </html>

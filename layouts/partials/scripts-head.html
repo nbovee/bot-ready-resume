@@ -1,0 +1,2 @@
+{{- $initJs := resources.Get "js/init.js" | minify}}
+<script src="{{ $initJs.RelPermalink }}"></script>

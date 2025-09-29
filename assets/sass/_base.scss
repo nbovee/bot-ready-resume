@@ -164,7 +164,7 @@ small {
 // Consolidated border patterns
 .item:not(:nth-last-child(1)),
 .group:not(:last-child) {
-  border-bottom: 1px dashed rgba($theme-color, 0.25);
+  border-bottom: 1px dashed oklch(from $theme-border-alpha l c h / 0.25);
 }
 
 // Special border for name
@@ -180,7 +180,7 @@ small {
 
 // Override for group borders
 .group:not(:last-child) {
-  border-bottom: 1px dashed rgba($separator-color, 0.25);
+  border-bottom: 1px dashed oklch(from $separator-border-alpha l c h / 0.25);
 }
 
 .wrapper {
@@ -191,8 +191,8 @@ small {
   max-width: $content-width;
   margin: $spacing-unit auto;
   padding: $spacing-unit * 2;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
-    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+  box-shadow: oklch(from $shadow-black l c h / 0.1) 0px 10px 15px -3px,
+    oklch(from $shadow-black l c h / 0.05) 0px 4px 6px -2px;
 
   section {
     break-inside: avoid; /* Standard property */
@@ -211,7 +211,7 @@ small {
       margin-top: $spacing-unit / 6;
       margin-bottom: $spacing-unit / 6;
       padding: $spacing-unit / 10 0;
-      border-bottom-color: rgba($theme-color, 0.25);
+      border-bottom-color: oklch(from $theme-border-alpha l c h / 0.25);
       border-bottom-width: 1px;
 
       h2 {
@@ -356,5 +356,88 @@ small {
 
   .description {
     margin: $spacing-unit 0;
+  }
+}
+
+// Dark mode styles
+body.dark-mode {
+  color: $dark-text-color;
+  background: $dark-background-color;
+
+  .wrapper {
+    background: $dark-wrapper-color;
+    box-shadow: oklch(from $shadow-black l c h / 0.3) 0px 10px 15px -3px,
+      oklch(from $shadow-black l c h / 0.2) 0px 4px 6px -2px;
+
+    section {
+      .section-title {
+        color: $dark-text-color;
+        background-color: oklch(from $dark-section-background-color l c h / 0.8);
+      }
+    }
+
+    .basic {
+      .construction,
+      .avatar {
+        border-color: $dark-wrapper-color;
+      }
+    }
+
+    .footer {
+      .section-content {
+        .llm {
+          color: $dark-wrapper-color;
+        }
+      }
+    }
+  }
+
+  // Override text colors for dark mode
+  a {
+    color: $dark-text-color;
+  }
+
+  // Use lighter OKLCH variant for accent elements in dark mode
+  strong, b {
+    color: $theme-color-light;
+  }
+
+  .skill-level {
+    color: $theme-color-light;
+  }
+
+  .section-icon {
+    color: $theme-color-light;
+  }
+
+  .credit {
+    color: $theme-color-light;
+  }
+
+
+  .date,
+  .location,
+  .institution {
+    color: $dark-separator-color;
+  }
+
+  // Override delimiter colors
+  .subrow:not(:last-child)::after,
+  .title-desc-container .item:not(:last-child)::after,
+  .contact-item:not(:last-child)::after,
+  .group-item span:not(:last-child)::after,
+  .language .item:not(:last-child)::after,
+  .interest .item:not(:last-child)::after {
+    color: $dark-separator-color;
+  }
+
+  // Override borders for dark mode
+  .item:not(:nth-last-child(1)),
+  .group:not(:last-child) {
+    border-bottom-color: oklch(from $theme-color-light l c h / 0.4);
+  }
+
+  .group:not(:last-child) {
+    border-bottom-color: oklch(from $dark-separator-border-alpha l c h / 0.4);
   }
 }
