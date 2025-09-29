@@ -18,6 +18,14 @@
 {{- else }}
 <title>Online Resume</title>
 {{- end }}
+<!-- Adaptive Favicon -->
+<link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/images/favicon-light.svg" type="image/svg+xml" media="(prefers-color-scheme: light)">
+<link rel="icon" href="/images/favicon-dark.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)">
+<!-- ICO Fallback -->
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<!-- PNG Fallback -->
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
 {{- $themeScss := "sass/main.scss" }}
 {{- $options := (dict "targetPath" "assets/css/main.css" "outputStyle" "compressed") }}
 {{- $themeCss := resources.Get $themeScss | resources.ExecuteAsTemplate $themeScss . | toCSS $options | minify | fingerprint }}
