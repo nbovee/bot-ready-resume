@@ -147,29 +147,3 @@
   box-shadow: 0 0 0 4px $theme-color-dark;
 }
 
-/* Critical initial state styles to prevent FOUC */
-.dark-mode-init .dark-mode-toggle-wrapper {
-  background: $toggle-wrapper-dark-bg;
-  box-shadow: 0 4px 10px $shadow-dark;
-  border: 1px solid $toggle-wrapper-border-dark;
-}
-
-.dark-mode-init .js-toggle-track {
-  background-color: $toggle-track-dark;
-}
-
-.dark-mode-init .js-toggle-thumb {
-  background-color: $toggle-thumb-dark;
-}
-
-.dark-mode-init #dark-mode-toggle .js-toggle-track-check {
-  opacity: 1 !important;
-}
-
-.dark-mode-init #dark-mode-toggle .js-toggle-track-x {
-  opacity: 0 !important;
-}
-
-.dark-mode-init #dark-mode-toggle .js-toggle-thumb {
-  transform: translateX($toggle-thumb-travel);
-}

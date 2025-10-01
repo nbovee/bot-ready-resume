@@ -5,12 +5,12 @@
 
   body {
     font-size: 9.5pt !important;
-    background: #ffffff !important; // force pure white instead of using $wrapper-color
+    background: var(--color-body) !important;
   }
 
   /* Hide theme toggler in print media */
   .dark-mode-toggle-wrapper {
-    display: none !important;
+    display: none;
   }
 
   a::after {

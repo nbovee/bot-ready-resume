@@ -1,3 +1,32 @@
+:root {
+  color-scheme: light dark;
+}
+
+/* CSS Custom Properties for theming */
+[data-theme="light"] {
+  --color-bg: #{$background-color};
+  --color-body: #{$resume-body-color};
+  --color-text: #{$text-color};
+  --color-theme: #{$theme-color};
+  --color-separator: #{$separator-color};
+  --color-shadow: #{$shadow-light};
+  --color-section-bg: #{$section-background-color};
+  --color-theme-border: #{$theme-border-alpha};
+  --color-separator-border: #{$separator-border-alpha};
+}
+
+[data-theme="dark"] {
+  --color-bg: #{$background-color-dark};
+  --color-body: #{$resume-body-color-dark};
+  --color-text: #{$text-color-dark};
+  --color-theme: #{$theme-color-dark};
+  --color-separator: #{$separator-color-dark};
+  --color-shadow: #{$shadow-dark};
+  --color-section-bg: #{$section-background-color-dark};
+  --color-theme-border: #{$theme-color-dark};
+  --color-separator-border: #{$dark-separator-border-alpha};
+}
+
 html {
   scroll-behavior: smooth;
   touch-action: manipulation;
@@ -6,8 +35,8 @@ html {
 body {
   font: $base-font-weight #{$base-font-size}/#{$base-line-height}
     $base-font-family;
-  color: $text-color;
-  background: $background-color;
+  color: var(--color-text);
+  background: var(--color-bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -25,7 +54,7 @@ h6 {
 }
 
 a {
-  color: $text-color;
+  color: var(--color-text);
   text-decoration: none;
 
   &:hover,
@@ -55,7 +84,7 @@ ul {
 b,
 strong {
   font-weight: $base-font-weight * 1.5;
-  color: $theme-color;
+  color: var(--color-theme);
 }
 
 small {
@@ -108,7 +137,7 @@ small {
 .language .item:not(:last-child)::after,
 .interest .item:not(:last-child)::after {
   content: $body-delimiter;
-  color: $separator-color;
+  color: var(--color-separator);
   margin: 0 0.5em;
 }
 
@@ -154,11 +183,11 @@ small {
 .date,
 .location,
 .institution {
-  color: $text-color;
+  color: var(--color-text);
 }
 
 .skill-level {
-  color: $theme-color;
+  color: var(--color-theme);
 }
 
 // Consolidated border patterns
@@ -169,7 +198,7 @@ small {
 
 // Special border for name
 .basic .header .name {
-  border-bottom: 4px solid $theme-color;
+  border-bottom: 4px solid var(--color-theme);
 }
 
 // Override for language/interest items
@@ -187,12 +216,13 @@ small {
   display: flex;
   flex-direction: column;
 
-  background: $resume-body-color;
+  background: var(--color-body);
   max-width: $content-width;
   margin: $spacing-unit auto;
   padding: $spacing-unit * 2;
-  box-shadow: $shadow-light 0px 10px 15px -3px,
-    $shadow-light 0px 4px 6px -2px;
+  box-shadow: var(--color-shadow) 0px 10px 15px -3px,
+    var(--color-shadow) 0px 4px 6px -2px;
+
 
   section {
     break-inside: avoid; /* Standard property */
@@ -200,19 +230,21 @@ small {
       margin-bottom: $spacing-unit / 4;
     }
     .section-icon {
-      color: $theme-color;
+      color: var(--color-theme);
     }
     .section-title {
       display: flex;
       align-items: baseline;
 
       font-size: $large-font-size;
-      color: $text-color;
+      color: var(--color-text);
+      background-color: var(--color-section-bg);
       margin-top: $spacing-unit / 6;
       margin-bottom: $spacing-unit / 6;
       padding: $spacing-unit / 10 0;
       border-bottom-color: $theme-border-alpha;
       border-bottom-width: 1px;
+
 
       h2 {
         font-size: inherit;
@@ -245,7 +277,7 @@ small {
     .construction,
     .avatar {
       max-height: 100px;
-      border: 0px solid $resume-body-color;
+      border: 0px solid var(--color-body);
     }
 
     .title-desc-container {
@@ -281,7 +313,7 @@ small {
     margin: 0;
     .section-content {
       .llm {
-        color: $resume-body-color;
+        color: var(--color-body);
         opacity: 0;
         font-size: 1%;
       }
@@ -335,7 +367,7 @@ small {
 
 .credit {
   margin-bottom: $spacing-unit;
-  color: $theme-color;
+  color: var(--color-theme);
   width: 100%;
   justify-content: center;
   font-size: $small-font-size;
@@ -358,85 +390,5 @@ small {
   }
 }
 
-// Dark mode styles
-body.dark-mode {
-  color: $text-color-dark;
-  background: $background-color-dark;
+/* Dark theme styles - most styling now handled by CSS custom properties above */
 
-  .wrapper {
-    background: $resume-body-color-dark;
-    box-shadow: $shadow-dark 0px 10px 15px -3px,
-      $shadow-dark 0px 4px 6px -2px;
-
-    section {
-      .section-title {
-        color: $text-color-dark;
-        background-color: $section-background-color-dark;
-      }
-    }
-
-    .basic {
-      .construction,
-      .avatar {
-        border-color: $resume-body-color-dark;
-      }
-    }
-
-    .footer {
-      .section-content {
-        .llm {
-          color: $resume-body-color-dark;
-        }
-      }
-    }
-  }
-
-  // Override text colors for dark mode
-  a {
-    color: $text-color-dark;
-  }
-
-  // Use lighter OKLCH variant for accent elements in dark mode
-  strong, b {
-    color: $theme-color-dark;
-  }
-
-  .skill-level {
-    color: $theme-color-dark;
-  }
-
-  .section-icon {
-    color: $theme-color-dark;
-  }
-
-  .credit {
-    color: $theme-color-dark;
-  }
-
-
-  .date,
-  .location,
-  .institution {
-    color: $text-color-dark;
-  }
-
-  // Override delimiter colors
-  .subrow:not(:last-child)::after,
-  .title-desc-container .item:not(:last-child)::after,
-  .contact-item:not(:last-child)::after,
-  .group-item span:not(:last-child)::after,
-  .language .item:not(:last-child)::after,
-  .interest .item:not(:last-child)::after {
-    color: $separator-color-dark;
-  }
-
-  // Override borders for dark mode
-  .item:not(:nth-last-child(1)),
-  .group:not(:last-child) {
-    border-bottom-color: $theme-color-dark;
-  }
-
-  .group:not(:last-child) {
-    border-bottom-color: $dark-separator-border-alpha;
-  }
-}

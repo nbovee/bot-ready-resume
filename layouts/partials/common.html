@@ -1,8 +1,8 @@
 <html lang='{{ .data.meta.language | default "en" }}'
-      dir='{{ .data.meta.direction | default "ltr" }}'>
+      dir='{{ .data.meta.direction | default "ltr" }}'
+      data-theme="dark">
     <head>
         {{- partial "head.html" . -}}
-        {{- partial "scripts-head.html" . -}}
     </head>
     <body>
         {{- if .Site.Params.open }}

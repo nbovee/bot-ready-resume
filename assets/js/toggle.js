@@ -1,4 +1,3 @@
-const body = document.body;
 const switcher = document.querySelector('.js-toggle');
 
 function updateFavicon(isDarkMode) {
@@ -8,41 +7,70 @@ function updateFavicon(isDarkMode) {
     }
 }
 
-// Add dark mode classes and wrappers on click, store user preference through sessions
+function getSystemPreference() {
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+}
+
+function applyTheme(mode) {
+    let isDark;
+
+    switch(mode) {
+        case 'light':
+            document.documentElement.setAttribute('data-theme', 'light');
+            isDark = false;
+            break;
+        case 'dark':
+            document.documentElement.setAttribute('data-theme', 'dark');
+            isDark = true;
+            break;
+        default:
+            isDark = true;
+    }
+
+    if (switcher) {
+        switcher.classList.toggle('js-toggle--checked', isDark);
+    }
+
+    updateFavicon(isDark);
+}
+
+// Simple toggle: light ↔ dark
 if (switcher) {
     switcher.addEventListener('click', function() {
-        this.classList.toggle('js-toggle--checked');
         this.classList.add('js-toggle--focus');
-        if (this.classList.contains('js-toggle--checked')) {
-            body.classList.add('dark-mode');
-            updateFavicon(true);
-            localStorage.setItem('darkMode', 'true');
-            localStorage.removeItem('lightMode');
-        } else {
-            body.classList.remove('dark-mode');
-            updateFavicon(false);
-            localStorage.setItem('lightMode', 'true');
-            setTimeout(() => {
-                localStorage.removeItem('darkMode');
-            }, 100);
-        }
+
+        const currentMode = localStorage.getItem('themeMode');
+        const nextMode = currentMode === 'light' ? 'dark' : 'light';
+
+        localStorage.setItem('themeMode', nextMode);
+        applyTheme(nextMode);
     });
 }
 
-// Check Storage or System Preference on first visit and sync with initialization
-const isDarkMode = localStorage.getItem('darkMode') ||
-    (!localStorage.getItem('lightMode') && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+// Handle print events to temporarily force light theme
+let preIntentTheme = null;
 
-if (switcher) {
-    if (isDarkMode) {
-        switcher.classList.add('js-toggle--checked');
-        body.classList.add('dark-mode');
-        updateFavicon(true);
-    } else {
-        switcher.classList.remove('js-toggle--checked');
-        body.classList.remove('dark-mode');
-        updateFavicon(false);
+window.addEventListener('beforeprint', function() {
+    preIntentTheme = document.documentElement.getAttribute('data-theme');
+    document.documentElement.setAttribute('data-theme', 'light');
+});
+
+window.addEventListener('afterprint', function() {
+    if (preIntentTheme) {
+        document.documentElement.setAttribute('data-theme', preIntentTheme);
+        preIntentTheme = null;
     }
+});
+
+function getInitialTheme() {
+    const savedMode = localStorage.getItem('themeMode');
+    if (savedMode) {
+        return savedMode;
+    }
+
+    return getSystemPreference() ? 'dark' : (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
 }
 
-document.documentElement.classList.remove('dark-mode-init');
+const initialMode = getInitialTheme();
+applyTheme(initialMode);
+
