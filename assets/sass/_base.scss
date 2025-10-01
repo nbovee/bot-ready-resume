@@ -164,7 +164,7 @@ small {
 // Consolidated border patterns
 .item:not(:nth-last-child(1)),
 .group:not(:last-child) {
-  border-bottom: 1px dashed oklch(from $theme-border-alpha l c h / 0.25);
+  border-bottom: 1px dashed $theme-border-alpha;
 }
 
 // Special border for name
@@ -175,24 +175,24 @@ small {
 // Override for language/interest items
 .language .item,
 .interest .item {
-  border-bottom: none !important;
+  border-bottom: none;
 }
 
 // Override for group borders
 .group:not(:last-child) {
-  border-bottom: 1px dashed oklch(from $separator-border-alpha l c h / 0.25);
+  border-bottom: 1px dashed $separator-border-alpha;
 }
 
 .wrapper {
   display: flex;
   flex-direction: column;
 
-  background: $wrapper-color;
+  background: $resume-body-color;
   max-width: $content-width;
   margin: $spacing-unit auto;
   padding: $spacing-unit * 2;
-  box-shadow: oklch(from $shadow-black l c h / 0.1) 0px 10px 15px -3px,
-    oklch(from $shadow-black l c h / 0.05) 0px 4px 6px -2px;
+  box-shadow: $shadow-light 0px 10px 15px -3px,
+    $shadow-light 0px 4px 6px -2px;
 
   section {
     break-inside: avoid; /* Standard property */
@@ -211,7 +211,7 @@ small {
       margin-top: $spacing-unit / 6;
       margin-bottom: $spacing-unit / 6;
       padding: $spacing-unit / 10 0;
-      border-bottom-color: oklch(from $theme-border-alpha l c h / 0.25);
+      border-bottom-color: $theme-border-alpha;
       border-bottom-width: 1px;
 
       h2 {
@@ -245,7 +245,7 @@ small {
     .construction,
     .avatar {
       max-height: 100px;
-      border: 0px solid $wrapper-color;
+      border: 0px solid $resume-body-color;
     }
 
     .title-desc-container {
@@ -278,10 +278,10 @@ small {
   }
 
   .footer {
-    margin: 0 !important;
+    margin: 0;
     .section-content {
       .llm {
-        color: $wrapper-color;
+        color: $resume-body-color;
         opacity: 0;
         font-size: 1%;
       }
@@ -294,7 +294,6 @@ small {
     .section-content {
       .items {
         justify-content: space-between;
-
         .item {
           flex-basis: 45%;
         }
@@ -361,32 +360,32 @@ small {
 
 // Dark mode styles
 body.dark-mode {
-  color: $dark-text-color;
-  background: $dark-background-color;
+  color: $text-color-dark;
+  background: $background-color-dark;
 
   .wrapper {
-    background: $dark-wrapper-color;
-    box-shadow: oklch(from $shadow-black l c h / 0.3) 0px 10px 15px -3px,
-      oklch(from $shadow-black l c h / 0.2) 0px 4px 6px -2px;
+    background: $resume-body-color-dark;
+    box-shadow: $shadow-dark 0px 10px 15px -3px,
+      $shadow-dark 0px 4px 6px -2px;
 
     section {
       .section-title {
-        color: $dark-text-color;
-        background-color: oklch(from $dark-section-background-color l c h / 0.8);
+        color: $text-color-dark;
+        background-color: $section-background-color-dark;
       }
     }
 
     .basic {
       .construction,
       .avatar {
-        border-color: $dark-wrapper-color;
+        border-color: $resume-body-color-dark;
       }
     }
 
     .footer {
       .section-content {
         .llm {
-          color: $dark-wrapper-color;
+          color: $resume-body-color-dark;
         }
       }
     }
@@ -394,31 +393,31 @@ body.dark-mode {
 
   // Override text colors for dark mode
   a {
-    color: $dark-text-color;
+    color: $text-color-dark;
   }
 
   // Use lighter OKLCH variant for accent elements in dark mode
   strong, b {
-    color: $theme-color-light;
+    color: $theme-color-dark;
   }
 
   .skill-level {
-    color: $theme-color-light;
+    color: $theme-color-dark;
   }
 
   .section-icon {
-    color: $theme-color-light;
+    color: $theme-color-dark;
   }
 
   .credit {
-    color: $theme-color-light;
+    color: $theme-color-dark;
   }
 
 
   .date,
   .location,
   .institution {
-    color: $dark-separator-color;
+    color: $text-color-dark;
   }
 
   // Override delimiter colors
@@ -428,16 +427,16 @@ body.dark-mode {
   .group-item span:not(:last-child)::after,
   .language .item:not(:last-child)::after,
   .interest .item:not(:last-child)::after {
-    color: $dark-separator-color;
+    color: $separator-color-dark;
   }
 
   // Override borders for dark mode
   .item:not(:nth-last-child(1)),
   .group:not(:last-child) {
-    border-bottom-color: oklch(from $theme-color-light l c h / 0.4);
+    border-bottom-color: $theme-color-dark;
   }
 
   .group:not(:last-child) {
-    border-bottom-color: oklch(from $dark-separator-border-alpha l c h / 0.4);
+    border-bottom-color: $dark-separator-border-alpha;
   }
 }

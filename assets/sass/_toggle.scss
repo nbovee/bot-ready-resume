@@ -3,19 +3,19 @@
   top: 20px;
   right: 20px;
   z-index: 1000;
-  background: oklch(from $toggle-wrapper-light-bg l c h / 0.95);
+  background: $toggle-wrapper-light-bg;
   padding: 8px;
   border-radius: 30px;
-  box-shadow: 0 4px 20px oklch(from $shadow-black l c h / 0.15);
+  box-shadow: 0 4px 10px $shadow-light;
   backdrop-filter: blur(12px);
-  border: 1px solid oklch(from $toggle-wrapper-border-light l c h / 0.2);
+  border: 1px solid $toggle-wrapper-border-light;
   transition: all $transition-speed cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .dark-mode .dark-mode-toggle-wrapper {
-  background: oklch(from $toggle-wrapper-dark-bg l c h / 0.95);
-  box-shadow: 0 4px 20px oklch(from $shadow-black l c h / 0.4);
-  border: 1px solid oklch(from $toggle-wrapper-border-dark l c h / 0.1);
+  background: $toggle-wrapper-dark-bg;
+  box-shadow: 0 4px 10px $shadow-dark;
+  border: 1px solid $toggle-wrapper-border-dark;
 }
 
 .fa-moon {
@@ -46,14 +46,10 @@
 
 .js-toggle-screenreader-only {
   position: absolute !important;
+  clip-path: inset(50%) !important;
   width: 1px !important;
   height: 1px !important;
-  padding: 0 !important;
-  margin: -1px !important;
   overflow: hidden !important;
-  clip: rect(0, 0, 0, 0) !important;
-  white-space: nowrap !important;
-  border: 0 !important;
 }
 
 .js-toggle-track {
@@ -114,7 +110,7 @@
   border-radius: 50%;
   background-color: $toggle-thumb-light;
   box-sizing: border-box;
-  box-shadow: 0 2px 4px oklch(from $shadow-black l c h / 0.2);
+  box-shadow: 0 2px 4px $shadow-light;
   transition: all $transition-speed cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateX(0);
 }
@@ -122,48 +118,48 @@
 .js-toggle--checked .js-toggle-thumb {
   transform: translateX($toggle-thumb-travel);
   background-color: $toggle-thumb-light;
-  box-shadow: 0 2px 8px oklch(from $shadow-black l c h / 0.3);
+  box-shadow: 0 2px 8px $shadow-light;
 }
 
 .dark-mode .js-toggle-thumb {
   background-color: $toggle-thumb-dark;
-  box-shadow: 0 2px 4px oklch(from $shadow-black l c h / 0.4);
+  box-shadow: 0 2px 4px $shadow-dark;
 }
 
 .dark-mode .js-toggle--checked .js-toggle-thumb {
   background-color: $toggle-thumb-dark;
-  box-shadow: 0 2px 8px oklch(from $shadow-black l c h / 0.5);
+  box-shadow: 0 2px 8px $shadow-dark;
 }
 
 .js-toggle--focus .js-toggle-thumb {
-  box-shadow: 0 0 0 3px oklch(from $theme-border-alpha l c h / 0.3);
+  box-shadow: 0 0 0 2px $theme-color;
 }
 
 .js-toggle:active .js-toggle-thumb {
-  box-shadow: 0 0 0 4px oklch(from $theme-border-alpha l c h / 0.4);
+  box-shadow: 0 0 0 4px $theme-color;
 }
 
 .dark-mode .js-toggle--focus .js-toggle-thumb {
-  box-shadow: 0 0 0 3px oklch(from $theme-color-light l c h / 0.4);
+  box-shadow: 0 0 0 2px $theme-color-dark;
 }
 
 .dark-mode .js-toggle:active .js-toggle-thumb {
-  box-shadow: 0 0 0 4px oklch(from $theme-color-light l c h / 0.5);
+  box-shadow: 0 0 0 4px $theme-color-dark;
 }
 
 /* Critical initial state styles to prevent FOUC */
 .dark-mode-init .dark-mode-toggle-wrapper {
-  background: oklch(from $toggle-wrapper-dark-bg l c h / 0.95) !important;
-  box-shadow: 0 4px 20px oklch(from $shadow-black l c h / 0.4) !important;
-  border: 1px solid oklch(from $toggle-wrapper-border-dark l c h / 0.1) !important;
+  background: $toggle-wrapper-dark-bg;
+  box-shadow: 0 4px 10px $shadow-dark;
+  border: 1px solid $toggle-wrapper-border-dark;
 }
 
 .dark-mode-init .js-toggle-track {
-  background-color: $toggle-track-dark !important;
+  background-color: $toggle-track-dark;
 }
 
 .dark-mode-init .js-toggle-thumb {
-  background-color: $toggle-thumb-dark !important;
+  background-color: $toggle-thumb-dark;
 }
 
 .dark-mode-init #dark-mode-toggle .js-toggle-track-check {
@@ -175,5 +171,5 @@
 }
 
 .dark-mode-init #dark-mode-toggle .js-toggle-thumb {
-  transform: translateX($toggle-thumb-travel) !important;
+  transform: translateX($toggle-thumb-travel);
 }
