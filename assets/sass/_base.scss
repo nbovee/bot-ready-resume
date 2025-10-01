@@ -2,7 +2,7 @@
   color-scheme: light dark;
 }
 
-/* CSS Custom Properties for theming */
+// TODO: not all colors are mapped yet. Toggler needs work still.
 [data-theme="light"] {
   --color-bg: #{$background-color};
   --color-body: #{$resume-body-color};
