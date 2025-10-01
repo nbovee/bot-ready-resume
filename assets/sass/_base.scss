@@ -367,11 +367,12 @@ small {
 
 .credit {
   margin-bottom: $spacing-unit;
-  color: var(--color-theme);
   width: 100%;
   justify-content: center;
   font-size: $small-font-size;
-
+  a {
+    color: var(--color-theme);    
+  }
   i {
     color: $heart-color;
     padding: 0 $spacing-unit / 4;
