@@ -1,79 +1,81 @@
 @charset "utf-8";
 
 // Define defaults for each variable.
-// $base-font-family: -apple-system, BlinkMacSystemFont, "Noto Sans", "Montserrat", "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
-// $base-font-size:   16px !default;
-
 $base-font-family: -apple-system, BlinkMacSystemFont, "Noto Sans", "Montserrat", "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 $base-font-size:   1rem !default;
 $base-font-weight: 300 !default;
 
 $small-font-size:  $base-font-size * 0.875 !default;
-$middle-font-size: $base-font-size * 1 !default;
-$large-font-size:  $base-font-size * 1.2  !default;
-$huge-font-size:   $base-font-size * 2.25  !default;
+$middle-font-size: $base-font-size * 1.000 !default;
+$large-font-size:  $base-font-size * 1.200 !default;
+$huge-font-size:   $base-font-size * 2.250 !default;
 
-$base-line-height: 1.35 !default;
-
-$spacing-unit:     1.2rem !default;
+$base-line-height: $base-font-size + 0.35 !default;
+$spacing-unit:     $base-font-size + 0.20 !default;
 
 // Width of the content area
 $content-width:    62rem !default;
 
 // Default color settings
-// TODO: The light color scheme can effectively be thought of as a variety of offsets
-// from the pure white color. We should verify the dark colors use a matching offset
-// from the chosen dark color, and use calc functions to streamline the theming
+$theme-color:                   {{ $.Site.Params.themeColor | default "oklch(0 0 0)" }};
+$theme-color-dark:              oklch(from #{$theme-color} calc(1.1 - l) c h);
 
-$theme-color:              {{ $.Site.Params.themeColor | default "oklch(0.684 0.212 40.6)" }};
-$text-color:                oklch(0.164 0.000 0.0); // #0E0E0E;
-$separator-color:           oklch(0.428 0.000 0.0); // #4f4f4f;
-$background-color:          oklch(0.925 0.000 0.0); // #e6e6e6;
-$section-background-color:  oklch(0.970 0.000 0.0); // #f5f5f5;
-$wrapper-color:             oklch(1.000 0.000 0.0); // #ffffff;
-$heart-color:               oklch(0.744 0.149 34.5); // #fb866a;
-$dark-text-color:           oklch(0.984 0.003 247.9); // #f8fafc;
-$dark-separator-color:      oklch(0.554 0.041 257.4); // #64748b;
-$dark-background-color:     oklch(0.000 0.000 0.0); // #000000
-$dark-section-background-color: oklch(0.372 0.039 257.3); // #334155;
-$dark-wrapper-color:        oklch(0.150 0.000 0.0); // #0B0B0B;
-$dark-theme-color:          {{ $.Site.Params.themeColorDark | default "#C084FC" }};
+// We want the outer border to be darker than the inner, so body-color is calc from wrapper
+$resume-body-color:             {{ $.Site.Params.bodyColor | default "oklch(1 0 0)" }};
+$background-color-dark:         oklch(from #{$resume-body-color} calc(1 - l) c h);
+$background-color:              oklch(from #{$resume-body-color} calc(l - 0.1) c h);
+$resume-body-color-dark:        oklch(from #{$background-color} calc(1.05 - l) c h);
+
+// Text colors are based from body colors
+// These could be direct mappings to the opposite text color
+$text-color:                    oklch(from #{$resume-body-color} calc(1.05 - l) c h);
+$text-color-dark:               oklch(from #{$resume-body-color-dark} calc(1.05 - l) c h);
+
+// job locations are on separator color?
+$separator-color:               oklch(from #{text-color} l c h);
+$separator-color-dark:          oklch(from #{$separator-color} calc(1 - l) c h);
+
+$section-background-color:      oklch(from #{$resume-body-color} calc(l - 0.15) c h / 0.5);
+// slightly higher dark color looks best
+$section-background-color-dark: oklch(from #{$section-background-color} calc(1.05 - l) c h);
+
+$heart-color:                   oklch(0.744 0.149 34.5);
 
 // Toggle-specific colors
-$toggle-moon-color:         oklch(0.687 0.146 252.9); // #60a5fa (blue)
-$toggle-sun-color:          oklch(0.747 0.194 88.8);  // #f59e0b (amber)
-$toggle-track-light:        oklch(0.906 0.015 248.8); // #e2e8f0 (slate-200)
-$toggle-track-dark:         oklch(0.415 0.048 256.8); // #475569 (slate-600)
-$toggle-thumb-light:        oklch(0.700 0.000 0.0);   // #ffffff (white)
-$toggle-thumb-dark:         oklch(0.30 0.013 247.8); // #f1f5f9 (slate-50)
+$toggle-moon-color:             oklch(from cornflowerblue l c h); // #60a5fa (blue)
+$toggle-sun-color:              oklch(from goldenrod l c h);  // #f59e0b (amber)
+$toggle-track-light:            oklch(0.906 0.015 248.8); // #e2e8f0 (slate-200)
+$toggle-track-dark:             oklch(0.415 0.048 256.8); // #475569 (slate-600)
+$toggle-thumb-light:            oklch(0.700 0.000 0.0);   // #ffffff (white)
+$toggle-thumb-dark:             oklch(0.30 0.013 247.8);  // #f1f5f9 (slate-50)
 
 // Toggle wrapper and shadow colors
-$toggle-wrapper-light-bg:   oklch(0.984 0.003 247.9); // Light wrapper background
-$toggle-wrapper-dark-bg:    oklch(0.372 0.039 257.3); // Dark wrapper background
-$toggle-wrapper-border-light: oklch(1.000 0.000 0.0); // White border
-$toggle-wrapper-border-dark: oklch(1.000 0.000 0.0);  // White border (same)
+$toggle-wrapper-light-bg:       oklch(0.984 0.003 247.9); // Light wrapper background
+$toggle-wrapper-dark-bg:        oklch(0.372 0.039 257.3); // Dark wrapper background
+$toggle-wrapper-border-light:   oklch(1.000 0.000 0.0);   // White border
+$toggle-wrapper-border-dark:    oklch(1.000 0.000 0.0);   // White border (same)
 
 // Toggle dimensions and calculated values
-$toggle-track-width:        3.125rem; // 50px at 16px base
-$toggle-track-height:       1.5rem;   // 24px at 16px base
-$toggle-thumb-size:         1.375rem; // 22px at 16px base
-$toggle-thumb-offset:       0.0625rem; // 1px at 16px base
-$toggle-thumb-travel:       1.625rem; // Calculated: 3.125 - 1.375 - (2 * 0.0625) = 1.625rem (26px)
-$toggle-track-radius:       1.875rem; // 30px - slightly larger than height for pill shape
+$toggle-track-width:            3.1250rem; // 50px at 16px base
+$toggle-track-height:           1.5000rem; // 24px at 16px base
+$toggle-thumb-size:             1.3750rem; // 22px at 16px base
+$toggle-thumb-offset:           0.0625rem; // 1px at 16px base
+$toggle-thumb-travel:           1.6250rem; // Calculated: 3.125 - 1.375 - (2 * 0.0625) = 1.625rem (26px)
+$toggle-track-radius:           1.8750rem; // 30px - slightly larger than height for pill shape
 
 // Shadow and transparency colors
-$shadow-black:              oklch(0 0 0);              // Pure black for shadows
-$theme-color-light:         oklch(0.750 0.203 317.8);  // Light variant of theme color
-$theme-border-alpha:        oklch(0.490 0.203 317.8);  // Theme color for borders
-$separator-border-alpha:    oklch(0.428 0.000 0.0);    // Separator color for borders
-$dark-separator-border-alpha: oklch(0.554 0.041 257.4); // Dark separator for borders
+$shadow-light:                  oklch(0 0 0 / 0.3);        // Pure black for shadows
+$shadow-dark:                   oklch(1 0 0 / 0.3);        // Pure black for shadows
+$theme-border-alpha:            oklch(from #{$theme-color} l c h / 0.4);  // Theme color for borders
+$separator-border-alpha:        oklch(0.428 0.000 000.0 / 0.4);  // Separator color for borders
+$dark-separator-border-alpha:   oklch(0.554 0.041 257.4);  // Dark separator for borders
 
 // Transition time
 $transition-speed: 0.10s; // The time a component (our toggler) takes to complete its action. 
 
 // Default delimiter
 $contact-delimiter: "{{ $.Site.Params.contactDelimiter | default "·" }}";
-$body-delimiter: "{{ $.Site.Params.bodyDelimiter | default "·" }}";
+$body-delimiter:    "{{ $.Site.Params.bodyDelimiter | default "·" }}";
 @import
   "sanitize",
   "base",
@@ -85,8 +87,8 @@ $body-delimiter: "{{ $.Site.Params.bodyDelimiter | default "·" }}";
 
 section {
   .section-title {
-    text-transform: {{ $.Site.Params.sectionTitle | default "uppercase" }};
-    justify-content: {{ $.Site.Params.sectionAlign | default "start" }};
+    text-transform:      {{ $.Site.Params.sectionTitle | default "uppercase" }};
+    justify-content:     {{ $.Site.Params.sectionAlign | default "start" }};
     border-bottom-style: {{ $.Site.Params.sectionLine | default "dashed" }};
 
     {{ if $.Site.Params.sectionBackground }}
@@ -117,7 +119,7 @@ section {
   {{ end }}
 }
 
-// Extend Font Awesome fixed width class
+// Extend Font Awesome fixed width class for fat icons
 .fa-fw {
   width: 1.5em !important;
 }
