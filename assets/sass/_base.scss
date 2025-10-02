@@ -2,17 +2,17 @@
   color-scheme: light dark;
 }
 
-// TODO: not all colors are mapped yet. Toggler needs work still.
 [data-theme="light"] {
   --color-bg: #{$background-color};
   --color-body: #{$resume-body-color};
   --color-text: #{$text-color};
   --color-theme: #{$theme-color};
   --color-separator: #{$separator-color};
-  --color-shadow: #{$shadow-light};
+  --color-shadow: #{$shadow};
   --color-section-bg: #{$section-background-color};
-  --color-theme-border: #{$theme-border-alpha};
-  --color-separator-border: #{$separator-border-alpha};
+  --color-theme-border: #{$border-theme};
+  --color-separator-border: #{$border-separator};
+  --color-shadow: #{$shadow};
 }
 
 [data-theme="dark"] {
@@ -24,7 +24,8 @@
   --color-shadow: #{$shadow-dark};
   --color-section-bg: #{$section-background-color-dark};
   --color-theme-border: #{$theme-color-dark};
-  --color-separator-border: #{$dark-separator-border-alpha};
+  --color-separator-border: #{$border-separator-dark};
+  --color-shadow: #{$shadow-dark};
 }
 
 html {
@@ -193,7 +194,7 @@ small {
 // Consolidated border patterns
 .item:not(:nth-last-child(1)),
 .group:not(:last-child) {
-  border-bottom: 1px dashed $theme-border-alpha;
+  border-bottom: 1px dashed var(--color-theme-border);
 }
 
 // Special border for name
@@ -209,7 +210,7 @@ small {
 
 // Override for group borders
 .group:not(:last-child) {
-  border-bottom: 1px dashed $separator-border-alpha;
+  border-bottom: 1px dashed var(--color-separator-border);
 }
 
 .wrapper {
@@ -242,7 +243,7 @@ small {
       margin-top: $spacing-unit / 6;
       margin-bottom: $spacing-unit / 6;
       padding: $spacing-unit / 10 0;
-      border-bottom-color: $theme-border-alpha;
+      border-bottom-color: var(--color-theme-border);
       border-bottom-width: 1px;
 
 

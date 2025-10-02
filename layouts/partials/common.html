@@ -6,8 +6,8 @@
     </head>
     <body>
         {{- if .Site.Params.open }}
-    {{- partial "toggle.html" . }}
     <div class="wrapper">
+        {{- partial "toggle.html" . }}
         {{- partial "basic.html" . }}
         {{- partial "profile.html" . }}
         {{- partial "experience.html" . }}

@@ -1,149 +1,82 @@
-.dark-mode-toggle-wrapper {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 1000;
-  background: $toggle-wrapper-light-bg;
-  padding: 8px;
-  border-radius: 30px;
-  box-shadow: 0 4px 10px $shadow-light;
-  backdrop-filter: blur(12px);
-  border: 1px solid $toggle-wrapper-border-light;
-  transition: all $transition-speed cubic-bezier(0.4, 0, 0.2, 1);
+.switch {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 2 * ($toggle-height - (1 - $toggle-switch-size/100%));
+  height: $toggle-height;
+  border-radius: $toggle-radius;
+  box-shadow: 0 2px 10px var(--color-shadow);
 }
 
-.dark-mode .dark-mode-toggle-wrapper {
-  background: $toggle-wrapper-dark-bg;
-  box-shadow: 0 4px 10px $shadow-dark;
-  border: 1px solid $toggle-wrapper-border-dark;
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: $toggle-sun-color;
+  transition: all $transition-speed cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: $toggle-radius;
+  cursor: pointer;
+}
+
+.slider:before {
+  --position: 0%;
+  position: absolute;
+  content: "";
+  height: $toggle-switch-size;
+  aspect-ratio: 1;
+  left: ($toggle-height * (100% - $toggle-switch-size) / 200%);
+  top: 50%;
+  transform: translate(0, -50%) translateX(var(--position));
+  background-color: var(--color-body);
+  border-radius: $toggle-radius;
+  will-change: transform;
+  transition: all $transition-speed cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .fa-moon {
-  color: $toggle-moon-color;
+  color: var(--color-body);
+  aspect-ratio: 1;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: ($toggle-height * (100% - $toggle-switch-size) / 200%);
+  transform: translateY(-50%);
 }
-
 .fa-sun {
-  color: $toggle-sun-color;
-}
-
-.js-toggle-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.js-toggle {
-    touch-action: pan-x;
-    position: relative;
-    cursor: pointer;
-    background-color: transparent;
-    border: 0;
-    padding: 0;
-    -webkit-touch-callout: none;
-    user-select: none;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.js-toggle-screenreader-only {
-  position: absolute !important;
-  clip-path: inset(50%) !important;
-  width: 1px !important;
-  height: 1px !important;
-  overflow: hidden !important;
-}
-
-.js-toggle-track {
-  width: $toggle-track-width;
-  height: $toggle-track-height;
-  padding: 0;
-  border-radius: $toggle-track-radius;
-  background-color: $toggle-track-light;
-  transition: all $transition-speed cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.dark-mode .js-toggle-track {
-  background-color: $toggle-track-dark;
-}
-
-.js-toggle-track-check {
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  margin-top: auto;
-  margin-bottom: auto;
-  line-height: 0;
-  opacity: 0;
-  transition: opacity $transition-speed ease;
-}
-
-.js-toggle--checked .js-toggle-track-check {
+  color: var(--color-body);
+  aspect-ratio: 1;
   opacity: 1;
-}
-
-.js-toggle-track-x {
   position: absolute;
-  width: 16px;
-  height: 16px;
-  right: 8px;
-  top: 0;
-  bottom: 0;
-  margin-top: auto;
-  margin-bottom: auto;
-  line-height: 0;
-  opacity: 1;
-  transition: opacity $transition-speed ease;
+  top: 50%;
+  right: ($toggle-height * (100% - $toggle-switch-size) / 200%);
+  transform: translateY(-50%);
 }
 
-.js-toggle--checked .js-toggle-track-x {
-  opacity: 0;
-}
-
-.js-toggle-thumb {
+.fa-moon::before,
+.fa-sun::before {
   position: absolute;
-  top: $toggle-thumb-offset;
-  left: $toggle-thumb-offset;
-  width: $toggle-thumb-size;
-  height: $toggle-thumb-size;
-  border-radius: 50%;
-  background-color: $toggle-thumb-light;
-  box-sizing: border-box;
-  box-shadow: 0 2px 4px $shadow-light;
-  transition: all $transition-speed cubic-bezier(0.4, 0, 0.2, 1);
-  transform: translateX(0);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.js-toggle--checked .js-toggle-thumb {
-  transform: translateX($toggle-thumb-travel);
-  background-color: $toggle-thumb-light;
-  box-shadow: 0 2px 8px $shadow-light;
+input:checked {
+  + .slider {
+    background-color: $toggle-moon-color;
+  }
+  + .slider:before {
+    --position: 100%;
+  }
+  ~ * .fa-sun {
+    opacity: 0;
+  }
+  ~ * .fa-moon {
+    opacity: 1;
+  }
 }
-
-.dark-mode .js-toggle-thumb {
-  background-color: $toggle-thumb-dark;
-  box-shadow: 0 2px 4px $shadow-dark;
-}
-
-.dark-mode .js-toggle--checked .js-toggle-thumb {
-  background-color: $toggle-thumb-dark;
-  box-shadow: 0 2px 8px $shadow-dark;
-}
-
-.js-toggle--focus .js-toggle-thumb {
-  box-shadow: 0 0 0 2px $theme-color;
-}
-
-.js-toggle:active .js-toggle-thumb {
-  box-shadow: 0 0 0 4px $theme-color;
-}
-
-.dark-mode .js-toggle--focus .js-toggle-thumb {
-  box-shadow: 0 0 0 2px $theme-color-dark;
-}
-
-.dark-mode .js-toggle:active .js-toggle-thumb {
-  box-shadow: 0 0 0 4px $theme-color-dark;
-}
-

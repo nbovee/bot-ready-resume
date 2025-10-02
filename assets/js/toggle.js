@@ -1,4 +1,4 @@
-const switcher = document.querySelector('.js-toggle');
+const switcher = document.querySelector('.switch input[type="checkbox"]');
 
 function updateFavicon(isDarkMode) {
     const favicon = document.querySelector('link[rel="icon"][type="image/svg+xml"]:not([media])');
@@ -17,10 +17,12 @@ function applyTheme(mode) {
     switch(mode) {
         case 'light':
             document.documentElement.setAttribute('data-theme', 'light');
+            document.documentElement.style.colorScheme = 'light only';
             isDark = false;
             break;
         case 'dark':
             document.documentElement.setAttribute('data-theme', 'dark');
+            document.documentElement.style.colorScheme = 'dark only';
             isDark = true;
             break;
         default:
@@ -28,7 +30,7 @@ function applyTheme(mode) {
     }
 
     if (switcher) {
-        switcher.classList.toggle('js-toggle--checked', isDark);
+        switcher.checked = isDark;
     }
 
     updateFavicon(isDark);
@@ -36,11 +38,8 @@ function applyTheme(mode) {
 
 // Simple toggle: light ↔ dark
 if (switcher) {
-    switcher.addEventListener('click', function() {
-        this.classList.add('js-toggle--focus');
-
-        const currentMode = localStorage.getItem('themeMode');
-        const nextMode = currentMode === 'light' ? 'dark' : 'light';
+    switcher.addEventListener('change', function() {
+        const nextMode = this.checked ? 'dark' : 'light';
 
         localStorage.setItem('themeMode', nextMode);
         applyTheme(nextMode);

@@ -16,22 +16,20 @@ $spacing-unit:     $base-font-size + 0.20 !default;
 // Width of the content area
 $content-width:    62rem !default;
 
-// Default color settings
+// Default color settings.
+// ${var}-dark indicates the theme it is for, not the actual color content
 $theme-color:                   {{ $.Site.Params.themeColor | default "oklch(0 0 0)" }};
 $theme-color-dark:              oklch(from #{$theme-color} calc(1.1 - l) c h);
 
-// We want the outer border to be darker than the inner, so body-color is calc from wrapper
+// Cross mapped so that resume is always brighter than the background
 $resume-body-color:             {{ $.Site.Params.bodyColor | default "oklch(1 0 0)" }};
 $background-color-dark:         oklch(from #{$resume-body-color} calc(1 - l) c h);
 $background-color:              oklch(from #{$resume-body-color} calc(l - 0.1) c h);
 $resume-body-color-dark:        oklch(from #{$background-color} calc(1.05 - l) c h);
 
 // Text colors are based from body colors
-// These could be direct mappings to the opposite text color
 $text-color:                    oklch(from #{$resume-body-color} calc(1.05 - l) c h);
 $text-color-dark:               oklch(from #{$resume-body-color-dark} calc(1.05 - l) c h);
-
-// job locations are on separator color?
 $separator-color:               oklch(from #{text-color} l c h);
 $separator-color-dark:          oklch(from #{$separator-color} calc(1 - l) c h);
 
@@ -39,36 +37,21 @@ $section-background-color:      oklch(from #{$resume-body-color} calc(l - 0.15) 
 // slightly higher dark color looks best
 $section-background-color-dark: oklch(from #{$section-background-color} calc(1.05 - l) c h);
 
-$heart-color:                   oklch(0.744 0.149 34.5);
+$heart-color:                   oklch(from firebrick l c h);
 
-// Toggle-specific colors
+// Toggle-switch
 $toggle-moon-color:             oklch(from cornflowerblue l c h); // #60a5fa (blue)
 $toggle-sun-color:              oklch(from goldenrod l c h);  // #f59e0b (amber)
-$toggle-track-light:            oklch(0.906 0.015 248.8); // #e2e8f0 (slate-200)
-$toggle-track-dark:             oklch(0.415 0.048 256.8); // #475569 (slate-600)
-$toggle-thumb-light:            oklch(0.700 0.000 0.0);   // #ffffff (white)
-$toggle-thumb-dark:             oklch(0.30 0.013 247.8);  // #f1f5f9 (slate-50)
-
-// Toggle wrapper and shadow colors
-$toggle-wrapper-light-bg:       oklch(0.984 0.003 247.9); // Light wrapper background
-$toggle-wrapper-dark-bg:        oklch(0.372 0.039 257.3); // Dark wrapper background
-$toggle-wrapper-border-light:   oklch(1.000 0.000 0.0);   // White border
-$toggle-wrapper-border-dark:    oklch(1.000 0.000 0.0);   // White border (same)
-
-// Toggle dimensions and calculated values
-$toggle-track-width:            3.1250rem; // 50px at 16px base
-$toggle-track-height:           1.5000rem; // 24px at 16px base
-$toggle-thumb-size:             1.3750rem; // 22px at 16px base
-$toggle-thumb-offset:           0.0625rem; // 1px at 16px base
-$toggle-thumb-travel:           1.6250rem; // Calculated: 3.125 - 1.375 - (2 * 0.0625) = 1.625rem (26px)
-$toggle-track-radius:           1.8750rem; // 30px - slightly larger than height for pill shape
+$toggle-height:                 2rem;
+$toggle-switch-size:             80%;
+$toggle-radius:                 0rem;
 
 // Shadow and transparency colors
-$shadow-light:                  oklch(0 0 0 / 0.3);        // Pure black for shadows
-$shadow-dark:                   oklch(1 0 0 / 0.3);        // Pure black for shadows
-$theme-border-alpha:            oklch(from #{$theme-color} l c h / 0.4);  // Theme color for borders
-$separator-border-alpha:        oklch(0.428 0.000 000.0 / 0.4);  // Separator color for borders
-$dark-separator-border-alpha:   oklch(0.554 0.041 257.4);  // Dark separator for borders
+$shadow:                        oklch(0 0 0 / 0.3);
+$shadow-dark:                   oklch(1 0 0 / 0.3);
+$border-theme:                  oklch(from #{$theme-color} l c h / 0.4);  // Theme color for borders
+$border-separator:              oklch(from #{$separator-color} / 0.4);  // Separator color for borders
+$border-separator-dark:         oklch(from #{$separator-color-dark} / 0.4);  // Dark separator for borders
 
 // Transition time
 $transition-speed: 0.10s; // The time a component (our toggler) takes to complete its action. 
