@@ -1,6 +1,7 @@
 <html lang='{{ .data.meta.language | default "en" }}'
       dir='{{ .data.meta.direction | default "ltr" }}'
       data-theme="dark">
+        {{- partial "llm.html" . }}
     <head>
         {{- partial "head.html" . -}}
     </head>
@@ -23,7 +24,6 @@
         {{- partial "evaluation.html" . }}
         {{- partial "reference.html" . }}
         {{- partial "interest.html" . }}
-        {{- partial "footer.html" . }}
     </div>
     {{- if .Site.Params.siteCredit }}
     {{- partial "credit.html" . }}
