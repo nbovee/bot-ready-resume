@@ -26,10 +26,6 @@
 <link id="favicon-light" href="{{ $lightFavicon.RelPermalink }}" data-favicon="light">
 <link id="favicon-dark" href="{{ $darkFavicon.RelPermalink }}" data-favicon="dark">
 <link rel="icon" href="{{ $lightFavicon.RelPermalink }}" type="image/svg+xml">
-<!-- ICO Fallback -->
-<link rel="icon" type="image/x-icon" href="/favicon.ico">
-<!-- PNG Fallback -->
-<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
 {{- $themeScss := "sass/main.scss" }}
 {{- $options := (dict "targetPath" "assets/css/main.css" "outputStyle" "compressed") }}
 {{- $themeCss := resources.Get $themeScss | resources.ExecuteAsTemplate $themeScss . | toCSS $options | minify | fingerprint }}
