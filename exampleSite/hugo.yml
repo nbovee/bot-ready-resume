@@ -29,7 +29,7 @@ params:
   llmHeader: true           # add a comment to guide llms
   openGraph:
     enable: true                # enable open graph meta tags
-    image: /images/profile.png  # path or link to the open graph image
+    image: images/profile.png  # path or link to the open graph image
   # Style
   dateFormat: 2006-01-02    # date format
   themeColor: "#1DA1F2"     # your favorite theme color (supports hex or OKLCH format)

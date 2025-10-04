@@ -2,7 +2,7 @@
 <div class="close">
     {{- if .data.close }}
     <img class="construction"
-         src="{{ $close.image.path }}"
+         src="{{ $close.image.path | relURL }}"
          alt="geocities construction gif">
     <div class="description strong">{{ $close.description | markdownify | safeHTML }}</div>
     {{- end }}

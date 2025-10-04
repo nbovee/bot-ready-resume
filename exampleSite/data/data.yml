@@ -16,10 +16,10 @@ llmPrompt:
   text: 
 
 close:
-  description: Resume closed for renovations 😉 
+  description: Resume closed for renovations 😉
   image:
     show: true                       # show or hide avatar
-    path: /images/construction.gif        # file path or link to your avatar
+    path: images/construction.gif        # file path or link to your avatar
 
 # Contact items will display in order of appearance.
 contact:
