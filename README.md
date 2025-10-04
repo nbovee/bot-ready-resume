@@ -1,13 +1,7 @@
 <h1 align="center">online-resume</h1>
 
-<p align="center">
-  <a href="https://github.com/tarrex/hugo-theme-online-resume/blob/master/LICENSE"><img src="https://img.shields.io/github/license/tarrex/hugo-theme-online-resume?style=flat-square" alt="GitHub License"></a>
-  <a href="https://github.com/tarrex/hugo-theme-online-resume/forks"><img src="https://img.shields.io/github/forks/tarrex/hugo-theme-online-resume?style=flat-square" alt="GitHub forks"></a>
-  <a href="https://github.com/tarrex/hugo-theme-online-resume/stargazers"><img src="https://img.shields.io/github/stars/tarrex/hugo-theme-online-resume?style=flat-square" alt="GitHub Repo stars"></a>
-  <a href="https://tarrex.github.io/online-resume"><img src="https://img.shields.io/website?down_color=red&down_message=down&style=flat-square&up_color=green&up_message=up&url=https%3A%2F%2Ftarrex.github.io%2Fonline-resume" alt="Demo Website"></a>
-</p>
 
-<h4 align="center">A minimalist Hugo theme for your resume.</h4>
+<h4 align="center">A minimalist Hugo theme for your resume, refreshed for LLM crawlers.</h4>
 
 ---
 
@@ -29,9 +23,8 @@ Features:
 - Customizable theme color with OKLCH color space support.
 - Dark mode toggle with system preference detection.
 - Dynamic themed favicons with automatic generation from user initials.
-- LLM-friendly output formats (llms.txt and markdown).
-- Modular content design.
-- Responsive display.
+- LLM-friendly output formats (llms.txt, markdown alt content, steering prompts for llms).
+- Modular & responsive content design.
 
 ### Usage
 
@@ -52,6 +45,7 @@ Features:
 - `data/data.yml`: Edit the resume content.
   - `basic.initials`: Optional field to override auto-parsed initials used in favicons.
   - `llmPrompt`: Optional section to provide additional instructions for LLM consumption via llms.txt.
+  - `contact`: For contact icons, use Font Awesome icon classes (e.g., `fa-brands fa-fw fa-github`). Search available icons at [Font Awesome](https://fontawesome.com/icons) using `fa-solid` for regular icons or `fa-brands` for brand logos. Additional custom icons are available in `static/assets/icons/css/all.css`.
 - `static/images/profile.png`: Your profile photo.
 - `static/images/favicon-32x32.png` and `static/favicon.ico`: Optional fallback favicons for older browsers (SVG favicons are auto-generated).
 - `hugo.yml`: Website and theme style settings.
@@ -63,6 +57,14 @@ Features:
   - `outputFormats`: Configure markdown and llmstxt output formats.
 
 ## FAQ
+
+#### How to enable LLM-friendly output formats?
+
+The theme can generate additional output formats optimized for LLM consumption:
+- Set `params.llms.txt: true` in `hugo.yml` to enable llms.txt output at `/llms.txt`.
+- Set `params.llmHeader: true` to add LLM guidance as an HTML comment in the page head.
+- Add custom instructions in `data.yml` under `llmPrompt.text`.
+- Configure `outputFormats` and `outputs` in `hugo.yml` to enable markdown and llms.txt formats.
 
 #### How does dark mode work?
 
@@ -100,13 +102,7 @@ There is an `order` option in each section, you can adjust the order by modifyin
 
 If there is no content you want to keep in the section, you can remove it directly. If you want to keep the content, you can set the value of the `show` option of the section to `false`.
 
-#### How to enable LLM-friendly output formats?
 
-The theme can generate additional output formats optimized for LLM consumption:
-- Set `params.llms.txt: true` in `hugo.yml` to enable llms.txt output at `/llms.txt`.
-- Set `params.llmHeader: true` to add LLM guidance as an HTML comment in the page head.
-- Add custom instructions in `data.yml` under `llmPrompt.text`.
-- Configure `outputFormats` and `outputs` in `hugo.yml` to enable markdown and llmstxt formats.
 
 #### How to create a resume in other languages?
 
@@ -115,20 +111,16 @@ For example, if you already have an English version resume and you want to creat
   - Create `layouts/page` directories through `mkdir -p layouts/page`.
   - Copy `index.html` file in the theme layouts directory to above directory `cp themes/online-resume/layouts/index.html layouts/page/cn.html`
   - Change the `{{- partial "common.html" (dict "Site" .Site "data" .Site.Data.data) }}` in the `cn.html` to `{{- partial "common.html" (dict "Site" .Site "data" .Site.Data.cn) }}`.
-  - Create `content` directory in root directory and create a markdown file named `cn.md`, add fromt matter `layout: cn` in `cn.md`.
+  - Create `content` directory in root directory and create a markdown file named `cn.md`, add front matter `layout: cn` in `cn.md`.
   - Run `hugo server` and you can preview the Chinese version of your resume by visiting `https://YOUR_RESUME_URL/cn`.
 
-#### How to deploy on other platforms, like cloudflare, vercel?
-
-You can read and follow [Cloudflare Pages][Cloudflare Pages], [Vercel][Vercel] documents.
 
 ## Others
 
 - Original Hugo Version: [tarrex/hugo-theme-online-resume][Base Version]
 
 
-[Demo]: https://tarrex.github.io/online-resume
-[Cloudflare Pages]: https://developers.cloudflare.com/pages/framework-guides/deploy-a-hugo-site/
-[Vercel]: https://vercel.com/guides/deploying-hugo-with-vercel
+[Demo]: https://nick.bov.ee/hugo-theme-online-resume
+
 
 [Base Version]: https://github.com/tarrex/hugo-theme-online-resume
