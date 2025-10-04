@@ -15,23 +15,18 @@
 
 ## Contact
 
-{{- if $contact.location }}
-- **Location:** {{ $contact.location }}
+{{- range $contact }}
+{{- if .value }}
+{{- $link := "" }}
+{{- if .link }}
+  {{- $link = printf .link .value }}
 {{- end }}
-{{- if $contact.email }}
-- **Email:** {{ $contact.email }}
+{{- if $link }}
+- {{ .key }}: {{ $link }}
+{{- else }}
+- {{ .key }}: {{ .value }}
 {{- end }}
-{{- if $contact.phone }}
-- **Phone:** {{ $contact.phone }}
 {{- end }}
-{{- if $contact.website }}
-- **Website:** https://{{ $contact.website }}
-{{- end }}
-{{- if $contact.github }}
-- **GitHub:** https://github.com/{{ $contact.github }}
-{{- end }}
-{{- if $contact.linkedin }}
-- **LinkedIn:** https://linkedin.com/in/{{ $contact.linkedin }}
 {{- end }}
 
 {{- $profile := $data.profile }}
@@ -58,7 +53,32 @@
 *{{ .date }}*
 {{- end }}
 {{- if .location }} | {{ .location }}{{ end }}
+{{- if .tags }} | [{{ .tags }}]{{ end }}
+{{- if .link }}
 
+**Company Link:** {{ .link }}
+{{- end }}
+
+{{- if .description }}
+{{ .description }}
+{{- end }}
+{{- end }}
+{{- end }}
+
+
+{{- $education := $data.education }}
+{{- if $education.show }}
+
+## {{ $education.title }}
+
+{{- if $education.description }}
+{{ $education.description }}
+{{- end }}
+{{- range $education.items }}
+
+### {{ .degree }}{{ if .major }} in {{ .major }}{{ end }}
+*{{ .institution }}*{{ if .date }} | {{ .date }}{{ end }}{{ if .gpa }} | GPA: {{ .gpa }}{{ end }}
+{{- if .location }} | {{ .location }}{{ end }}
 {{- if .description }}
 {{ .description }}
 {{- end }}
@@ -114,31 +134,6 @@
 {{- end }}
 {{- end }}
 
-{{- $education := $data.education }}
-{{- if $education.show }}
-
-## {{ $education.title }}
-
-{{- if $education.description }}
-{{ $education.description }}
-{{- end }}
-{{- range $education.items }}
-
-### {{ .degree }}{{ if .major }} in {{ .major }}{{ end }}
-
-**{{ .institution }}**{{ if .date }} | {{ .date }}{{ end }}
-{{- if .gpa }} | GPA: {{ .gpa }}{{ end }}
-
-{{- if .location }}
-*{{ .location }}*
-{{- end }}
-{{- if .description }}
-
-{{ .description }}
-{{- end }}
-{{- end }}
-{{- end }}
-
 {{- $certificate := $data.certificate }}
 {{- if $certificate.show }}
 
@@ -155,6 +150,10 @@
 **Issued by:** {{ .issuer }}
 {{- end }}
 {{- if .date }} | {{ .date }}{{ end }}
+{{- if .link }}
+
+**Link:** {{ .link }}
+{{- end }}
 {{- if .description }}
 
 {{ .description }}
@@ -207,6 +206,10 @@
 **Awarded by:** {{ .awarder }}
 {{- end }}
 {{- if .date }} | {{ .date }}{{ end }}
+{{- if .link }}
+
+**Link:** {{ .link }}
+{{- end }}
 {{- if .description }}
 
 {{ .description }}
@@ -308,8 +311,20 @@
 {{- if .title }}
 *{{ .title }}*
 {{- end }}
-{{- if .contact }}
-- {{ .contact }}
+{{- if .institution }} | {{ .institution }}{{ end }}
+{{- if .link }}
+
+**Link:** {{ .link }}
+{{- end }}
+{{- if .address }}
+
+**Address:** {{ .address }}
+{{- end }}
+{{- if .email }}
+- **Email:** {{ .email }}
+{{- end }}
+{{- if .phone }}
+- **Phone:** {{ .phone }}
 {{- end }}
 {{- if .description }}
 

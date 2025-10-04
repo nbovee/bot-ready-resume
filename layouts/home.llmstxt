@@ -20,6 +20,8 @@ For a detailed markdown version of this resume, visit: {{ .Site.BaseURL }}index.
 
 - **URL:** {{ .Site.BaseURL }}
 - **Last Updated:** {{ now.Format "2006-01-02" }}
-{{- if $data.contact.email }}
-- **Contact:** {{ $data.contact.email }}
+{{- range $data.contact }}
+{{- if and (eq .key "email") .value }}
+- **Contact:** {{ .value }}
+{{- end }}
 {{- end }}
