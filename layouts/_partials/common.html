@@ -1,9 +1,9 @@
 <html lang='{{ .data.meta.language | default "en" }}'
       dir='{{ .data.meta.direction | default "ltr" }}'
       data-theme="dark">
-        {{- partial "llm.html" . }}
     <head>
-        {{- partial "head.html" . -}}
+        {{- partial "llm.html" . }}
+        {{- partial "head.html" . }}
     </head>
     <body>
         {{- if .Site.Params.open }}

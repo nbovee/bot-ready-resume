@@ -1,0 +1,28 @@
+{{- $data := .Site.Data.data -}}
+{{- $basic := $data.basic -}}
+# {{ .Site.Title }}
+
+{{ if .Site.Params.description }}{{ .Site.Params.description }}{{ end }}
+
+## About
+
+This is the professional resume of {{ $basic.name }}{{ if $basic.title }}, {{ $basic.title }}{{ end }}.
+
+## Markdown Resume
+
+For a detailed markdown version of this resume, visit: {{ .Site.BaseURL }}resume.md
+
+{{ $prompt := $data.llmPrompt -}}
+{{ if $prompt.show -}}
+## Additional Instructions
+
+{{ $prompt.text }}
+{{ end -}}
+
+## Site Information
+
+- **URL:** {{ .Site.BaseURL }}
+- **Last Updated:** {{ now.Format "2006-01-02" }}
+{{- if $data.contact.email }}
+- **Contact:** {{ $data.contact.email }}
+{{- end }}

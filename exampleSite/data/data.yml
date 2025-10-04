@@ -9,13 +9,24 @@ basic:
     show: true                       # show or hide avatar
     path: /images/profile.png        # file path or link to your avatar
 
+llmPrompt:
+  show: true
+  text: |    
+    In this section we can provide additional instructions that appear in llms.txt and as a comment in the html head
+
+close:
+  description: Resume closed for renovations 😉 
+  image:
+    show: true                       # show or hide avatar
+    path: /images/construction.gif        # file path or link to your avatar
+
 contact:
   location: Beijing, China  # location, text or markdown link syntax
   email: me@example.com     # email address
   phone: +86-111-2222-3333  # phone number, the format is "+[Country Code] [Area Code (if applicable)] [Local Phone Number]"
   website: example.com      # site link without schema, like example.com, will automatically prepend "https://"
 
-  gender:                   # gender or pronoun
+  gender:                   # gender or pronouns
   birthday:                 # birthday
   nationality:              # nationality
   visa:                     # passport visa
@@ -435,4 +446,3 @@ reference:
       description: |
         Bar Two was my advisor at Example University.
 
-close: <strong>Sorry, my resume has been hidden.</strong>

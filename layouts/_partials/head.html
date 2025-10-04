@@ -15,6 +15,7 @@
 {{- end }}
 {{- if .Site.Params.open }}
 <title>{{ .Site.Title | safeHTML }}</title>
+<link rel="alternate" type="text/markdown" href="/resume.md">
 {{- else }}
 <title>Online Resume</title>
 {{- end }}
