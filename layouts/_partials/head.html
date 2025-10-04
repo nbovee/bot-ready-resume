@@ -19,14 +19,13 @@
 {{- else }}
 <title>Online Resume</title>
 {{- end }}
-<!-- Adaptive Favicon with fingerprinting -->
+<!-- Adaptive Favicon -->
 {{- $lightFavicon := resources.Get "images/favicon-light.svg.tpl" | resources.ExecuteAsTemplate "favicon-light.svg" . | fingerprint }}
 {{- $darkFavicon := resources.Get "images/favicon-dark.svg.tpl" | resources.ExecuteAsTemplate "favicon-dark.svg" . | fingerprint }}
-{{- $defaultFavicon := resources.Get "images/favicon.svg.tpl" | resources.ExecuteAsTemplate "favicon.svg" . | fingerprint }}
-# TODO: check fallback icons function
-<link rel="icon" href="{{ $lightFavicon.RelPermalink }}" type="image/svg+xml" media="(prefers-color-scheme: light)">
-<link rel="icon" href="{{ $darkFavicon.RelPermalink }}" type="image/svg+xml" media="(prefers-color-scheme: dark)">
-<link rel="icon" href="{{ $defaultFavicon.RelPermalink }}" type="image/svg+xml">
+<!-- Swap of icons handled by JS -->
+<link id="favicon-light" href="{{ $lightFavicon.RelPermalink }}" data-favicon="light">
+<link id="favicon-dark" href="{{ $darkFavicon.RelPermalink }}" data-favicon="dark">
+<link rel="icon" href="{{ $lightFavicon.RelPermalink }}" type="image/svg+xml">
 <!-- ICO Fallback -->
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <!-- PNG Fallback -->
