@@ -42,6 +42,7 @@ contact:
   - key: linkedin
     value: username
     link: https://linkedin.com/in/%s
+    icon: fa-brands fa-fw fa-linkedin
 
 profile:
   show: true
