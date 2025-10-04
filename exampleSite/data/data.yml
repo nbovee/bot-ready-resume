@@ -4,7 +4,7 @@ meta:
 
 basic:
   name: Foo Bar                      # name
-  initials:                          # override for parsed initials in favicons
+  initials: "-F-"                    # override for parsed initials in favicons
   title: Backend Developer           # job title 
   avatar:
     show: true                       # show or hide avatar
@@ -25,16 +25,20 @@ close:
 contact:
   - key: location
     value: Beijing, China
+    icon: fa-solid fa-fw fa-location-dot
   - key: email
     value: me@example.com
+    icon: fa-solid fa-fw fa-envelope
   - key: phone
     value: +86-111-2222-3333
   - key: website
     value: example.com
     link: https://%s
+    icon: fa-solid fa-fw fa-link
   - key: github
     value: username
     link: https://github.com/%s
+    icon: fa-brands fa-fw fa-github
   - key: linkedin
     value: username
     link: https://linkedin.com/in/%s

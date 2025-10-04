@@ -24,7 +24,7 @@ params:
   # Privacy
   open: true                # show or hide your resume
   allowSearchEngines: true  # allow your resume indexing by search engine, 'true' or 'false'
-  description:              # your resume description
+  description: a example site of a hugo resume theme # your resume description
   llms.txt: true            # publish llms.txt
   llmHeader: true           # add a comment to guide llms
   openGraph:
@@ -40,7 +40,7 @@ params:
   sectionAlign: start       # section title align, 'start', 'end' or 'center'
   sectionLine: dashed       # section title line, 'solid', 'dashed' or 'none'
   sectionBackground: true   # section title background, 'true' or 'false'
-  skillLevelIcon: lightbulb # skill rate icon, 'heart', 'star', 'circle' or 'lightbulb'
+  skillLevelIcon: star # skill rate icon, 'heart', 'star', 'circle' or 'lightbulb'
   linkIcon: true            # show link icon, 'true' or 'false'
   siteCredit: true          # show site credit, 'true' or 'false'
   # Analytics
