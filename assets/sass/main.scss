@@ -16,42 +16,42 @@ $spacing-unit:     $base-font-size + 0.20 !default;
 // Width of the content area
 $content-width:    62rem !default;
 
-// Default color settings.
+// Default color settings - all colors calculated in colors.html partial
 // ${var}-dark indicates the theme it is for, not the actual color content
-$theme-color:                   {{ $.Site.Params.themeColor | default "oklch(0 0 0)" }};
-$theme-color-dark:              oklch(from #{$theme-color} calc(1.1 - l) c h);
+{{- $colors := partial "colors.html" $ }}
+$theme-color:                   {{ $colors.themeColor }};
+$theme-color-dark:              {{ $colors.themeColorDark }};
 
 // Cross mapped so that resume is always brighter than the background
-$resume-body-color:             {{ $.Site.Params.bodyColor | default "oklch(1 0 0)" }};
-$background-color-dark:         oklch(from #{$resume-body-color} calc(1 - l) c h);
-$background-color:              oklch(from #{$resume-body-color} calc(l - 0.1) c h);
-$resume-body-color-dark:        oklch(from #{$background-color} calc(1.05 - l) c h);
+$resume-body-color:             {{ $colors.resumeBodyColor }};
+$background-color-dark:         {{ $colors.backgroundColorDark }};
+$background-color:              {{ $colors.backgroundColor }};
+$resume-body-color-dark:        {{ $colors.resumeBodyColorDark }};
 
 // Text colors are based from body colors
-$text-color:                    oklch(from #{$resume-body-color} calc(1.05 - l) c h);
-$text-color-dark:               oklch(from #{$resume-body-color-dark} calc(1.05 - l) c h);
-$separator-color:               oklch(from #{text-color} l c h);
-$separator-color-dark:          oklch(from #{$separator-color} calc(1 - l) c h);
+$text-color:                    {{ $colors.textColor }};
+$text-color-dark:               {{ $colors.textColorDark }};
+$separator-color:               {{ $colors.separatorColor }};
+$separator-color-dark:          {{ $colors.separatorColorDark }};
 
-$section-background-color:      oklch(from #{$resume-body-color} calc(l - 0.15) c h / 0.5);
-// slightly higher dark color looks best
-$section-background-color-dark: oklch(from #{$section-background-color} calc(1.05 - l) c h);
+$section-background-color:      {{ $colors.sectionBackgroundColor }};
+$section-background-color-dark: {{ $colors.sectionBackgroundColorDark }};
 
-$heart-color:                   oklch(from firebrick l c h);
+$heart-color:                   {{ $colors.heartColor }};
 
 // Toggle-switch
-$toggle-moon-color:             oklch(from cornflowerblue l c h); // #60a5fa (blue)
-$toggle-sun-color:              oklch(from goldenrod l c h);  // #f59e0b (amber)
+$toggle-moon-color:             {{ $colors.toggleMoonColor }};
+$toggle-sun-color:              {{ $colors.toggleSunColor }};
 $toggle-height:                 2rem;
 $toggle-switch-size:             80%;
 $toggle-radius:                 0rem;
 
 // Shadow and transparency colors
-$shadow:                        oklch(0 0 0 / 0.3);
-$shadow-dark:                   oklch(1 0 0 / 0.3);
-$border-theme:                  oklch(from #{$theme-color} l c h / 0.4);  // Theme color for borders
-$border-separator:              oklch(from #{$separator-color} / 0.4);  // Separator color for borders
-$border-separator-dark:         oklch(from #{$separator-color-dark} / 0.4);  // Dark separator for borders
+$shadow:                        {{ $colors.shadow }};
+$shadow-dark:                   {{ $colors.shadowDark }};
+$border-theme:                  {{ $colors.borderTheme }};
+$border-separator:              {{ $colors.borderSeparator }};
+$border-separator-dark:         {{ $colors.borderSeparatorDark }};
 
 // Transition time
 $transition-speed: 0.10s; // The time a component (our toggler) takes to complete its action. 

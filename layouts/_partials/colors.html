@@ -1,0 +1,51 @@
+{{- $bodyColor := .Site.Params.bodyColor | default "oklch(1 0 0)" }}
+{{- $themeColor := .Site.Params.themeColor | default "oklch(0 0 0)" }}
+
+{{- /* Light theme colors */ -}}
+{{- $resumeBodyColor := $bodyColor }}
+{{- $backgroundColor := printf "oklch(from %s calc(l - 0.1) c h)" $resumeBodyColor }}
+{{- $textColor := printf "oklch(from %s calc(1.05 - l) c h)" $resumeBodyColor }}
+{{- $separatorColor := printf "oklch(from %s l c h)" $textColor }}
+{{- $sectionBackgroundColor := printf "oklch(from %s calc(l - 0.15) c h / 0.5)" $resumeBodyColor }}
+{{- $borderTheme := printf "oklch(from %s l c h / 0.4)" $themeColor }}
+{{- $borderSeparator := printf "oklch(from %s / 0.4)" $separatorColor }}
+
+{{- /* Dark theme colors */ -}}
+{{- $backgroundColorDark := printf "oklch(from %s calc(1 - l) c h)" $resumeBodyColor }}
+{{- $resumeBodyColorDark := printf "oklch(from %s calc(1.05 - l) c h)" $backgroundColor }}
+{{- $textColorDark := printf "oklch(from %s calc(1.05 - l) c h)" $resumeBodyColorDark }}
+{{- $themeColorDark := printf "oklch(from %s calc(1.1 - l) c h)" $themeColor }}
+{{- $separatorColorDark := printf "oklch(from %s calc(1 - l) c h)" $separatorColor }}
+{{- $sectionBackgroundColorDark := printf "oklch(from %s calc(1.05 - l) c h)" $sectionBackgroundColor }}
+{{- $borderSeparatorDark := printf "oklch(from %s / 0.4)" $separatorColorDark }}
+
+{{- /* Static colors */ -}}
+{{- $shadow := "oklch(0 0 0 / 0.3)" }}
+{{- $shadowDark := "oklch(1 0 0 / 0.3)" }}
+{{- $heartColor := "oklch(from firebrick l c h)" }}
+{{- $toggleMoonColor := "oklch(from cornflowerblue l c h)" }}
+{{- $toggleSunColor := "oklch(from goldenrod l c h)" }}
+
+{{- return (dict
+  "bodyColor" $bodyColor
+  "themeColor" $themeColor
+  "resumeBodyColor" $resumeBodyColor
+  "backgroundColor" $backgroundColor
+  "textColor" $textColor
+  "separatorColor" $separatorColor
+  "sectionBackgroundColor" $sectionBackgroundColor
+  "borderTheme" $borderTheme
+  "borderSeparator" $borderSeparator
+  "backgroundColorDark" $backgroundColorDark
+  "resumeBodyColorDark" $resumeBodyColorDark
+  "textColorDark" $textColorDark
+  "themeColorDark" $themeColorDark
+  "separatorColorDark" $separatorColorDark
+  "sectionBackgroundColorDark" $sectionBackgroundColorDark
+  "borderSeparatorDark" $borderSeparatorDark
+  "shadow" $shadow
+  "shadowDark" $shadowDark
+  "heartColor" $heartColor
+  "toggleMoonColor" $toggleMoonColor
+  "toggleSunColor" $toggleSunColor
+) }}

@@ -1,17 +1,13 @@
 const switcher = document.querySelector('.switch input[type="checkbox"]');
 
 function updateFavicon(isDarkMode) {
-    const favicon = document.querySelector('link[rel="icon"][type="image/svg+xml"]:not([media])');
-    if (favicon) {
-        // Get the actual fingerprinted URLs from the media-specific favicon elements
-        const lightFavicon = document.querySelector('link[rel="icon"][type="image/svg+xml"][media*="light"]');
-        const darkFavicon = document.querySelector('link[rel="icon"][type="image/svg+xml"][media*="dark"]');
+    const lightFavicon = document.getElementById('favicon-light');
+    const darkFavicon = document.getElementById('favicon-dark');
+    const mainFavicon = document.querySelector('link[rel="icon"][type="image/svg+xml"]:not([id])');
 
-        if (isDarkMode && darkFavicon) {
-            favicon.href = darkFavicon.href;
-        } else if (!isDarkMode && lightFavicon) {
-            favicon.href = lightFavicon.href;
-        }
+    if (lightFavicon && darkFavicon && mainFavicon) {
+        const sourceIcon = isDarkMode ? darkFavicon : lightFavicon;
+        mainFavicon.href = sourceIcon.href;
     }
 }
 
