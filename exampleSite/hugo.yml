@@ -3,6 +3,7 @@ disableKinds: [section, taxonomy, term, RSS, sitemap, 404]
 enableRobotsTXT: true
 
 title: Online Resume
+theme: ../..
 
 markup/goldmark/renderer/unsafe: false  # there is probably a way to do what you want that is hugo compliant
 
