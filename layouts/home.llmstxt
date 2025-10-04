@@ -1,16 +1,13 @@
 {{- $data := .Site.Data.data -}}
 {{- $basic := $data.basic -}}
-# {{ .Site.Title }}
+# {{ .Site.Title }}{{ if $basic.title }}, {{ $basic.title }}{{ end }}
 
 {{ if .Site.Params.description }}{{ .Site.Params.description }}{{ end }}
 
 ## About
 
 This is the professional resume of {{ $basic.name }}{{ if $basic.title }}, {{ $basic.title }}{{ end }}.
-
-## Markdown Resume
-
-For a detailed markdown version of this resume, visit: {{ .Site.BaseURL }}resume.md
+For a detailed markdown version of this resume, visit: {{ .Site.BaseURL }}index.md
 
 {{ $prompt := $data.llmPrompt -}}
 {{ if $prompt.show -}}
