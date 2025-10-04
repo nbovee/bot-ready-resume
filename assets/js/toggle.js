@@ -1,29 +1,79 @@
-<script>
-    var body = document.body;
-	var switcher = document.getElementsByClassName('js-toggle')[0];
+const switcher = document.querySelector('.switch input[type="checkbox"]');
 
-	//Click on dark mode icon. Add dark mode classes and wrappers. Store user preference through sessions
-	switcher.addEventListener("click", function() {
-        this.classList.toggle('js-toggle--checked');
-        this.classList.add('js-toggle--focus');
-		//If dark mode is selected
-		if (this.classList.contains('js-toggle--checked')) {
-			body.classList.add('dark-mode');
-			//Save user preference in storage
-			localStorage.setItem('darkMode', 'true');
-		} else {
-			body.classList.remove('dark-mode');
-			setTimeout(function() {
-				localStorage.removeItem('darkMode');
-			}, 100);
-		}
-	})
+function updateFavicon(isDarkMode) {
+    const lightFavicon = document.getElementById('favicon-light');
+    const darkFavicon = document.getElementById('favicon-dark');
+    const mainFavicon = document.querySelector('link[rel="icon"][type="image/svg+xml"]:not([id])');
 
-	//Check Storage. Keep user preference on page reload
-	if (localStorage.getItem('darkMode')) {
-		//body.classList.add('dark-mode');
-        switcher.classList.add('js-toggle--checked');
-        body.classList.add('dark-mode');
-	}
+    if (lightFavicon && darkFavicon && mainFavicon) {
+        const sourceIcon = isDarkMode ? darkFavicon : lightFavicon;
+        mainFavicon.href = sourceIcon.href;
+    }
+}
 
-</script>
+function getSystemPreference() {
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+}
+
+function applyTheme(mode) {
+    let isDark;
+
+    switch(mode) {
+        case 'light':
+            document.documentElement.setAttribute('data-theme', 'light');
+            document.documentElement.style.colorScheme = 'light only';
+            isDark = false;
+            break;
+        case 'dark':
+            document.documentElement.setAttribute('data-theme', 'dark');
+            document.documentElement.style.colorScheme = 'dark only';
+            isDark = true;
+            break;
+        default:
+            isDark = true;
+    }
+
+    if (switcher) {
+        switcher.checked = isDark;
+    }
+
+    updateFavicon(isDark);
+}
+
+// Simple toggle: light ↔ dark
+if (switcher) {
+    switcher.addEventListener('change', function() {
+        const nextMode = this.checked ? 'dark' : 'light';
+
+        localStorage.setItem('themeMode', nextMode);
+        applyTheme(nextMode);
+    });
+}
+
+// Handle print events to temporarily force light theme
+let preIntentTheme = null;
+
+window.addEventListener('beforeprint', function() {
+    preIntentTheme = document.documentElement.getAttribute('data-theme');
+    document.documentElement.setAttribute('data-theme', 'light');
+});
+
+window.addEventListener('afterprint', function() {
+    if (preIntentTheme) {
+        document.documentElement.setAttribute('data-theme', preIntentTheme);
+        preIntentTheme = null;
+    }
+});
+
+function getInitialTheme() {
+    const savedMode = localStorage.getItem('themeMode');
+    if (savedMode) {
+        return savedMode;
+    }
+
+    return getSystemPreference() ? 'dark' : (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+}
+
+const initialMode = getInitialTheme();
+applyTheme(initialMode);
+

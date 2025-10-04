@@ -15,9 +15,17 @@
 {{- end }}
 {{- if .Site.Params.open }}
 <title>{{ .Site.Title | safeHTML }}</title>
+<link rel="alternate" type="text/markdown" href="/index.md">
 {{- else }}
 <title>Online Resume</title>
 {{- end }}
+<!-- Adaptive Favicon -->
+{{- $lightFavicon := resources.Get "images/favicon-light.svg.tpl" | resources.ExecuteAsTemplate "favicon-light.svg" . | fingerprint }}
+{{- $darkFavicon := resources.Get "images/favicon-dark.svg.tpl" | resources.ExecuteAsTemplate "favicon-dark.svg" . | fingerprint }}
+<!-- Swap of icons handled by JS -->
+<link id="favicon-light" href="{{ $lightFavicon.RelPermalink }}" data-favicon="light">
+<link id="favicon-dark" href="{{ $darkFavicon.RelPermalink }}" data-favicon="dark">
+<link rel="icon" href="{{ $lightFavicon.RelPermalink }}" type="image/svg+xml">
 {{- $themeScss := "sass/main.scss" }}
 {{- $options := (dict "targetPath" "assets/css/main.css" "outputStyle" "compressed") }}
 {{- $themeCss := resources.Get $themeScss | resources.ExecuteAsTemplate $themeScss . | toCSS $options | minify | fingerprint }}

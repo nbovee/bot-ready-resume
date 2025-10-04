@@ -1,10 +1,14 @@
 <html lang='{{ .data.meta.language | default "en" }}'
-      dir='{{ .data.meta.direction | default "ltr" }}'>
-    <head>{{- partial "head.html" . -}}</head>
+      dir='{{ .data.meta.direction | default "ltr" }}'
+      data-theme="dark">
+    <head>
+        {{- partial "llm.html" . }}
+        {{- partial "head.html" . }}
+    </head>
     <body>
         {{- if .Site.Params.open }}
-    {{/*  {{- partial "toggle.html" . }}  */}}
     <div class="wrapper">
+        {{- partial "toggle.html" . }}
         {{- partial "basic.html" . }}
         {{- partial "profile.html" . }}
         {{- partial "experience.html" . }}
@@ -20,7 +24,6 @@
         {{- partial "evaluation.html" . }}
         {{- partial "reference.html" . }}
         {{- partial "interest.html" . }}
-        {{- partial "footer.html" . }}
     </div>
     {{- if .Site.Params.siteCredit }}
     {{- partial "credit.html" . }}
@@ -28,6 +31,6 @@
     {{- else }}
     {{- partial "close.html" . }}
     {{- end }}
-{{/*  {{- partial "scripts.html" .}}  */}}
+{{- partial "scripts.html" .}}
 </body>
 </html>

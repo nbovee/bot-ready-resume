@@ -1,3 +1,33 @@
+:root {
+  color-scheme: light dark;
+}
+
+[data-theme="light"] {
+  --color-bg: #{$background-color};
+  --color-body: #{$resume-body-color};
+  --color-text: #{$text-color};
+  --color-theme: #{$theme-color};
+  --color-separator: #{$separator-color};
+  --color-shadow: #{$shadow};
+  --color-section-bg: #{$section-background-color};
+  --color-theme-border: #{$border-theme};
+  --color-separator-border: #{$border-separator};
+  --color-shadow: #{$shadow};
+}
+
+[data-theme="dark"] {
+  --color-bg: #{$background-color-dark};
+  --color-body: #{$resume-body-color-dark};
+  --color-text: #{$text-color-dark};
+  --color-theme: #{$theme-color-dark};
+  --color-separator: #{$separator-color-dark};
+  --color-shadow: #{$shadow-dark};
+  --color-section-bg: #{$section-background-color-dark};
+  --color-theme-border: #{$theme-color-dark};
+  --color-separator-border: #{$border-separator-dark};
+  --color-shadow: #{$shadow-dark};
+}
+
 html {
   scroll-behavior: smooth;
   touch-action: manipulation;
@@ -6,8 +36,8 @@ html {
 body {
   font: $base-font-weight #{$base-font-size}/#{$base-line-height}
     $base-font-family;
-  color: $text-color;
-  background: $background-color;
+  color: var(--color-text);
+  background: var(--color-bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -25,7 +55,7 @@ h6 {
 }
 
 a {
-  color: $text-color;
+  color: var(--color-text);
   text-decoration: none;
 
   &:hover,
@@ -55,7 +85,7 @@ ul {
 b,
 strong {
   font-weight: $base-font-weight * 1.5;
-  color: $theme-color;
+  color: var(--color-theme);
 }
 
 small {
@@ -108,7 +138,7 @@ small {
 .language .item:not(:last-child)::after,
 .interest .item:not(:last-child)::after {
   content: $body-delimiter;
-  color: $separator-color;
+  color: var(--color-separator);
   margin: 0 0.5em;
 }
 
@@ -154,45 +184,46 @@ small {
 .date,
 .location,
 .institution {
-  color: $text-color;
+  color: var(--color-text);
 }
 
 .skill-level {
-  color: $theme-color;
+  color: var(--color-theme);
 }
 
 // Consolidated border patterns
 .item:not(:nth-last-child(1)),
 .group:not(:last-child) {
-  border-bottom: 1px dashed rgba($theme-color, 0.25);
+  border-bottom: 1px dashed var(--color-theme-border);
 }
 
 // Special border for name
 .basic .header .name {
-  border-bottom: 4px solid $theme-color;
+  border-bottom: 4px solid var(--color-theme);
 }
 
 // Override for language/interest items
 .language .item,
 .interest .item {
-  border-bottom: none !important;
+  border-bottom: none;
 }
 
 // Override for group borders
 .group:not(:last-child) {
-  border-bottom: 1px dashed rgba($separator-color, 0.25);
+  border-bottom: 1px dashed var(--color-separator-border);
 }
 
 .wrapper {
   display: flex;
   flex-direction: column;
 
-  background: $wrapper-color;
+  background: var(--color-body);
   max-width: $content-width;
   margin: $spacing-unit auto;
   padding: $spacing-unit * 2;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
-    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+  box-shadow: var(--color-shadow) 0px 10px 15px -3px,
+    var(--color-shadow) 0px 4px 6px -2px;
+
 
   section {
     break-inside: avoid; /* Standard property */
@@ -200,19 +231,21 @@ small {
       margin-bottom: $spacing-unit / 4;
     }
     .section-icon {
-      color: $theme-color;
+      color: var(--color-theme);
     }
     .section-title {
       display: flex;
       align-items: baseline;
 
       font-size: $large-font-size;
-      color: $text-color;
+      color: var(--color-text);
+      background-color: var(--color-section-bg);
       margin-top: $spacing-unit / 6;
       margin-bottom: $spacing-unit / 6;
       padding: $spacing-unit / 10 0;
-      border-bottom-color: rgba($theme-color, 0.25);
+      border-bottom-color: var(--color-theme-border);
       border-bottom-width: 1px;
+
 
       h2 {
         font-size: inherit;
@@ -245,7 +278,7 @@ small {
     .construction,
     .avatar {
       max-height: 100px;
-      border: 0px solid $wrapper-color;
+      border: 0px solid var(--color-body);
     }
 
     .title-desc-container {
@@ -278,10 +311,10 @@ small {
   }
 
   .footer {
-    margin: 0 !important;
+    margin: 0;
     .section-content {
       .llm {
-        color: $wrapper-color;
+        color: var(--color-body);
         opacity: 0;
         font-size: 1%;
       }
@@ -294,7 +327,6 @@ small {
     .section-content {
       .items {
         justify-content: space-between;
-
         .item {
           flex-basis: 45%;
         }
@@ -336,11 +368,12 @@ small {
 
 .credit {
   margin-bottom: $spacing-unit;
-  color: $theme-color;
   width: 100%;
   justify-content: center;
   font-size: $small-font-size;
-
+  a {
+    color: var(--color-theme);    
+  }
   i {
     color: $heart-color;
     padding: 0 $spacing-unit / 4;
@@ -358,3 +391,6 @@ small {
     margin: $spacing-unit 0;
   }
 }
+
+/* Dark theme styles - most styling now handled by CSS custom properties above */
+

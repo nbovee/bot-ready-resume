@@ -1,42 +1,68 @@
 @charset "utf-8";
 
 // Define defaults for each variable.
-// $base-font-family: -apple-system, BlinkMacSystemFont, "Noto Sans", "Montserrat", "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
-// $base-font-size:   16px !default;
-
 $base-font-family: -apple-system, BlinkMacSystemFont, "Noto Sans", "Montserrat", "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 $base-font-size:   1rem !default;
 $base-font-weight: 300 !default;
 
 $small-font-size:  $base-font-size * 0.875 !default;
-$middle-font-size: $base-font-size * 1 !default;
-$large-font-size:  $base-font-size * 1.2  !default;
-$huge-font-size:   $base-font-size * 2.25  !default;
+$middle-font-size: $base-font-size * 1.000 !default;
+$large-font-size:  $base-font-size * 1.200 !default;
+$huge-font-size:   $base-font-size * 2.250 !default;
 
-$base-line-height: 1.35 !default;
-
-$spacing-unit:     1.2rem !default;
+$base-line-height: $base-font-size + 0.35 !default;
+$spacing-unit:     $base-font-size + 0.20 !default;
 
 // Width of the content area
 $content-width:    62rem !default;
 
-// Default color settings
+// Default color settings - all colors calculated in colors.html partial
+// ${var}-dark indicates the theme it is for, not the actual color content
+{{- $colors := partial "colors.html" $ }}
+$theme-color:                   {{ $colors.themeColor }};
+$theme-color-dark:              {{ $colors.themeColorDark }};
 
-$theme-color:              {{ $.Site.Params.themeColor | default "#1DA1F2" }};
-$theme-second-color:       {{ $.Site.Params.themeColor | default "#1DA1F2" }};
-$text-color:                #0E0E0E;
-$separator-color:           #4f4f4f;
-$background-color:          #e6e6e6;
-$section-background-color:  #f5f5f5;
-$wrapper-color:             #ffffff;
-$heart-color:               #fb866a;
+// Cross mapped so that resume is always brighter than the background
+$resume-body-color:             {{ $colors.resumeBodyColor }};
+$background-color-dark:         {{ $colors.backgroundColorDark }};
+$background-color:              {{ $colors.backgroundColor }};
+$resume-body-color-dark:        {{ $colors.resumeBodyColorDark }};
+
+// Text colors are based from body colors
+$text-color:                    {{ $colors.textColor }};
+$text-color-dark:               {{ $colors.textColorDark }};
+$separator-color:               {{ $colors.separatorColor }};
+$separator-color-dark:          {{ $colors.separatorColorDark }};
+
+$section-background-color:      {{ $colors.sectionBackgroundColor }};
+$section-background-color-dark: {{ $colors.sectionBackgroundColorDark }};
+
+$heart-color:                   {{ $colors.heartColor }};
+
+// Toggle-switch
+$toggle-moon-color:             {{ $colors.toggleMoonColor }};
+$toggle-sun-color:              {{ $colors.toggleSunColor }};
+$toggle-height:                 2rem;
+$toggle-switch-size:             80%;
+$toggle-radius:                 0rem;
+
+// Shadow and transparency colors
+$shadow:                        {{ $colors.shadow }};
+$shadow-dark:                   {{ $colors.shadowDark }};
+$border-theme:                  {{ $colors.borderTheme }};
+$border-separator:              {{ $colors.borderSeparator }};
+$border-separator-dark:         {{ $colors.borderSeparatorDark }};
+
+// Transition time
+$transition-speed: 0.10s; // The time a component (our toggler) takes to complete its action. 
 
 // Default delimiter
 $contact-delimiter: "{{ $.Site.Params.contactDelimiter | default "·" }}";
-$body-delimiter: "{{ $.Site.Params.bodyDelimiter | default "·" }}";
+$body-delimiter:    "{{ $.Site.Params.bodyDelimiter | default "·" }}";
 @import
   "sanitize",
   "base",
+  "toggle",
   "responsive",
   "print",
   "fonts"
@@ -44,12 +70,12 @@ $body-delimiter: "{{ $.Site.Params.bodyDelimiter | default "·" }}";
 
 section {
   .section-title {
-    text-transform: {{ $.Site.Params.sectionTitle | default "uppercase" }};
-    justify-content: {{ $.Site.Params.sectionAlign | default "start" }};
+    text-transform:      {{ $.Site.Params.sectionTitle | default "uppercase" }};
+    justify-content:     {{ $.Site.Params.sectionAlign | default "start" }};
     border-bottom-style: {{ $.Site.Params.sectionLine | default "dashed" }};
 
     {{ if $.Site.Params.sectionBackground }}
-    background-color: rgba($section-background-color, 1);
+    background-color: $section-background-color;
     {{ end }}
 
     {{ if ne $.Site.Params.sectionIcon true }}
@@ -76,7 +102,7 @@ section {
   {{ end }}
 }
 
-// Extend Font Awesome fixed width class
+// Extend Font Awesome fixed width class for fat icons
 .fa-fw {
   width: 1.5em !important;
 }

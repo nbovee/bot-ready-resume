@@ -1,0 +1,31 @@
+{{- $contact := .data.contact }}
+{{ if $contact }}
+<div class="contact"
+     {{ if ne .data.basic.avatar.show true }}
+     style="justify-content: center"
+     {{ end }}>
+    {{- range $contact }}
+    {{- if .value }}
+    {{- $text := .value }}
+    {{- $link := "" }}
+    {{- if .link }}
+      {{- $link = printf .link .value }}
+    {{- end }}
+    <div class="contact-item" title="{{ .key }}">
+        {{- if .icon }}
+        <i class="{{ .icon }}"></i>
+        {{- end }}
+        {{- if $link }}
+        <a href="{{ $link }}" title="{{ $link }}" target="_blank">{{ $text }}</a>
+        {{- else }}
+          {{- if eq (slicestr $text 0 1) "[" }}
+          {{ $text | markdownify | safeHTML }}
+          {{- else }}
+          <span>{{ $text }}</span>
+          {{- end }}
+        {{- end }}
+    </div>
+    {{- end }}
+    {{- end }}
+</div>
+{{- end }}
