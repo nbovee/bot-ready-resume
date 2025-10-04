@@ -22,7 +22,7 @@
                     {{- if le $i $item.level }}
                     <i class="fa-solid fa-fw  fa-{{ .Params.skillLevelIcon | default "star" }}"></i>
                     {{- else }}
-                    <i class="fa-regular fa-{{ .Params.skillLevelIcon | default "star" }}"></i>
+                    <i class="fa-regular fa-fw fa-{{ .Params.skillLevelIcon | default "star" }}"></i>
                     {{- end }}
                     {{- end }}
                     {{- end }}
