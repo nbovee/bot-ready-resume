@@ -26,15 +26,11 @@
                             {{- end -}}
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="subrow">
-                            {{- if $item.date }}
-                            <div class="date">
-                                <span>{{ $item.date }}</span>
-                            </div>
-                        </div>
-                        {{- end }}
+                    {{- if $item.date }}
+                    <div class="date">
+                        <span>{{ $item.date }}</span>
                     </div>
+                    {{- end }}
                 </div>
                 {{- if $item.description }}
                 <div class="description markdown">{{ $item.description | markdownify | safeHTML }}</div>

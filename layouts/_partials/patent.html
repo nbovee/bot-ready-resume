@@ -9,6 +9,46 @@
         {{- if $patent.description }}
         <div class="description markdown">{{ $patent.description | markdownify | safeHTML }}</div>
         {{- end }}
+        {{- if $patent.items }}
+        <div class="items">
+            {{- range $item := $patent.items }}
+            <div class="item">
+                <div class="row">
+                    <div class="row">
+                        {{- if $item.title -}}
+                        <div class="patent-title subrow">
+                            {{- if $item.link -}}
+                            <a href="{{ $item.link }}" target="_blank">{{ $item.title | safeHTML }}</a>
+                            {{- else -}}
+                            <span>{{ $item.title | safeHTML }}</span>
+                            {{- end -}}
+                        </div>
+                        {{- end -}}
+                    </div>
+                    <div class="row">
+                        {{- if $item.inventors -}}
+                        <div class="inventors subrow">{{ $item.inventors }}</div>
+                        {{- end -}}
+                        {{- if $item.status -}}
+                        <div class="status subrow">{{ $item.status }}</div>
+                        {{- end -}}
+                    </div>
+                </div>
+                <div class="row">
+                    {{- if $item.number -}}
+                    <div class="patent-number">{{ $item.number }}</div>
+                    {{- end -}}
+                    {{- if $item.date -}}
+                    <div class="date">{{ $item.date }}</div>
+                    {{- end -}}
+                </div>
+                {{- if $item.description }}
+                <div class="description markdown">{{ $item.description | markdownify | safeHTML }}</div>
+                {{- end }}
+            </div>
+            {{- end }}
+        </div>
+        {{- end }}
     </div>
 </section>
 {{- end }}

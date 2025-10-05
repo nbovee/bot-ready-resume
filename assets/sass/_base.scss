@@ -92,7 +92,6 @@ small {
   font-weight: $base-font-weight * 1;
 }
 
-// Consolidated emphasis elements
 .role,
 .major,
 .project-name,
@@ -105,49 +104,48 @@ small {
 .issuer,
 .awarder,
 .reference-title,
-.basic .header .name,
-.basic .header .title,
-.basic .header .description,
+.basic .header :is(.name,
+.title,
+.description,),
 .skill .section-content .groups .group-name {
   font-weight: $base-font-weight * 1.5;
 }
 
-// Consolidated icon spacing
-.section-title i::after,
-.location i::after,
-.degree i::after,
-.project-name i::after,
-.contact-item i::after,
+:is(
+  .section-title,
+  .location,
+  .degree,
+  .project-name,
+  .contact-item
+) i::after,
 .skill-level i:not(:last-child)::after,
-.skill-name::after,
+.skill-name::after {
+  content: "\00a0";
+  white-space: nowrap;
+}
+
 .language .item small::before {
   content: "\00a0";
-  font-family: initial;
+  white-space: nowrap;
 }
 
-// Double spacing for skill names
-.skill-name::after {
-  content: "\00a0\00a0";
-}
-
-// Consolidated delimiter patterns
-.subrow:not(:last-child)::after,
-.title-desc-container .item:not(:last-child)::after,
-.contact-item:not(:last-child)::after,
-.group-item span:not(:last-child)::after,
-.language .item:not(:last-child)::after,
-.interest .item:not(:last-child)::after {
+:is(
+  .subrow, 
+  .title-desc-container .item,
+  .contact-item,
+  .group-item span,
+  .language .item,
+  .interest .item
+  ):not(:last-child)::after {
   content: $body-delimiter;
   color: var(--color-separator);
   margin: 0 0.5em;
 }
 
-// Special delimiter for contact items
 .contact-item:not(:last-child)::after {
   content: $contact-delimiter;
 }
 
-// Consolidated flex baseline elements
 .location,
 .contact-item,
 .credit {
@@ -157,26 +155,25 @@ small {
 
 // Consolidated flex wrap elements
 .contact,
-.certificate .section-content .items,
-.award .section-content .items,
-.reference .section-content .items,
-.skill .section-content .items,
-.language .section-content .items,
-.interest .section-content .items {
+:is(
+  .certificate,
+  .award,
+  .reference,
+  .skill,
+  .language,
+  .interest
+) .section-content .items {
   display: flex;
   flex-wrap: wrap;
 }
 
 // Consolidated spacing patterns
-.section-content .description,
-.section-content .items .item,
-.section-content .groups {
+.section-content :is(.description, .items .item, .groups) {
   margin-bottom: $spacing-unit / 4;
 }
 
 // Consolidated padding patterns
-.section-content .items .item .description,
-.section-content .authors {
+.section-content :is(.items .item .description, .authors) {
   padding-left: 1rem;
 }
 
@@ -192,8 +189,10 @@ small {
 }
 
 // Consolidated border patterns
-.item:not(:nth-last-child(1)),
-.group:not(:last-child) {
+:is(
+  .item,
+  .group
+):not(:last-child) {
   border-bottom: 1px dashed var(--color-theme-border);
 }
 
@@ -206,6 +205,25 @@ small {
 .language .item,
 .interest .item {
   border-bottom: none;
+}
+
+// Skill items: remove border for last row (3 items per row at 30% flex-basis)
+.skill .items {
+  // If we have 3n items total, remove border from last 3
+  .item:nth-last-child(-n+3):nth-last-child(3n),
+  .item:nth-last-child(-n+3):nth-last-child(3n-1),
+  .item:nth-last-child(-n+3):nth-last-child(3n-2) {
+    border-bottom: none;
+  }
+  // If we have 3n+1 items total, remove border from last 1
+  .item:last-child:nth-child(3n+1) {
+    border-bottom: none;
+  }
+  // If we have 3n+2 items total, remove border from last 2
+  .item:nth-last-child(-n+2):nth-last-child(3n+1),
+  .item:nth-last-child(-n+2):nth-last-child(3n+2) {
+    border-bottom: none;
+  }
 }
 
 // Override for group borders
@@ -312,13 +330,6 @@ small {
 
   .footer {
     margin: 0;
-    .section-content {
-      .llm {
-        color: var(--color-body);
-        opacity: 0;
-        font-size: 1%;
-      }
-    }
   }
 
   .certificate,
@@ -337,10 +348,11 @@ small {
   .skill {
     .section-content {
       .items {
+          justify-content: center;
         .item {
           display: inline-flex;
           align-items: center;
-          justify-content: end;
+          justify-content: center;
           flex-basis: 30%;
 
           .skill-level {
@@ -391,6 +403,3 @@ small {
     margin: $spacing-unit 0;
   }
 }
-
-/* Dark theme styles - most styling now handled by CSS custom properties above */
-
