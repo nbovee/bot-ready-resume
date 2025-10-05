@@ -29,10 +29,11 @@ params:
   llmHeader: true           # add a comment to guide llms
   openGraph:
     enable: true                # enable open graph meta tags
-    image: images/profile.png  # path or link to the open graph image
+    image: images/profile.png   # path or link to the open graph image
   # Style
   dateFormat: 2006-01-02    # date format
-  themeColor: "#1DA1F2"     # your favorite theme color (supports hex or OKLCH format)
+  themeColor: "oklch(0.6412 0.185 140.82)"
+  themeColorDark: "#003ec2" # if unset, will be calculated from themeColor
   contactDelimiter: "·"     # contact delimiter, '·', '/' or '|'
   bodyDelimiter: "·"        # body delimiter, '·', '/' or '|'
   sectionIcon: true         # section title icon, 'true' or 'false'
@@ -40,7 +41,7 @@ params:
   sectionAlign: start       # section title align, 'start', 'end' or 'center'
   sectionLine: dashed       # section title line, 'solid', 'dashed' or 'none'
   sectionBackground: true   # section title background, 'true' or 'false'
-  skillLevelIcon: star # skill rate icon, 'heart', 'star', 'circle' or 'lightbulb'
+  skillLevelIcon: star      # skill rate icon, 'heart', 'star', 'circle' or 'lightbulb'
   linkIcon: true            # show link icon, 'true' or 'false'
   siteCredit: true          # show site credit, 'true' or 'false'
   # Analytics

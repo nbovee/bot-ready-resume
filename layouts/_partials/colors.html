@@ -14,7 +14,8 @@
 {{- $backgroundColorDark := printf "oklch(from %s calc(1 - l) c h)" $resumeBodyColor }}
 {{- $resumeBodyColorDark := printf "oklch(from %s calc(1.05 - l) c h)" $backgroundColor }}
 {{- $textColorDark := printf "oklch(from %s calc(1.05 - l) c h)" $resumeBodyColorDark }}
-{{- $themeColorDark := printf "oklch(from %s calc(1.1 - l) c h)" $themeColor }}
+{{- $defaultThemeColorDark := printf "oklch(from %s calc(1.1 - l) c h)" $themeColor }}
+{{- $themeColorDark := .Site.Params.themeColorDark | default $defaultThemeColorDark }}
 {{- $separatorColorDark := printf "oklch(from %s calc(1 - l) c h)" $separatorColor }}
 {{- $sectionBackgroundColorDark := printf "oklch(from %s calc(1.05 - l) c h)" $sectionBackgroundColor }}
 {{- $borderSeparatorDark := printf "oklch(from %s / 0.4)" $separatorColorDark }}
