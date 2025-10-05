@@ -30,6 +30,14 @@
     break-inside: avoid !important;
   }
 
+  .section-title {
+    break-after: avoid !important;
+  }
+
+  .item {
+    break-inside: avoid !important;
+  }
+
   .wrapper {
     max-width: 100% !important;
     margin: 0.5rem  !important;

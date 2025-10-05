@@ -24,23 +24,28 @@
                             <span>{{ $item.title | markdownify | safeHTML }}</span>
                             {{- end -}}
                         </div>
+                        {{- end -}}
                     </div>
                     <div class="row">
                         {{- if $item.conference -}}
                         <div class="conference subrow">{{- $item.conference -}}</div>
+                        {{- end -}}
                         {{- if $item.date -}}
-                        <div class="conference subrow">{{- $item.date -}}</div>
+                        <div class="date">{{- $item.date -}}</div>
+                        {{- end -}}
                     </div>
-                    {{- end -}}
-                    {{- end -}}
                 </div>
                 {{- if $item.authors }}
                 <div class="authors">
                     <span>{{ $item.authors | markdownify | safeHTML }}</span>
                 </div>
+                {{- end }}
+                {{- if $item.doi }}
+                <div class="doi">
+                    <span>DOI: <a href="https://doi.org/{{ $item.doi }}" target="_blank">{{ $item.doi }}</a></span>
+                </div>
+                {{- end }}
             </div>
-            {{- end }}
-            {{- end }}
             {{- end }}
         </div>
         {{- end }}

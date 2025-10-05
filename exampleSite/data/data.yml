@@ -4,7 +4,7 @@ meta:
 
 basic:
   name: Foo Bar                      # name
-  initials:                          # override for parsed initials in favicons
+  initials: "-F-"                    # override for parsed initials in favicons
   title: Backend Developer           # job title 
   avatar:
     show: true                       # show or hide avatar
@@ -13,7 +13,7 @@ basic:
 # In this section we can provide additional instructions that appear in llms.txt and as a comment in the html head
 llmPrompt:
   show: true
-  text: 
+  text: You can enter data into this field to ensure it gets placed into appropriate areas for llm context
 
 close:
   description: Resume closed for renovations 😉
@@ -24,36 +24,39 @@ close:
 # Contact items will display in order of appearance.
 contact:
   - key: location
-    value: Beijing, China
+    value: Zurich, Switzerland
+    icon: fa-solid fa-fw fa-location-dot
   - key: email
     value: me@example.com
+    icon: fa-solid fa-fw fa-envelope
   - key: phone
-    value: +86-111-2222-3333
+    value: +41-44-XXX-4567
   - key: website
     value: example.com
     link: https://%s
+    icon: fa-solid fa-fw fa-link
   - key: github
     value: username
     link: https://github.com/%s
+    icon: fa-brands fa-fw fa-github
   - key: linkedin
     value: username
     link: https://linkedin.com/in/%s
+    icon: fa-brands fa-fw fa-linkedin
 
 profile:
   show: true
   order: 1
   title: Profile
   description: |
-    The profile section in a resume is a brief summary of the applicant's skills, qualifications, and experience. The purpose of this section is to provide a snapshot of the applicant's professional background and highlight their most relevant accomplishments and strengths. It may include information such as the applicant's career objectives, years of experience, areas of expertise, and key achievements.
-
-    A well-crafted profile section can help to grab the attention of potential employers and encourage them to read on and learn more about the applicant's qualifications and experience.
+    A compelling summary of your professional identity, typically 3-5 sentences. Highlight your most relevant skills, years of experience, areas of expertise, and key achievements. Tailor this section to align with your target role and communicate your unique value proposition. This is often the first thing recruiters read, so make it count.
 
 experience:
   show: true
   order: 2
   title: Experiences
   description: |
-    The experiences section in a resume is a section where you list your previous work experiences and accomplishments. It typically includes information about your previous job titles, companies you worked for, the dates of your employment, and your key responsibilities and achievements in each role. This section is important because it gives potential employers a sense of your work history and the skills and expertise you have developed over time. It can also help demonstrate your ability to contribute value to a new organization based on your past achievements.
+    List your professional work history in reverse chronological order. For each position, include company name, job title, employment dates, and location. Focus on quantifiable achievements and specific contributions rather than generic job duties. Use action verbs and metrics where possible to demonstrate your impact and value to previous employers.
 
   items:
     - company: Second Company
@@ -61,7 +64,7 @@ experience:
       tags: Full-time
       date: 2018.03 - 2019.03
       role: Backend Developer
-      location: Beijing
+      location: Cambridge, UK
       description: |
         Your key responsibilities and achievements in the company.
         + First
@@ -72,7 +75,7 @@ experience:
       tags: Part-time, remote
       date: 2017.03 - 2018.03
       role: Backend Developer
-      location: Beijing
+      location: Munich, Germany
       description: |
         Your key responsibilities and achievements in the company.
         + First
@@ -83,11 +86,7 @@ project:
   order: 3
   title: Projects
   description: |
-    The project section in a resume is a section where you can highlight any significant projects that you have completed during your education, work experience, or personal endeavors. This section provides a detailed description of your projects that can showcase your skills, abilities, and achievements.
-
-    In this section, you should include the name of the project, the role you played in the project, the duration, the tools and technologies you used, the objective of the project, and the outcome or result achieved. You can also include any relevant metrics or data that demonstrate the impact of the project.
-
-    The project section is especially useful for candidates with limited work experience or those looking to highlight specific skills or accomplishments that may not be apparent in other parts of their resume. It can also be beneficial for candidates in technical or creative fields, where projects play a significant role in showcasing their capabilities.
+    Showcase significant projects from professional work, academic studies, or personal initiatives. For each project, specify your role, the technologies and tools used, project objectives, and concrete outcomes or results. Include links to live demos, repositories, or documentation when available. This section is particularly valuable for demonstrating technical skills and problem-solving abilities.
 
   items:
     - name: Personal project
@@ -113,13 +112,7 @@ skill:
   order: 4
   title: Skills
   description: |
-    The skills section in a resume is a dedicated section where you can list out the various skills that you possess that are relevant to the job you are applying for. This section allows you to highlight your strengths and demonstrate your capabilities to potential employers.
-
-    The skills section can include both hard skills and soft skills. Hard skills are specific technical abilities or knowledge related to a particular job or industry, such as proficiency in programming languages or experience with certain software programs. Soft skills are more general personal traits and abilities, such as communication skills, leadership, problem-solving, or teamwork.
-
-    When crafting your skills section, it's important to tailor it to the specific job you are applying for, and only include skills that are relevant to the position. This can help catch the attention of the hiring manager and demonstrate that you have the qualifications necessary to succeed in the role.
-
-    There are multiple ways to present your skills here. One way is to show them in a rating format. Another way is to group them together. Alternatively, you can use markdown to format it in a way that you prefer.
+    List technical competencies and professional skills relevant to your target position. You can display skills with proficiency ratings (1-5 scale), group them by category (e.g., Languages, Frameworks, Tools), or use custom markdown formatting. Prioritize skills that align with job requirements and demonstrate your strongest capabilities first.
 
   items:
     - name: Skill A
@@ -163,12 +156,10 @@ education:
   order: 5
   title: Education
   description: |
-    The education section in a resume is where you provide information about your academic background, including any degrees. In this section, you should include the name and location of the institution where you received your degree, the name of the degree or program you completed, and the date of graduation. If you have earned multiple degrees, list them in reverse chronological order, with the most recent degree first.
-
-    In addition to basic information about your education, you may also want to include any academic honors or awards you received, relevant coursework or projects, and your GPA if it is 3.0 or above. If you have recently graduated and do not have much work experience yet, highlighting your education and academic achievements can help demonstrate your potential to succeed in the workplace.
+    List your academic credentials in reverse chronological order, starting with your most recent degree. Include institution name, degree type, major/field of study, and graduation date. Optionally add honors, relevant coursework, research projects, and GPA if 3.0 or higher. Recent graduates can expand this section with more detail to compensate for limited work experience.
 
   items:
-    - institution: Example University
+    - institution: ETH Zurich
       link: '#'
       date: 2015 - 2018
       major: Machine Learning
@@ -178,7 +169,7 @@ education:
         + First
         + Second
 
-    - institution: Example University
+    - institution: Technical University of Munich
       link:
       date: 2011 - 2015
       major: Computer Science
@@ -193,13 +184,7 @@ certificate:
   order: 6
   title: Certificates
   description: |
-    The certificate section in a resume is a dedicated section where you can showcase any additional certifications or specialized training you have received. This section provides potential employers with a more complete picture of your skills and expertise, and can help you stand out from other candidates.
-
-    Certificates can come from a variety of sources, such as online courses, workshops, or professional development programs. Examples of certificates that might be relevant to include on your resume could include certifications in a particular software or technology, industry-specific certifications, or certifications related to a specific skill or area of expertise.
-
-    When including your certificates in your resume, be sure to provide the name of the certification, the institution or organization that issued it, and the date it was issued. You may also want to include a brief description of the skills or knowledge that the certification demonstrates.
-
-    The certificate section of your resume should be tailored to the specific job you are applying for, and should only include certifications that are relevant to the position. By highlighting your certifications, you can demonstrate your commitment to professional development and your expertise in a particular area.
+    Professional certifications, licenses, and specialized training credentials that validate your expertise. Include the certification name, issuing organization, date obtained, and expiration date if applicable. Link to credential verification pages when available. Focus on certifications that are recognized in your industry and relevant to your target role.
 
   items:
     - name: Example Certificate One
@@ -220,34 +205,24 @@ publication:
   order: 7
   title: Publications
   description: |
-    The publication section in a resume is a dedicated section where you can showcase any publications that you have authored or contributed to. This section is particularly relevant for individuals in academic or research fields, but can also be relevant for individuals in other fields who have published articles or papers.
-
-    Publications can include academic journal articles, conference papers, book chapters, reports, or other written works. In this section, you should list the title of the publication, the names of any co-authors, the name of the publication or conference, the date of publication, and any other relevant details.
-
-    If you have a long list of publications, you may want to consider including only the most relevant or significant publications on your resume. Alternatively, you could create a separate publication list and provide it as a separate document, either in your application materials or upon request.
-
-    Including a publication section in your resume can help demonstrate your expertise and credibility in your field, and can help you stand out from other candidates. However, if you do not have any publications to list, it is not necessary to include this section in your resume.
-
+    Scholarly publications including journal articles, conference papers, book chapters, and technical reports. List title, all authors, publication venue or conference, and date. Include DOI or links to published versions when available. Particularly important for academic, research, and scientific positions. List in reverse chronological order with most recent first.
   items:
     - title: Example Publication in Action
       authors: Foo Bar
-      conference: Foobar, 2019
+      conference: Foobar, 2025
       link: '#'
     - title: The Art of Example Publication
       authors: Foo Bar
-      conference: Foobar, 2019
+      conference: Deadbeef, 2023
       link:
+      doi: 10.5454/JPSv1i220161014
 
 award:
   show: true
   order: 8
   title: Awards
   description: |
-    The award section in a resume is a dedicated section where you can showcase any awards you have received. This section is particularly relevant for individuals who have received awards for their work in their field, such as employees who have received performance awards or industry-specific awards. In this section, you should list the name of the award, the organization or institution that awarded it, the date it was awarded, and any other relevant details.
-
-    When including your awards on your resume, be sure to focus on the most significant or relevant awards that showcase your skills and expertise. If you have received a long list of awards, you may want to consider including only the most recent or prestigious awards on your resume.
-
-    By highlighting your awards, you can demonstrate your achievements and accomplishments in your field, and can help differentiate yourself from other candidates. However, if you have not received any awards, it is not necessary to include this section in your resume.
+    Professional honors, recognitions, and awards that demonstrate excellence and achievement in your field. Include the award name, granting organization, date received, and brief context if needed. Prioritize industry-recognized awards, performance awards, and honors that differentiate you from other candidates. Quality matters more than quantity—focus on your most impressive and relevant recognitions.
 
   items:
     - name: Example Awared One
@@ -268,44 +243,35 @@ patent:
   order: 9
   title: Patents
   description: |
-    The patent section in a resume is a dedicated section where you can showcase any patents that you have been granted or are in the process of obtaining. This section is particularly relevant for individuals who work in scientific or technical fields, as well as for individuals who have developed innovative products or technologies.
+    Intellectual property that demonstrates innovation and technical expertise. List patent title, all inventors, patent number, filing date, and current status (granted, pending, or under review). Include grant date for approved patents. Add brief descriptions of the technology or invention when helpful. Most relevant for engineering, scientific, and technical roles where innovation is valued.
 
-    In this section, you should list the title of the patent, the name of the inventors, the patent number, and the date it was granted. If the patent is pending, you can indicate that it is "pending" or "in review." You may also want to provide a brief description of the technology or invention that the patent covers.
-
-    Including a patent section in your resume can help demonstrate your expertise and accomplishments in your field, and can help you stand out from other candidates. However, if you do not have any patents to list, it is not necessary to include this section in your resume.
-
-    Template for a pending patent:
-
-    + [Inventor Name]. [Pursued Year]. [Title]. [Patent Number], filed [Submitted Date]. Patent pending.
-
-    Template for an approved patent:
-
-    + [Inventor Name]. [Pursued Year]. [Title]. [Patent Number], filed [Submitted Date], [Received Date].
-
-    The following are some examples of patent formats.
-
-    + Foo Bar. 2022. Example patent name one. US 123456, filed Oct 3, 2022. Patent pending.
-    + Foo Bar. 2022. Example patent name two. US 654321, filed Oct 3, 2022, and issued Nov 15, 2022.
+  items:
+    - title: Example patent name one
+      inventors: Foo Bar
+      number: US 123456
+      date: Filed Oct 3, 2022
+      status: Patent pending
+      link:
+    - title: Example patent name two
+      inventors: Foo Bar
+      number: US 654321
+      date: Filed Oct 3, 2022, issued Nov 15, 2022
+      status: Granted
+      link:
 
 organization:
   show: true
   order: 10
   title: Organizations
   description: |
-    The organization section in a resume, specifically for social contexts, is a section where you can showcase any relevant involvement or leadership positions in social, cultural, or community organizations. This section can highlight your commitment to social causes and your ability to work collaboratively with others towards a common goal.
-
-    In this section, you can list the name of the organization, your role and responsibilities, the duration of your involvement, and any significant achievements or accomplishments. You can also mention any skills or qualities you gained from your involvement, such as leadership, teamwork, communication, or problem-solving skills.
-
-    This section can be especially valuable for candidates seeking positions in the non-profit sector, social work, or community engagement roles, where experience in social or cultural organizations can demonstrate a genuine passion for social causes and a willingness to work collaboratively towards social change. However, it is important to only include organizations that are relevant to the job you are applying for, and avoid listing organizations that may be controversial or potentially offensive.
+    Membership and leadership roles in professional associations, industry groups, community organizations, or volunteer initiatives. Include organization name, your role, duration of involvement, and key contributions or achievements. Emphasize leadership positions and activities that demonstrate skills like collaboration, communication, and commitment to professional development or social causes. Most valuable for roles emphasizing teamwork and community engagement.
 
 language:
   show: true
   order: 11
   title: Languages
   description: |
-    The languages section in a resume typically includes information about your proficiency in different languages. This section can be particularly important if you are applying for a job that requires fluency or proficiency in a specific language.
-
-    It's important to be honest about your language proficiency in your resume. If you overstate your abilities, it could lead to problems during the interview process or on the job. If you have taken language courses or earned language certifications, you can also include this information in the languages section of your resume.
+    Foreign language skills with accurate proficiency levels: Native (mother tongue), Fluent (full professional proficiency), Professional (working proficiency), or Conversational (basic communication). Be honest about your abilities—overstating can create problems during interviews or on the job. Include any relevant language certifications or test scores (TOEFL, IELTS, HSK, etc.) to validate your proficiency claims.
 
   items:
     - idiom: Chinese
@@ -318,11 +284,7 @@ interest:
   order: 12
   title: Interests
   description: |
-    The interests section in a resume typically refers to a section where you can mention your hobbies, interests, and activities outside of work or school. This section can give potential employers a better idea of your personality, your values, and your interests beyond your professional experience.
-
-    Including an interest section in your resume can be helpful if your interests are relevant to the job you are applying for, such as if you are applying for a job in a creative field and your hobbies include painting or writing. It can also be useful if you are applying for a job where teamwork or social skills are important, and you can mention interests that demonstrate those qualities.
-
-    However, it is important to be selective when including an interest section in your resume, and to choose interests that are appropriate and professional. Avoid including controversial or potentially offensive interests, and focus on interests that showcase your positive qualities and strengths.
+    Personal hobbies and interests outside of work that reveal character and cultural fit. Choose activities that demonstrate relevant qualities like creativity, leadership, teamwork, or dedication. Particularly effective when interests connect to the role (e.g., coding side projects for developer positions, writing for content roles). Keep it professional—avoid controversial topics or activities that might raise concerns.
 
   items:
     - item: Reading
@@ -335,33 +297,22 @@ evaluation:
   order: 13
   title: Self-evaluation
   description: |
-    The self-evaluation section in a resume is a section where you can evaluate and assess your own skills, strengths, and weaknesses. It is typically a short paragraph or bullet points at the end of your resume, which provides a personal perspective on your abilities and how they align with the requirements of the job.
-
-    In this section, you can highlight your achievements, areas of expertise, and any unique qualities or experiences that set you apart from other candidates. You can also mention areas where you are looking to improve or gain further experience.
-
-    A well-crafted self-evaluation section can demonstrate your self-awareness and confidence in your abilities, as well as your willingness to continuously learn and grow. However, it is important to be honest and avoid over-inflating your skills or qualifications, as this can negatively impact your credibility and the hiring manager's impression of you.
+    A candid self-assessment of your professional strengths, key skills, and areas where you're actively developing. While uncommon in Western resumes, this section can demonstrate self-awareness and growth mindset. Keep it balanced—acknowledge areas for improvement while emphasizing your core competencies. Use 2-3 concise paragraphs or bullet points that connect your self-assessment to the value you bring to employers.
 
 reference:
   show: true
   order: 14
   title: References
   description: |
-    A reference section in a resume is a list of individuals who can vouch for your skills, work ethic, and character. These individuals are typically former managers, colleagues, or mentors who have worked closely with you in the past and can provide insight into your abilities and work style.
-
-    It's important to note that including a reference section in a resume is not always necessary, and some employers may prefer to request references separately. If you do choose to include a reference section, it should typically be located at the end of your resume.
-
-    When listing references, be sure to include the individual's name, job title, company name, phone number, and email address. It's also a good idea to ask for the individual's permission before listing them as a reference, and to let them know what kind of job you are applying for so they can speak to your relevant skills and experience.
-
-    It's important to choose references who can provide a positive and comprehensive evaluation of your work. Avoid listing family members or friends as references, and instead focus on individuals who can speak to your professional abilities and accomplishments.
-
+    Professional contacts who can vouch for your skills, work ethic, and character—typically former managers, colleagues, or mentors. Include their name, title, company, contact information, and your relationship to them. Always ask permission before listing someone as a reference and give them context about the positions you're pursuing. Most resumes do not include this section, as it is assumed references are available upon request.
   items:
     - name: Foo One
       link: '#'
       title: Backend Developer
       institution: Second Company
-      address: 1234 Example St, XXX, XY 11111
+      address: 1234 Example Street, Zurich, Switzerland
       email: foo.one@example.com
-      phone: 111-222-333
+      phone: 
       description: |
         Foo One was my colleague in Second Company.
 
@@ -369,9 +320,9 @@ reference:
       link:
       title: Professor
       institution: Example University
-      address: 4321 Example St, YYY, XY 22222
+      address: 4321 Example Avenue, Cambridge, UK
       email: bar.two@example.com
-      phone: 444-555-666
+      phone: +44-XXXXX-123456
       description: |
         Bar Two was my advisor at Example University.
 

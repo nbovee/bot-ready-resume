@@ -17,15 +17,15 @@
                     <span>{{ $item.name | safeHTML }}</span>
                 </div>
                 <div class="skill-level">
-                    {{- range $i := (seq 5) }}
-                    {{- with $.Site }}
-                    {{- if le $i $item.level }}
-                    <i class="fa-solid fa-fw  fa-{{ .Params.skillLevelIcon | default "star" }}"></i>
-                    {{- else }}
-                    <i class="fa-regular fa-{{ .Params.skillLevelIcon | default "star" }}"></i>
-                    {{- end }}
-                    {{- end }}
-                    {{- end }}
+                    {{- range $i := (seq 5) -}}
+                    {{- with $.Site -}}
+                    {{- if le $i $item.level -}}
+                    <i class="fa-solid fa-fw fa-{{ .Params.skillLevelIcon | default "star" }}"></i>
+                    {{- else -}}
+                    <i class="fa-regular fa-fw fa-{{ .Params.skillLevelIcon | default "star" }}"></i>
+                    {{- end -}}
+                    {{- end -}}
+                    {{- end -}}
                 </div>
             </div>
             {{- end }}
