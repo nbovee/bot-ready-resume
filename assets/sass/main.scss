@@ -92,7 +92,7 @@ section {
         -webkit-font-smoothing: antialiased;
         font: var(--fa-font-solid);
         content: "\f08e";
-        color: $theme-color;
+        color: var(--color-theme);
         font-size: 0.625em;
         margin: 0 0.375em;
         text-decoration: none;
