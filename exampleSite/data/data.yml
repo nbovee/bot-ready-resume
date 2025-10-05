@@ -13,7 +13,7 @@ basic:
 # In this section we can provide additional instructions that appear in llms.txt and as a comment in the html head
 llmPrompt:
   show: true
-  text: 
+  text: You can enter data into this field to ensure it gets placed into appropriate areas for llm context
 
 close:
   description: Resume closed for renovations 😉

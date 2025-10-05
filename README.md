@@ -11,7 +11,7 @@
 
 ## Getting Started
 
-Online-Resume is a Hugo theme designed for creating resumes. It enables you to write your resume in YAML file using Markdown and manage it through Git. It can be displayed on a web page and printed as a PDF file directly from the browser.
+Bot Ready Resume is a Hugo theme designed for creating resumes. It enables you to write your resume in YAML file using Markdown and manage it through Git. It can be displayed on a web page and printed as a PDF file directly from the browser.
 
 You can deploy it on various platforms that support Hugo or static files, such as GitHub Pages, Cloudflare Pages, Vercel, Netlify, your own hosting service, and others.
 
@@ -33,7 +33,7 @@ Features:
 - Create new hugo site and add the theme through git submodule.
   - `hugo new site resume`
   - `cd resume && git init`
-  - `git submodule add git@github.com:nbovee/hugo-theme-online-resume.git themes/online-resume`
+  - `git submodule add git@github.com:nbovee/bot-ready-resume.git themes/online-resume`
 - Copy `hugo.yml` and `data.yml` files.
   - `cp themes/online-resume/exampleSite/hugo.yml .`
   - `cp themes/online-resume/exampleSite/data/data.yml ./data`
@@ -120,7 +120,7 @@ For example, if you already have an English version resume and you want to creat
 - Original Hugo Version: [tarrex/hugo-theme-online-resume][Base Version]
 
 
-[Demo]: https://nick.bov.ee/hugo-theme-online-resume
+[Demo]: https://nick.bov.ee/bot-ready-resume
 
 
 [Base Version]: https://github.com/tarrex/hugo-theme-online-resume
