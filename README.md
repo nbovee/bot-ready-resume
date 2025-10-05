@@ -1,4 +1,4 @@
-<h1 align="center">online-resume</h1>
+<h1 align="center">bot-ready-resume</h1>
 
 
 <h4 align="center">A minimalist Hugo theme for your resume, refreshed for LLM crawlers.</h4>
@@ -7,7 +7,7 @@
 
 ## Live Demo
 
-:point_right: [online-resume][Demo] :point_left:
+:point_right: [bot-ready-resume][Demo] :point_left:
 
 ## Getting Started
 
@@ -26,101 +26,89 @@ Features:
 - LLM-friendly output formats (llms.txt, markdown alt content, steering prompts for llms).
 - Modular & responsive content design.
 
-### Usage
+### Quick Start
 
-#### Quickly
+```bash
+# Create new Hugo site
+hugo new site my-resume
+cd my-resume
 
-- Create new hugo site and add the theme through git submodule.
-  - `hugo new site resume`
-  - `cd resume && git init`
-  - `git submodule add git@github.com:nbovee/bot-ready-resume.git themes/online-resume`
-- Copy `hugo.yml` and `data.yml` files.
-  - `cp themes/online-resume/exampleSite/hugo.yml .`
-  - `cp themes/online-resume/exampleSite/data/data.yml ./data`
-- Edit `data/data.yml` file directly to update your resume.
-- Run `hugo server` and open in browser to preview the resume.
+# Add theme as submodule
+git init
+git submodule add https://github.com/nbovee/bot-ready-resume.git themes/bot-ready-resume
 
-#### Customization
+# Copy configuration files
+mkdir -p data
+cp themes/bot-ready-resume/exampleSite/hugo.yml .
+cp themes/bot-ready-resume/exampleSite/data/data.yml data/
 
-- `data/data.yml`: Edit the resume content.
-  - `basic.initials`: Optional field to override auto-parsed initials used in favicons.
-  - `llmPrompt`: Optional section to provide additional instructions for LLM consumption via llms.txt.
-  - `contact`: For contact icons, use Font Awesome icon classes (e.g., `fa-brands fa-fw fa-github`). Search available icons at [Font Awesome](https://fontawesome.com/icons) using `fa-solid` for regular icons or `fa-brands` for brand logos. Additional custom icons are available in `static/assets/icons/css/all.css`.
-- `static/images/profile.png`: Your profile photo.
-- `static/images/favicon-32x32.png` and `static/favicon.ico`: Optional fallback favicons for older browsers (SVG favicons are auto-generated).
-- `hugo.yml`: Website and theme style settings.
-  - `params.themeColor`: Theme color in OKLCH format (e.g., `"oklch(0.490 0.203 317.8)"`) or hex format (e.g., `"#1DA1F2"`). The remainder of colors are dynamically created in `colors.html`.
-  - `params.llms.txt`: Enable/disable llms.txt output format.
-  - `params.llmHeader`: Add LLM guidance as HTML comment in page head.
-  - `params.bodyDelimiter`: Delimiter for body content items.
-  - `params.siteCredit`: Show/hide site credits.
-  - `outputFormats`: Configure markdown and llmstxt output formats.
+# Start development server
+hugo server
+```
+
+Open your browser to `http://localhost:1313` to see your resume.
+Your will also have `llms.txt` at `http://localhost:1313/llms.txt`, and a markdown output at `http://localhost:1313/index.md`
+
+Edit `data/data.yml` to customize your resume content.
+
+### Customization
+
+#### Essential Files
+
+- **`data/data.yml`** - Your resume content (name, experience, skills, etc.)
+- **`hugo.yml`** - Theme configuration and styling options
+- **`static/images/profile.png`** - Your profile photo
+
+#### Key Configuration Options
+
+**In `data/data.yml`:**
+- `basic.initials` - Override auto-generated favicon initials (optional)
+- `llmPrompt` - Add instructions for LLM consumption via llms.txt (optional)
+- `contact` - Use Font Awesome icon classes (e.g., `fa-brands fa-github`). Browse icons at [fontawesome.com/icons](https://fontawesome.com/icons)
+
+**In `hugo.yml`:**
+- `params.themeColor` - Theme color in OKLCH (e.g., `"oklch(0.490 0.203 317.8)"`) or hex (e.g., `"#1DA1F2"`)
+- `params.llms.txt` - Enable llms.txt output format (`true`/`false`)
+- `params.llmHeader` - Add LLM guidance in HTML head (`true`/`false`)
+- `params.siteCredit` - Show/hide footer credits (`true`/`false`)
+
+See the [exampleSite](exampleSite/) directory for a complete configuration reference.
 
 ## FAQ
 
-#### How to enable LLM-friendly output formats?
+#### How do I change section order or visibility?
 
-The theme can generate additional output formats optimized for LLM consumption:
-- Set `params.llms.txt: true` in `hugo.yml` to enable llms.txt output at `/llms.txt`.
-- Set `params.llmHeader: true` to add LLM guidance as an HTML comment in the page head.
-- Add custom instructions in `data.yml` under `llmPrompt.text`.
-- Configure `outputFormats` and `outputs` in `hugo.yml` to enable markdown and llms.txt formats.
+Each section in `data/data.yml` has an `order` field (lower numbers appear first) and a `show` field (`true`/`false`).
+
+#### How do I enable LLM-friendly output?
+
+The exampleSite includes LLM features by default. The theme generates:
+- `/llms.txt` endpoint for structured LLM consumption
+- Markdown alt content for accessibility
+- Optional HTML comment guidance for LLMs
+
+Enable/disable via `params.llms.txt` and `params.llmHeader` in `hugo.yml`.
 
 #### How does dark mode work?
 
-The theme includes an automatic dark mode toggle that:
-- Detects system color scheme preference on initial load.
-- Stores user preference in localStorage for subsequent visits.
-- Provides a manual toggle switch in the UI.
-- Automatically switches to light mode when printing.
-- Updates the favicon to match the current theme.
+Dark mode automatically detects system preference, stores user preference in localStorage, and provides a manual toggle. It switches to light mode when printing and updates the favicon accordingly.
+
+#### What are OKLCH colors?
+
+OKLCH is a modern color space that provides better perceptual uniformity. Format: `"oklch(L C H)"` where L=Lightness (0-1), C=Chroma (0-0.4), H=Hue (0-360). Example: `"oklch(0.490 0.203 317.8)"` for purple. Hex colors also work.
+
+#### How do I add a language version?
+
+Create a new data file (e.g., `data/cn.yml`), create a layout file that references it, and add a content page with the corresponding layout. See the README for detailed steps or check the Hugo multilingual documentation.
 
 #### How are favicons generated?
 
-Favicons are automatically generated from the user's name in `data.yml`:
-- Uses the first letter of the first and last name (e.g., "John Doe" → "JD").
-- Can be overridden by setting `basic.initials` in `data.yml`.
-- Generates both light and dark theme variants.
-- Uses the theme color for accent elements.
-- Creates SVG favicons with asset fingerprinting for cache busting.
-- Includes PNG and ICO fallbacks for broader browser support.
-
-#### How to use OKLCH colors?
-
-Set `params.themeColor` in `hugo.yml` using the OKLCH format: `"oklch(L C H)"` where:
-- L = Lightness (0-1)
-- C = Chroma (0-0.4)
-- H = Hue (0-360)
-
-Example: `"oklch(0.490 0.203 317.8)"` for a purple theme. The theme will handle color space conversion and ensure proper contrast.
-
-#### How to change the order of the sections in the resume?
-
-There is an `order` option in each section, you can adjust the order by modifying this, the smaller the value the more forward the position.
-
-#### How to hide the specified section in the resume?
-
-If there is no content you want to keep in the section, you can remove it directly. If you want to keep the content, you can set the value of the `show` option of the section to `false`.
+Favicons auto-generate from your name (e.g., "John Doe" → "JD"), using theme colors with light/dark variants. Override via `basic.initials` in `data.yml`. 1-3 characters works best.
 
 
+## Other
 
-#### How to create a resume in other languages?
-
-For example, if you already have an English version resume and you want to create a Chinese version.
-  - Copy a `data.yml` file in the `data` folder named `cn.yml` and edit the content.
-  - Create `layouts/page` directories through `mkdir -p layouts/page`.
-  - Copy `index.html` file in the theme layouts directory to above directory `cp themes/online-resume/layouts/index.html layouts/page/cn.html`
-  - Change the `{{- partial "common.html" (dict "Site" .Site "data" .Site.Data.data) }}` in the `cn.html` to `{{- partial "common.html" (dict "Site" .Site "data" .Site.Data.cn) }}`.
-  - Create `content` directory in root directory and create a markdown file named `cn.md`, add front matter `layout: cn` in `cn.md`.
-  - Run `hugo server` and you can preview the Chinese version of your resume by visiting `https://YOUR_RESUME_URL/cn`.
-
-
-## Others
-
-- Original Hugo Version: [tarrex/hugo-theme-online-resume][Base Version]
+- This repository was originally forked from: [tarrex/hugo-theme-online-resume](https://github.com/tarrex/hugo-theme-online-resume)
 
 
 [Demo]: https://nick.bov.ee/bot-ready-resume
-
-
-[Base Version]: https://github.com/tarrex/hugo-theme-online-resume
