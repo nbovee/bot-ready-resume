@@ -41,6 +41,8 @@ git submodule add https://github.com/nbovee/bot-ready-resume.git themes/bot-read
 mkdir -p data
 cp themes/bot-ready-resume/exampleSite/hugo.yml .
 cp themes/bot-ready-resume/exampleSite/data/data.yml data/
+mkdir -p .github/workflows
+cp themes/bot-ready-resume/example_github_action.yml .github/workflows/hugo.yml
 
 # Start development server
 hugo server
@@ -50,6 +52,8 @@ Open your browser to `http://localhost:1313` to see your resume.
 Your will also have `llms.txt` at `http://localhost:1313/llms.txt`, and a markdown output at `http://localhost:1313/index.md`
 
 Edit `data/data.yml` to customize your resume content.
+
+You may need to configure your repository to deploy from Github Actions, once enabled pushes to main will deploy the latest version of your resume.
 
 ### Customization
 
