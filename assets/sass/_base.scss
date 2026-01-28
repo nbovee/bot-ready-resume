@@ -93,31 +93,22 @@ small {
 }
 
 .role,
-.major,
+.institution,
 .project-name,
 .certificate-name,
 .publication-title,
 .award-name,
 .reference-name,
 .company,
-.degree,
 .issuer,
 .awarder,
 .reference-title,
-.basic .header :is(.name,
-.title,
-.description,),
+.basic .header :is(.name, .title, .description, ),
 .skill .section-content .groups .group-name {
   font-weight: $base-font-weight * 1.5;
 }
 
-:is(
-  .section-title,
-  .location,
-  .degree,
-  .project-name,
-  .contact-item
-) i::after,
+:is(.section-title, .location, .degree, .project-name, .contact-item) i::after,
 .skill-level i:not(:last-child)::after,
 .skill-name::after {
   content: "\00a0";
@@ -130,16 +121,16 @@ small {
 }
 
 :is(
-  .subrow, 
-  .title-desc-container .item,
-  .contact-item,
-  .group-item span,
-  .language .item,
-  .interest .item
+    .subrow,
+    .title-desc-container .item,
+    .contact-item,
+    .group-item span,
+    .language .item,
+    .interest .item
   ):not(:last-child)::after {
   content: $body-delimiter;
   color: var(--color-separator);
-  margin: 0 0.5em;
+  margin: 0 0.4em;
 }
 
 .contact-item:not(:last-child)::after {
@@ -155,14 +146,9 @@ small {
 
 // Consolidated flex wrap elements
 .contact,
-:is(
-  .certificate,
-  .award,
-  .reference,
-  .skill,
-  .language,
-  .interest
-) .section-content .items {
+:is(.certificate, .award, .reference, .skill, .language, .interest)
+  .section-content
+  .items {
   display: flex;
   flex-wrap: wrap;
 }
@@ -189,12 +175,12 @@ small {
 }
 
 // Consolidated border patterns
-:is(
-  .item,
-  .group
-):not(:last-child) {
-  border-bottom: 1px dashed var(--color-theme-border);
-}
+// :is(
+//   .item,
+//   .group
+// ):not(:last-child) {
+//   border-bottom: 1px dashed var(--color-theme-border);
+// }
 
 // Special border for name
 .basic .header .name {
@@ -210,18 +196,18 @@ small {
 // Skill items: remove border for last row (3 items per row at 30% flex-basis)
 .skill .items {
   // If we have 3n items total, remove border from last 3
-  .item:nth-last-child(-n+3):nth-last-child(3n),
-  .item:nth-last-child(-n+3):nth-last-child(3n-1),
-  .item:nth-last-child(-n+3):nth-last-child(3n-2) {
+  .item:nth-last-child(-n + 3):nth-last-child(3n),
+  .item:nth-last-child(-n + 3):nth-last-child(3n-1),
+  .item:nth-last-child(-n + 3):nth-last-child(3n-2) {
     border-bottom: none;
   }
   // If we have 3n+1 items total, remove border from last 1
-  .item:last-child:nth-child(3n+1) {
+  .item:last-child:nth-child(3n + 1) {
     border-bottom: none;
   }
   // If we have 3n+2 items total, remove border from last 2
-  .item:nth-last-child(-n+2):nth-last-child(3n+1),
-  .item:nth-last-child(-n+2):nth-last-child(3n+2) {
+  .item:nth-last-child(-n + 2):nth-last-child(3n + 1),
+  .item:nth-last-child(-n + 2):nth-last-child(3n + 2) {
     border-bottom: none;
   }
 }
@@ -230,6 +216,9 @@ small {
 .group:not(:last-child) {
   border-bottom: 1px dashed var(--color-separator-border);
 }
+// .contact {
+//   font-size: $small-font-size;
+// }
 
 .wrapper {
   display: flex;
@@ -239,9 +228,9 @@ small {
   max-width: $content-width;
   margin: $spacing-unit auto;
   padding: $spacing-unit * 2;
-  box-shadow: var(--color-shadow) 0px 10px 15px -3px,
+  box-shadow:
+    var(--color-shadow) 0px 10px 15px -3px,
     var(--color-shadow) 0px 4px 6px -2px;
-
 
   section {
     &:not(:nth-last-child(1)) {
@@ -263,7 +252,6 @@ small {
       border-bottom-color: var(--color-theme-border);
       border-bottom-width: 1px;
 
-
       h2 {
         font-size: inherit;
         margin-bottom: 0;
@@ -277,6 +265,11 @@ small {
             display: flex;
             flex-direction: row;
             justify-content: space-between;
+          }
+        }
+        .item {
+          &:last-child {
+            margin-bottom: 0;
           }
         }
       }
@@ -347,7 +340,7 @@ small {
   .skill {
     .section-content {
       .items {
-          justify-content: center;
+        justify-content: center;
         .item {
           display: inline-flex;
           align-items: center;
@@ -383,7 +376,7 @@ small {
   justify-content: center;
   font-size: $small-font-size;
   a {
-    color: var(--color-theme);    
+    color: var(--color-theme);
   }
   i {
     color: $heart-color;

@@ -1,12 +1,12 @@
 @media print {
   @page {
-    size: A4;
+    size: letter;
   }
 
   body {
-    font-size: 10pt !important;
+    font-size: 11pt !important;
     background: var(--color-body) !important;
-    line-height: 135%;
+    line-height: 130%;
   }
 
   /* Hide theme toggler in print media */

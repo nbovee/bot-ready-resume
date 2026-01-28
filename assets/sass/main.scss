@@ -7,14 +7,14 @@ $base-font-weight: 300 !default;
 
 $small-font-size:  $base-font-size * 0.875 !default;
 $middle-font-size: $base-font-size * 1.000 !default;
-$large-font-size:  $base-font-size * 1.200 !default;
-$huge-font-size:   $base-font-size * 2.250 !default;
+$large-font-size:  $base-font-size * 1.150 !default;
+$huge-font-size:   $base-font-size * 1.750 !default;
 
 $base-line-height: $base-font-size + 0.35 !default;
-$spacing-unit:     $base-font-size + 0.20 !default;
+$spacing-unit:     $base-font-size + 0.15 !default;
 
 // Width of the content area
-$content-width:    62rem !default;
+$content-width:    52.5rem !default;
 
 // Default color settings - all colors calculated in colors.html partial
 // ${var}-dark indicates the theme it is for, not the actual color content

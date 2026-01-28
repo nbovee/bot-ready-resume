@@ -35,14 +35,22 @@
                         {{- end -}}
                     </div>
                 </div>
-                {{- if $item.authors }}
-                <div class="authors">
-                    <span>{{ $item.authors | markdownify | safeHTML }}</span>
+                <div>
+                    {{- if and $item.authors $item.doi }}
+                    <span class="authors subrow">{{ $item.authors | markdownify | safeHTML }}</span><span class="doi"><!--
+--><a href="https://doi.org/{{ $item.doi }}" target="_blank">https://doi.org/{{ $item.doi }}</a>
+                </span>
+                {{- else if $item.authors }}
+                <span class="authors">{{ $item.authors | markdownify | safeHTML }}</span><span class="doi">
+                    {{- else if $item.doi }}
+                    <span class="doi">
+                        <a href="https://doi.org/{{ $item.doi }}" target="_blank">https://doi.org/{{ $item.doi }}</a>
+                    </span>
+                    {{- end }}
                 </div>
-                {{- end }}
-                {{- if $item.doi }}
-                <div class="doi">
-                    <span>DOI: <a href="https://doi.org/{{ $item.doi }}" target="_blank">{{ $item.doi }}</a></span>
+                {{- if $item.description }}
+                <div class="row">
+                    <span class="subrow">{{ $item.description | markdownify | safeHTML }}</span>
                 </div>
                 {{- end }}
             </div>
