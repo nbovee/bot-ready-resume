@@ -144,7 +144,6 @@ small {
   align-items: baseline;
 }
 
-// Consolidated flex wrap elements
 .contact,
 :is(.certificate, .award, .reference, .skill, .language, .interest)
   .section-content
@@ -153,17 +152,18 @@ small {
   flex-wrap: wrap;
 }
 
-// Consolidated spacing patterns
 .section-content :is(.description, .items .item, .groups) {
   margin-bottom: $spacing-unit / 4;
 }
 
-// Consolidated padding patterns
+.section-content :is(.description, .items .item, .groups):last-child {
+  margin-bottom: 0;
+}
+
 .section-content :is(.items .item .description, .authors) {
   padding-left: 1rem;
 }
 
-// Consolidated color patterns
 .date,
 .location,
 .institution {
@@ -182,43 +182,33 @@ small {
 //   border-bottom: 1px dashed var(--color-theme-border);
 // }
 
-// Special border for name
 .basic .header .name {
   border-bottom: 4px solid var(--color-theme);
 }
 
-// Override for language/interest items
 .language .item,
 .interest .item {
   border-bottom: none;
 }
 
-// Skill items: remove border for last row (3 items per row at 30% flex-basis)
 .skill .items {
-  // If we have 3n items total, remove border from last 3
   .item:nth-last-child(-n + 3):nth-last-child(3n),
   .item:nth-last-child(-n + 3):nth-last-child(3n-1),
   .item:nth-last-child(-n + 3):nth-last-child(3n-2) {
     border-bottom: none;
   }
-  // If we have 3n+1 items total, remove border from last 1
   .item:last-child:nth-child(3n + 1) {
     border-bottom: none;
   }
-  // If we have 3n+2 items total, remove border from last 2
   .item:nth-last-child(-n + 2):nth-last-child(3n + 1),
   .item:nth-last-child(-n + 2):nth-last-child(3n + 2) {
     border-bottom: none;
   }
 }
 
-// Override for group borders
 .group:not(:last-child) {
   border-bottom: 1px dashed var(--color-separator-border);
 }
-// .contact {
-//   font-size: $small-font-size;
-// }
 
 .wrapper {
   display: flex;
