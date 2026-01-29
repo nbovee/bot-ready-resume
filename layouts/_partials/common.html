@@ -7,30 +7,35 @@
     </head>
     <body>
         {{- if .Site.Params.open }}
-        {{- partial "toggle.html" . }}
-    <div class="wrapper">
-        {{- partial "basic.html" . }}
-        {{- partial "profile.html" . }}
-        {{- partial "experience.html" . }}
-        {{- partial "project.html" . }}
-        {{- partial "skill.html" . }}
-        {{- partial "education.html" . }}
-        {{- partial "certificate.html" . }}
-        {{- partial "publication.html" . }}
-        {{- partial "award.html" . }}
-        {{- partial "patent.html" . }}
-        {{- partial "organization.html" . }}
-        {{- partial "language.html" . }}
-        {{- partial "evaluation.html" . }}
-        {{- partial "reference.html" . }}
-        {{- partial "interest.html" . }}
-    </div>
-    {{- if .Site.Params.siteCredit }}
-    {{- partial "credit.html" . }}
-    {{- end }}
-    {{- else }}
-    {{- partial "close.html" . }}
-    {{- end }}
-{{- partial "scripts.html" .}}
-</body>
+            {{- partial "toggle.html" . }}
+            <div class="wrapper">
+                {{- partial "basic.html" . }}
+                {{- partial "profile.html" . }}
+                {{- $ctx := . -}}
+                {{- $sectionList := slice -}}
+                {{- range $key, $value := .data -}}
+                    {{- if reflect.IsMap $value -}}
+                        {{- with index $value "show" -}}
+                            {{- if . -}}
+                                {{- $sectionList = $sectionList | append (dict "name" $key "order" ($value.order | default 999) "details" $value) -}}
+                            {{- end -}}
+                        {{- end -}}
+                    {{- end -}}
+                {{- end -}}
+                {{- $sortedSections := sort $sectionList "order" "asc" -}}
+                {{- range $sortedSections -}}
+                    {{- $path := printf "%s.html" .name -}}
+                    {{- if templates.Exists (printf "_partials/%s" $path) -}}
+                        {{- partial $path $ctx -}}
+                    {{- end -}}
+                {{- end -}}
+            </div>
+            {{- if .Site.Params.siteCredit }}
+                {{- partial "credit.html" . }}
+            {{- end }}
+        {{- else }}
+            {{- partial "close.html" . }}
+        {{- end }}
+        {{- partial "scripts.html" . }}
+    </body>
 </html>
