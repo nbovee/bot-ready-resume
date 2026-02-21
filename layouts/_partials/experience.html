@@ -13,11 +13,9 @@
             {{- range $item := $experience.items }}
             <div class="item">
                 <div class="row">
-                    <div class="row">
+                    <span class="l-subrow">
                         {{- if $item.role -}}
-                        <div class="role subrow">
-                            {{- $item.role -}}
-                        </div>
+                        <div class="role subrow">{{- $item.role -}}</div>
                         {{- end -}}
                         {{- if $item.company -}}
                         <div class="company subrow">
@@ -31,22 +29,18 @@
                             {{- end -}}
                         </div>
                         {{- end -}}
-                        
-                    </div>
-                    {{- if $item.location }}
-                    <div class="row">
-                        <div class="location subrow">
-                            {{/*  <i class="fa-solid fa-fw  fa-location-dot"></i>  */}}
-                            <span>{{ $item.location }}</span>
-                        </div>
-                        {{- end }}
-                        <div class="date">
-                            <span>{{ $item.date }}</span>
-                        </div>
-                    </div>
+                    </span>
+                    <span class="r-subrow">
+                        {{- if $item.location -}}
+                            <span class="location subrow">{{ $item.location }}</span>
+                        {{- end -}}
+                        <span class="subrow">{{ $item.date }}</span>
+                    </span>
                 </div>
                 {{- if $item.description }}
-                <div class="description markdown">{{ $item.description | markdownify | safeHTML }}</div>
+                <div class="row">
+                    <div class="description markdown">{{ $item.description | markdownify | safeHTML }}</div>
+                </div>
                 {{- end }}
             </div>
             {{- end }}

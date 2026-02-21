@@ -11,45 +11,44 @@
         <div class="items">
             {{- range $item := $education.items -}}
             <div class="item">
-            <div class="row">
-            {{- if $item.institution -}}
-                        <div class="institution subrow">
+                <div class="row">
+                    <div class="l-subrow">
+                        <span class="institution subrow">
                             {{- if $item.link -}}
                             <a href="{{- $item.link -}}" target="_blank">{{- $item.institution | safeHTML -}}</a>
                             {{- else -}}
                             <span>{{- $item.institution | safeHTML -}}</span>
                             {{- end -}}
-                        </div>
-                        {{- end -}}
-            </div>
+                        </span>
+                    </div>
+
+                </div>
                 <div class="row">
-                    <div class="row">
-                        <div class="major degree subrow">
-                        {{- if $item.degree -}}
+                    <div class="l-subrow">
+                        <span class="major degree subrow">
+                            {{ if $item.degree }}
                             {{ $item.degree }}
-                            <span> in </span>
-                            {{- end -}}
+                            in
+                            {{ end }}
                             {{- if $item.major -}}
                             {{ $item.major }}
                             {{- end -}}
-                        </div>
-                            {{- if $item.gpa -}}
-                            <div class="gpa subrow">{{ $item.gpa | markdownify }} GPA</div>
-                            {{- end -}}
-                    </div>
-                    <div class="row">
-                        {{- if $item.location -}}
-                        <div class="subrow">
-                            <span>{{- $item.location}}</span>
-                        </div>
+                        </span>
+                        {{- if $item.gpa -}}
+                        <span class="gpa subrow">{{ $item.gpa | markdownify }} GPA</span>
                         {{- end -}}
-                        <div class="date">
-                            <span>{{- $item.date -}}</span>
-                        </div>
                     </div>
+                                        <span class="r-subrow">
+                        {{- if $item.location -}}
+                        <span class="subrow">{{- $item.location }}</span>
+                        {{- end -}}
+                        <span class="date">{{- $item.date -}}</span>
+                    </span>
                 </div>
                 {{- if $item.description -}}
+                <div class="row">
                 <div class="description markdown">{{- $item.description | markdownify | safeHTML -}}</div>
+                </div>
                 {{- end -}}
             </div>
             {{- end -}}

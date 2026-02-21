@@ -133,6 +133,13 @@ small {
   margin: 0 0.4em;
 }
 
+:is(
+    .subrow,
+    .group-item span,
+    ) {
+  display: inline-block;
+  }
+
 .contact-item:not(:last-child)::after {
   content: $contact-delimiter;
 }

@@ -15,7 +15,7 @@
             {{- range $item := $publication.items }}
             <div class="item">
                 <div class="row">
-                    <div class="row">
+                    <div class="l-subrow">
                         {{- if $item.title -}}
                         <div class="publication-title subrow">
                             {{- if $item.link -}}
@@ -26,16 +26,17 @@
                         </div>
                         {{- end -}}
                     </div>
-                    <div class="row">
+                    <div class="r-subrow">
                         {{- if $item.conference -}}
-                        <div class="conference subrow">{{- $item.conference -}}</div>
+                        <span class="conference subrow">{{- $item.conference -}}</span>
                         {{- end -}}
                         {{- if $item.date -}}
-                        <div class="date">{{- $item.date -}}</div>
+                        <span class="date">{{- $item.date -}}</span>
                         {{- end -}}
                     </div>
                 </div>
-                <div>
+                <div class="row">
+                <div class="l-subrow">
                     {{- if and $item.authors $item.doi }}
                     <span class="authors subrow">{{ $item.authors | markdownify | safeHTML }}</span><span class="doi"><!--
 --><a href="https://doi.org/{{ $item.doi }}" target="_blank">https://doi.org/{{ $item.doi }}</a>
@@ -47,6 +48,7 @@
                         <a href="https://doi.org/{{ $item.doi }}" target="_blank">https://doi.org/{{ $item.doi }}</a>
                     </span>
                     {{- end }}
+                    </div>
                 </div>
                 {{- if $item.description }}
                 <div class="row">

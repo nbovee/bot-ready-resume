@@ -1,6 +1,6 @@
 {{- if .Site.Params.llmHeader }}
 {{- $prompt := .data.llmPrompt.text }}
 {{- if $prompt }}
-{{- printf "<!-- %s -->" $prompt | safeHTML }}
+{{- printf "<!-- <instruction> %s </instruction> -->" $prompt | safeHTML }}
 {{- end }}
 {{- end }}
