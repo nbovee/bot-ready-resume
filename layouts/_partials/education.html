@@ -19,17 +19,12 @@
                             {{- else -}}
                             <span>{{- $item.institution | safeHTML -}}</span>
                             {{- end -}}
-                        </span>
-                    </div>
-
-                </div>
-                <div class="row">
-                    <div class="l-subrow">
+                        </span>{{- /*trim whitespace*/ -}}
                         <span class="major degree subrow">
-                            {{ if $item.degree }}
-                            {{ $item.degree }}
+                            {{- if $item.degree -}}
+                            {{- $item.degree }}
                             in
-                            {{ end }}
+                            {{ end -}}
                             {{- if $item.major -}}
                             {{ $item.major }}
                             {{- end -}}
@@ -38,7 +33,7 @@
                         <span class="gpa subrow">{{ $item.gpa | markdownify }} GPA</span>
                         {{- end -}}
                     </div>
-                                        <span class="r-subrow">
+                    <span class="r-subrow">
                         {{- if $item.location -}}
                         <span class="subrow">{{- $item.location }}</span>
                         {{- end -}}
@@ -47,7 +42,7 @@
                 </div>
                 {{- if $item.description -}}
                 <div class="row">
-                <div class="description markdown">{{- $item.description | markdownify | safeHTML -}}</div>
+                    <div class="description markdown">{{- $item.description | markdownify | safeHTML -}}</div>
                 </div>
                 {{- end -}}
             </div>

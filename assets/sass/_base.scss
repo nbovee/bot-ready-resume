@@ -72,7 +72,7 @@ p {
 
 ol,
 ul {
-  padding-left: 0rem;
+  padding-left: 1rem;
   margin-top: 0;
   margin-bottom: 0.2rem;
 
@@ -167,7 +167,7 @@ small {
   margin-bottom: 0;
 }
 
-.section-content :is(.items .item .description, .authors) {
+.section-content :is(.items .item .description .authors) {
   padding-left: 1rem;
 }
 

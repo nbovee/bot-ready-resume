@@ -1,12 +1,7 @@
 {{- $data := .Site.Data.data -}}
 {{- $basic := $data.basic -}}
 {{- $contact := $data.contact -}}
-{{- $prompt := $data.llmPrompt -}}
-{{- if $prompt.show -}}
-{{- $prompt.text }}
 
-{{ end -}}
-# {{ $basic.name }}
 
 {{- if $basic.title }}
 **{{ $basic.title }}**

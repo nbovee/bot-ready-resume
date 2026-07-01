@@ -14,25 +14,25 @@
             <div class="item">
                 <div class="row">
                     <span class="l-subrow">
-                        {{- if $item.role -}}
-                        <div class="role subrow">{{- $item.role -}}</div>
-                        {{- end -}}
                         {{- if $item.company -}}
                         <div class="company subrow">
                             {{- if $item.link -}}
-                                <a href="{{ $item.link }}" target="_blank">{{ $item.company | safeHTML }}</a>
+                            <a href="{{ $item.link }}" target="_blank">{{ $item.company | safeHTML }}</a>
                             {{- else -}}
-                                {{- $item.company | safeHTML -}}
-                            {{- end -}}
-                            {{- if $item.tags }}
-                                <small>[{{ $item.tags }}]</small>
+                            {{- $item.company | safeHTML -}}
                             {{- end -}}
                         </div>
+                        {{- end -}}
+                        {{- if $item.role -}}
+                        <div class="role subrow">{{- $item.role -}}</div>
+                        {{- end -}}
+                        {{- if $item.tags -}}
+                        <small>[{{ $item.tags }}]</small>
                         {{- end -}}
                     </span>
                     <span class="r-subrow">
                         {{- if $item.location -}}
-                            <span class="location subrow">{{ $item.location }}</span>
+                        <span class="location subrow">{{ $item.location }}</span>
                         {{- end -}}
                         <span class="subrow">{{ $item.date }}</span>
                     </span>
