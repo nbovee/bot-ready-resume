@@ -103,7 +103,7 @@ small {
 .issuer,
 .awarder,
 .reference-title,
-.basic .header :is(.name, .title, .description, ),
+.basic .header :is(.name, .title, .description),
 .skill .section-content .groups .group-name {
   font-weight: $base-font-weight * 1.5;
 }
@@ -135,7 +135,7 @@ small {
 
 :is(
     .subrow,
-    .group-item span,
+    .group-item span
     ) {
   display: inline-block;
   }
